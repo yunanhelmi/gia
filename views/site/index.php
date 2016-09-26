@@ -9,7 +9,7 @@ $this->title = 'APLIKASI GIA';
 
     <div class="jumbotron">
         
-        <img src="img/logo GIA.gif" height="300" width="500"></img>
+        <img src="img/logo GIA.gif" height="300" ></img>
         
     </div>
 
