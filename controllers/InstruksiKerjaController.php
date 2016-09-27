@@ -8,6 +8,8 @@ use app\models\InstruksiKerjaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use app\filters\AccessRule;
 
 /**
  * InstruksiKerjaController implements the CRUD actions for InstruksiKerja model.

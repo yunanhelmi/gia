@@ -8,6 +8,8 @@ use app\models\LoginSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use app\filters\AccessRule;
 
 /**
  * LoginController implements the CRUD actions for Login model.

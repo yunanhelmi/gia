@@ -8,6 +8,8 @@ use app\models\ClientSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use app\filters\AccessRule;
 
 /**
  * ClientController implements the CRUD actions for Client model.
@@ -26,6 +28,7 @@ class ClientController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 //'only' => [],
+
                 'rules' => [
                     [
                         'allow' => true,
