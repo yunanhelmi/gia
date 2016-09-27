@@ -70,6 +70,7 @@ $this->registerJs($search);
         'case_number',
         'type_of_instruction',
         'date_of_instruction',
+        'assurers',
         'assured',
         'broker',
         'conveyence',
