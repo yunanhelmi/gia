@@ -40,7 +40,7 @@ $this->registerJs($search);
                 },
                 'update' => function ($model) {
                     $test = explode("=", $model);
-                    $url = "instruksi-kerja/update2";
+                    $url = "instruksi-kerja/updateoutstanding";
                     return Html::a('<span class="glyphicon glyphicon-pencil"></span>', [$url, 'id' => $test[2]], ['title' => 'View']);
                 }
             ],

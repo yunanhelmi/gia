@@ -29,7 +29,7 @@ class ClientController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => ['index','viewclient','view','create','update','delete','pdf','saveasnew'],
                         'roles' => ['@']
                     ],
                     [

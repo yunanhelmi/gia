@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $model->id;
                 ]
             )?>
             
-            <?= Html::a('Update', ['update2', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Update', ['updateoutstanding', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
 

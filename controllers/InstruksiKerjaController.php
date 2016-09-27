@@ -29,7 +29,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','incoming'],
+                        'actions' => ['index','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding'],
                         'roles' => ['@']
                     ],
                     [
@@ -141,7 +141,7 @@ class InstruksiKerjaController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdateincoming($id)
     {
         if (Yii::$app->request->post('_asnew') == '1') {
             $model = new InstruksiKerja();
@@ -152,13 +152,13 @@ class InstruksiKerjaController extends Controller
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
+            return $this->render('updateincoming', [
                 'model' => $model,
             ]);
         }
     }
 
-    public function actionUpdate2($id)
+    public function actionUpdateoutstanding($id)
     {
         if (Yii::$app->request->post('_asnew') == '1') {
             $model = new InstruksiKerja();
@@ -169,7 +169,7 @@ class InstruksiKerjaController extends Controller
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
             return $this->redirect(['viewr', 'id' => $model->id]);
         } else {
-            return $this->render('update2', [
+            return $this->render('updateoutstanding', [
                 'model' => $model,
             ]);
         }

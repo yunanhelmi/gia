@@ -49,11 +49,13 @@ $this->registerJs($search);
             'class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update}',
             'buttons' => [
-                'save-as-new' => function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
-                },
                 'view' => function ($url, $model){
                     return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'index.php?r=instruksi-kerja/viewincoming&id='.$model->id);
+                },
+                'update' => function ($model) {
+                    $test = explode("=", $model);
+                    $url = "instruksi-kerja/updateincoming";
+                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', [$url, 'id' => $test[2]], ['title' => 'View']);
                 }
             ],
         ],
