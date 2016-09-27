@@ -29,7 +29,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => ['index','incoming'],
                         'roles' => ['@']
                     ],
                     [

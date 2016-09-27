@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
-    'name' => 'Aplikasi GIA',
+    'name' => 'PT Global Internusa Adjusting Surabaya',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [

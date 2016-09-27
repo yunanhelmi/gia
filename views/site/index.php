@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 use yii\helpers\url;
 
-$this->title = 'APLIKASI GIA';
+$this->title = 'PT Global Internusa Adjusting Surabaya';
 ?>
 <div class="site-index">
 
