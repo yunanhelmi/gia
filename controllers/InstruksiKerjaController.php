@@ -152,7 +152,7 @@ class InstruksiKerjaController extends Controller
         }
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewincoming', 'id' => $model->id]);
         } else {
             return $this->render('updateincoming', [
                 'model' => $model,
@@ -169,7 +169,7 @@ class InstruksiKerjaController extends Controller
         }
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['viewr', 'id' => $model->id]);
+            return $this->redirect(['viewoutstanding', 'id' => $model->id]);
         } else {
             return $this->render('updateoutstanding', [
                 'model' => $model,
