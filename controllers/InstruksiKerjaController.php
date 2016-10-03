@@ -31,7 +31,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding'],
+                        'actions' => ['index','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -199,7 +199,7 @@ class InstruksiKerjaController extends Controller
     public function actionPdf($id) {
         $model = $this->findModel($id);
 
-        $content = $this->renderAjax('_pdf', [
+        $content = $this->render('_pdf', [
             'model' => $model,
         ]);
 
@@ -210,7 +210,7 @@ class InstruksiKerjaController extends Controller
             'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
             'content' => $content,
             'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
-            'cssInline' => '.kv-heading-1{font-size:18px}',
+            //'cssInline' => '.kv-heading-1{font-size:18px}',
             'options' => ['title' => \Yii::$app->name],
             'methods' => [
                 'SetHeader' => [\Yii::$app->name],
