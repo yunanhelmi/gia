@@ -39,7 +39,7 @@ AppAsset::register($this);
         'activateParents' => true,
         'items' => [
             ['label' => 'Client', 'url' => ['/client/viewclient']],
-            ['label' => 'Incoming', 'url' => ['/instruksi-kerja/incoming']],
+            ['label' => 'Incoming', 'url' => ['/instruksi-kerja/create']],
             ['label' => 'Outstanding', 'url' => ['/instruksi-kerja/outstanding']],
             ['label' => 'Issued', 'url' => ['/instruksi-kerja/issued']],
             Yii::$app->user->isGuest ? (

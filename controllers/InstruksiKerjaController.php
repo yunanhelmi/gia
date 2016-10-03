@@ -31,7 +31,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','viewr','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding'],
+                        'actions' => ['index','viewr','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete', 'pdf', 'updateincoming','updateoutstanding'],
                         'roles' => ['@']
                     ],
                     [
