@@ -12,22 +12,6 @@ use yii\helpers\Html;
 $this->title = 'Yii Debugger';
 
 ?>
-<div class="default-index">
-    <div id="yii-debug-toolbar" class="yii-debug-toolbar yii-debug-toolbar_position_top" style="display: none;">
-        <div class="yii-debug-toolbar__bar">
-            <div class="yii-debug-toolbar__block yii-debug-toolbar__title">
-                <a href="#">
-                    <img width="30" height="30" alt="" src="<?= \yii\debug\Module::getYiiLogo() ?>">
-                </a>
-            </div>
-            <?php foreach ($panels as $panel): ?>
-                <?= $panel->getSummary() ?>
-            <?php endforeach; ?>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
 <?php
 
 if (isset($this->context->module->panels['db']) && isset($this->context->module->panels['request'])) {

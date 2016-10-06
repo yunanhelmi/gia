@@ -9,13 +9,6 @@ $items = [
             'model' => $model,
         ]),
     ],
-        [
-        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode('Instruksi Kerja'),
-        'content' => $this->render('_dataInstruksiKerja', [
-            'model' => $model,
-            'row' => $model->instruksiKerjas,
-        ]),
-    ],
     ];
 echo TabsX::widget([
     'items' => $items,

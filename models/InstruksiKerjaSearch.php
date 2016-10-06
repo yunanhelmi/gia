@@ -19,7 +19,7 @@ use app\models\InstruksiKerja;
     {
         return [
             [['id', 'id_client'], 'integer'],
-            [['case_number', 'type_of_instruction', 'date_of_instruction', 'assured', 'broker', 'conveyence', 'interest', 'date_of_loss', 'detail_of_loss', 'amount_of_claim', 'sum_insured', 'fee_code', 'not_relevant', 'protected', 'time_bar_due', 'comment', 'date_entered', 'adjuster', 'actual_fee', 'status', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent', 'remark', 'created_at', 'updated_at'], 'safe'],
+            [['case_number', 'type_of_instruction', 'date_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'date_of_loss', 'casualty', 'amount_of_loss', 'sum_insured', 'fee_code', 'not_relevant', 'protected', 'time_bar_due', 'comment', 'date_entered', 'adjuster', 'actual_fee', 'expenses', 'status', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent', 'remark', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -71,12 +71,13 @@ use app\models\InstruksiKerja;
 
         $query->andFilterWhere(['like', 'case_number', $this->case_number])
             ->andFilterWhere(['like', 'type_of_instruction', $this->type_of_instruction])
-            ->andFilterWhere(['like', 'assured', $this->assured])
+            ->andFilterWhere(['like', 'assurers', $this->assurers])
+            ->andFilterWhere(['like', 'insured', $this->insured])
             ->andFilterWhere(['like', 'broker', $this->broker])
             ->andFilterWhere(['like', 'conveyence', $this->conveyence])
             ->andFilterWhere(['like', 'interest', $this->interest])
-            ->andFilterWhere(['like', 'detail_of_loss', $this->detail_of_loss])
-            ->andFilterWhere(['like', 'amount_of_claim', $this->amount_of_claim])
+            ->andFilterWhere(['like', 'casualty', $this->casualty])
+            ->andFilterWhere(['like', 'amount_of_loss', $this->amount_of_loss])
             ->andFilterWhere(['like', 'sum_insured', $this->sum_insured])
             ->andFilterWhere(['like', 'fee_code', $this->fee_code])
             ->andFilterWhere(['like', 'not_relevant', $this->not_relevant])
@@ -84,6 +85,7 @@ use app\models\InstruksiKerja;
             ->andFilterWhere(['like', 'comment', $this->comment])
             ->andFilterWhere(['like', 'adjuster', $this->adjuster])
             ->andFilterWhere(['like', 'actual_fee', $this->actual_fee])
+            ->andFilterWhere(['like', 'expenses', $this->expenses])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'remark', $this->remark])
             ->andFilterWhere(['like', 'created_at', $this->created_at])

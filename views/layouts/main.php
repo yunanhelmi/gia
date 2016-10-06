@@ -70,9 +70,10 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container" style="text-align: center">
         <p>Copyright &copy; PT. Global Internusa Adjusting Surabaya <?= date('Y') ?></p>
-        <p>5th floor Kompas Gramedia</p>
-        <p>JL. Raya Jemursari no.64</p>
-        <p>Surabaya 60251 - Indonesia</p>
+        <p>5<sup>th</sup> Fl. Gedung Kompas Gramedia</p>
+        <p>Jl. Raya Jemursari No. 64</p>
+        <p>Surabaya, 60237, Indonesia</p>
+        <p>No. Telepon : +6231 847 8750 / +6231 847 8751</p>
     </div>
 </footer>
 

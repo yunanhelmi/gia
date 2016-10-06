@@ -63,7 +63,7 @@ $this->registerJs($search);
         'type_of_instruction',
         'date_of_instruction',
         'assurers',
-        'assured',
+        'insured',
         'broker',
         // 'conveyence',
         // 'interest',

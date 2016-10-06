@@ -43,7 +43,7 @@ use yii\widgets\ActiveForm;
         ]); 
         ?>
         <?= $form->field($model, 'assurers')->textInput(['maxlength' => true, 'placeholder' => 'Assurers']) ?>
-        <?= $form->field($model, 'assured')->textInput(['maxlength' => true, 'placeholder' => 'Assured']) ?>
+        <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
         <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
         <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
         <?= $form->field($model, 'interest')->textInput(['maxlength' => true, 'placeholder' => 'Interest']) ?>
@@ -59,10 +59,11 @@ use yii\widgets\ActiveForm;
             ],
         ]); 
         ?>
-        <?= $form->field($model, 'detail_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Detail Of Loss']) ?>
-        <?= $form->field($model, 'amount_of_claim')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Claim']) ?>
+        <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+        <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss']) ?>
         <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
         <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
+        <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses']) ?>
         <?= $form->field($model, 'not_relevant')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
         <?= $form->field($model, 'protected')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
         <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [

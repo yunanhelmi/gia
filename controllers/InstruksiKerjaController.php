@@ -51,7 +51,7 @@ class InstruksiKerjaController extends Controller
         $searchModel = new InstruksiKerjaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('site/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -129,7 +129,7 @@ class InstruksiKerjaController extends Controller
         $model = new InstruksiKerja();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,

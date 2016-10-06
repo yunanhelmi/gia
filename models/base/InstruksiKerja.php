@@ -14,13 +14,13 @@ use yii\behaviors\TimestampBehavior;
  * @property string $type_of_instruction
  * @property string $date_of_instruction
  * @property string $assurers
- * @property string $assured
+ * @property string $insured
  * @property string $broker
  * @property string $conveyence
  * @property string $interest
  * @property string $date_of_loss
- * @property string $detail_of_loss
- * @property string $amount_of_claim
+ * @property string $casualty
+ * @property string $amount_of_loss
  * @property string $sum_insured
  * @property string $fee_code
  * @property string $not_relevant
@@ -30,6 +30,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $date_entered
  * @property string $adjuster
  * @property string $actual_fee
+ * @property string $expenses
  * @property string $status
  * @property string $date_send_of_pa
  * @property string $date_send_of_dfr
@@ -55,7 +56,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             [['id_client'], 'integer'],
             [['date_of_instruction', 'date_of_loss', 'time_bar_due', 'date_entered', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent'], 'safe'],
             [['not_relevant', 'protected', 'status'], 'string'],
-            [['case_number', 'type_of_instruction', 'assurers', 'assured', 'broker', 'conveyence', 'interest', 'detail_of_loss', 'amount_of_claim', 'sum_insured', 'fee_code', 'comment', 'adjuster', 'actual_fee', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255]
+            [['case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'amount_of_loss', 'sum_insured', 'fee_code', 'comment', 'adjuster', 'actual_fee', 'expenses', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255]
         ];
     }
     
@@ -79,13 +80,13 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             'type_of_instruction' => 'Type Of Instruction',
             'date_of_instruction' => 'Date Of Instruction',
             'assurers' => 'Assurers',
-            'assured' => 'Assured',
+            'insured' => 'Insured',
             'broker' => 'Broker',
             'conveyence' => 'Conveyence',
             'interest' => 'Interest',
             'date_of_loss' => 'Date Of Loss',
-            'detail_of_loss' => 'Detail Of Loss',
-            'amount_of_claim' => 'Amount Of Claim',
+            'casualty' => 'Casualty',
+            'amount_of_loss' => 'Amount Of Loss',
             'sum_insured' => 'Sum Insured',
             'fee_code' => 'Fee Code',
             'not_relevant' => 'Not Relevant',
@@ -95,6 +96,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             'date_entered' => 'Date Entered',
             'adjuster' => 'Adjuster',
             'actual_fee' => 'Actual Fee',
+            'expenses' => 'Expenses',
             'status' => 'Status',
             'date_send_of_pa' => 'Date Send Of Pa',
             'date_send_of_dfr' => 'Date Send Of Dfr',
