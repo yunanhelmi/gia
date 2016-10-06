@@ -32,33 +32,18 @@ $this->registerJs($search);
         ['class' => 'yii\grid\SerialColumn'],
         ['attribute' => 'id', 'visible' => false],
         [
-            'class' => 'yii\grid\ActionColumn',
-            'template' => ' {view} ',
-            'buttons' => [
-                'view' => function ($url, $model){
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
-                },
-                'update' => function ($model) {
-                    $test = explode("=", $model);
-                    $url = "instruksi-kerja/update2";
-                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', [$url, 'id' => $test[2]], ['title' => 'View']);
-                },
+            'attribute' => 'id_client',
+            'label' => 'Id Client',
+            'value' => function($model){
+                return $model->client->nama;
+            },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
             ],
+            'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         ],
-        [
-                'attribute' => 'id_client',
-                'label' => 'Id Client',
-                'value' => function($model){
-                    return $model->client->nama;
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
-                'filterWidgetOptions' => [
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
-            ],
-
         'case_number',
         'type_of_instruction',
         'date_of_instruction',
@@ -78,6 +63,15 @@ $this->registerJs($search);
         // 'comment',
         'date_entered',
         'adjuster',
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => ' {view} ',
+            'buttons' => [
+                'view' => function ($url, $model){
+                    return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
+                },
+            ],
+        ],
         // 'actual_fee',
         // 'status',
         // 'date_send_of_pa',
@@ -93,6 +87,38 @@ $this->registerJs($search);
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $gridColumn,
+        'exportConfig'=> [
+            GridView::CSV=>[
+                'label' => 'CSV',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/csv',
+                'config' => [
+                    'colDelimiter' => ";",
+                    'rowDelimiter' => "\r\n",
+                ], 
+            ],
+            GridView::PDF=>[
+                'label' => 'PDF',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/pdf',
+            ],
+        ],
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-instruksi-kerja']],
         'panel' => [
@@ -100,22 +126,22 @@ $this->registerJs($search);
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
         // your toolbar can include the additional full export menu
-        'toolbar' => [
-            '{export}',
-            ExportMenu::widget([
-                'dataProvider' => $dataProvider,
-                'columns' => $gridColumn,
-                'target' => ExportMenu::TARGET_BLANK,
-                'fontAwesome' => true,
-                'dropdownOptions' => [
-                    'label' => 'Full',
-                    'class' => 'btn btn-default',
-                    'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
-                    ],
-                ],
-            ]) ,
-        ],
+        // 'toolbar' => [
+        //     '{export}',
+        //     ExportMenu::widget([
+        //         'dataProvider' => $dataProvider,
+        //         'columns' => $gridColumn,
+        //         'target' => ExportMenu::TARGET_BLANK,
+        //         'fontAwesome' => true,
+        //         'dropdownOptions' => [
+        //             'label' => 'Full',
+        //             'class' => 'btn btn-default',
+        //             'itemsBefore' => [
+        //                 '<li class="dropdown-header">Export All Data</li>',
+        //             ],
+        //         ],
+        //     ]) ,
+        // ],
     ]); ?>
 
 </div>

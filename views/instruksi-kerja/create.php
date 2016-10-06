@@ -7,7 +7,6 @@ use yii\helpers\Html;
 /* @var $model app\models\InstruksiKerja */
 
 $this->title = 'Create Instruksi Kerja';
-$this->params['breadcrumbs'][] = ['label' => 'Incoming', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="instruksi-kerja-create">
