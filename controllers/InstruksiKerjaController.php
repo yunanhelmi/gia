@@ -51,7 +51,7 @@ class InstruksiKerjaController extends Controller
         $searchModel = new InstruksiKerjaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('site/index', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

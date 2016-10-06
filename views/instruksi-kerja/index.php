@@ -71,13 +71,13 @@ $this->registerJs($search);
         'type_of_instruction',
         'date_of_instruction',
         'assurers',
-        'assured',
+        //'assured',
         'broker',
         'conveyence',
         'interest',
         'date_of_loss',
-        'detail_of_loss',
-        'amount_of_claim',
+        //'detail_of_loss',
+        //'amount_of_claim',
         'sum_insured',
         'fee_code',
         'not_relevant',
@@ -101,29 +101,85 @@ $this->registerJs($search);
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $gridColumn,
+        'exportConfig'=> [
+            GridView::CSV=>[
+                'label' => 'CSV',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/csv',
+                'config' => [
+                    'colDelimiter' => ";",
+                    'rowDelimiter' => "\r\n",
+                ], 
+            ],
+            GridView::PDF=>[
+                'label' => 'PDF',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/pdf',
+            ],
+        ],
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-instruksi-kerja']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
+
         // your toolbar can include the additional full export menu
-        'toolbar' => [
-            '{export}',
-            ExportMenu::widget([
-                'dataProvider' => $dataProvider,
-                'columns' => $gridColumn,
-                'target' => ExportMenu::TARGET_BLANK,
-                'fontAwesome' => true,
-                'dropdownOptions' => [
-                    'label' => 'Full',
-                    'class' => 'btn btn-default',
-                    'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
-                    ],
-                ],
-            ]) ,
-        ],
+        // 'toolbar' => [
+        //     '{export}',
+        //     ExportMenu::widget([
+        //         'dataProvider' => $dataProvider,
+        //         'columns' => $gridColumn,
+        //         'target' => [
+        //             ExportMenu::TARGET_BLANK,
+        //         ],
+        //         'fontAwesome' => true,
+        //         'dropdownOptions' => [
+        //             'label' => 'Full',
+        //             'class' => 'btn btn-default',
+        //             'exportConfig'=> [
+        //                 GridView::CSV=>[
+        //                     'label' => 'CSV',
+        //                     'icon' => '',
+        //                     'iconOptions' => '',
+        //                     'showHeader' => false,
+        //                     'showPageSummary' => false,
+        //                     'showFooter' => false,
+        //                     'showCaption' => false,
+        //                     'filename' => 'yii',
+        //                     'alertMsg' => 'created',
+        //                     'options' => ['title' => 'Semicolon -  Separated Values'],
+        //                     'mime' => 'application/csv',
+        //                     'config' => [
+        //                         'colDelimiter' => ";",
+        //                         'rowDelimiter' => "\r\n",
+        //                     ], 
+        //                 ],
+                        
+        //             ],
+        //             'itemsBefore' => [
+        //                 '<li class="dropdown-header">Export All Data</li>',
+        //             ],
+        //         ],
+
+        //     ]) ,
+        // ],
     ]); ?>
 
 </div>
