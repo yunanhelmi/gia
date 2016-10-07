@@ -76,13 +76,18 @@ class ClientController extends Controller
      */
     public function actionView($id)
     {
+        // $model = $this->findModel($id);
+        // $providerClient = new \yii\data\ArrayDataProvider([
+        //     'allModels' => $model->Client,
+        // ]);
+        // var_dump($id);
+        // return $this->render('view', [
+        //     'model' => $model,
+        //     'providerClient' => $providerClient,
+        // ]);
         $model = $this->findModel($id);
-        $providerInstruksiKerja = new \yii\data\ArrayDataProvider([
-            'allModels' => $model->instruksiKerjas,
-        ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'providerInstruksiKerja' => $providerInstruksiKerja,
         ]);
     }
 
@@ -98,7 +103,7 @@ class ClientController extends Controller
         $model = new Client();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['viewclient', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -225,15 +230,15 @@ class ClientController extends Controller
     *
     * @return mixed
     */
-    public function actionAddInstruksiKerja()
-    {
-        if (Yii::$app->request->isAjax) {
-            $row = Yii::$app->request->post('InstruksiKerja');
-            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
-                $row[] = [];
-            return $this->renderAjax('_formInstruksiKerja', ['row' => $row]);
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
+    // public function actionAddInstruksiKerja()
+    // {
+    //     if (Yii::$app->request->isAjax) {
+    //         $row = Yii::$app->request->post('InstruksiKerja');
+    //         if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
+    //             $row[] = [];
+    //         return $this->renderAjax('_formInstruksiKerja', ['row' => $row]);
+    //     } else {
+    //         throw new NotFoundHttpException('The requested page does not exist.');
+    //     }
+    // }
 }

@@ -31,18 +31,7 @@ $this->registerJs($search);
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        [
-            'class' => 'kartik\grid\ExpandRowColumn',
-            'width' => '50px',
-            'value' => function ($model, $key, $index, $column) {
-                return GridView::ROW_COLLAPSED;
-            },
-            'detail' => function ($model, $key, $index, $column) {
-                return Yii::$app->controller->renderPartial('_expand', ['model' => $model]);
-            },
-            'headerOptions' => ['class' => 'kartik-sheet-style'],
-            'expandOneOnly' => true
-        ],
+        
         ['attribute' => 'id', 'visible' => false],
         'nama',
         'bisnis',
@@ -50,11 +39,25 @@ $this->registerJs($search);
         'telepon',
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{save-as-new} {view} {update} {delete}',
+            'header' => 'Action',
+            'template' => '{view} {update} {delete}',
             'buttons' => [
-                'save-as-new' => function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
+                'view' => function ($url, $model){
+                    return Html::a('detail<br>', 'index.php?r=client/view&id='.$model->id);
                 },
+                'update' => function ($model) {
+                    $test = explode("=", $model);
+                    $url = "client/update";
+                    return Html::a('update<br>', [$url, 'id' => $test[2]], ['title' => 'Update']);
+                },
+                'delete' => function ($url, $model, $key)
+                {
+                     return Html::a('delete', $url, [
+                            'title' => Yii::t('yii', 'Delete'),
+                            'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                            'data-method' => 'post',
+                  ]);
+               }
             ],
         ],
     ]; 
@@ -63,6 +66,38 @@ $this->registerJs($search);
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => $gridColumn,
+        'exportConfig'=> [
+            GridView::CSV=>[
+                'label' => 'CSV',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/csv',
+                'config' => [
+                    'colDelimiter' => ";",
+                    'rowDelimiter' => "\r\n",
+                ], 
+            ],
+            GridView::PDF=>[
+                'label' => 'PDF',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/pdf',
+            ],
+        ],
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-client']],
         'panel' => [
@@ -70,22 +105,22 @@ $this->registerJs($search);
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
         // your toolbar can include the additional full export menu
-        'toolbar' => [
-            '{export}',
-            ExportMenu::widget([
-                'dataProvider' => $dataProvider,
-                'columns' => $gridColumn,
-                'target' => ExportMenu::TARGET_BLANK,
-                'fontAwesome' => true,
-                'dropdownOptions' => [
-                    'label' => 'Full',
-                    'class' => 'btn btn-default',
-                    'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
-                    ],
-                ],
-            ]) ,
-        ],
+        // 'toolbar' => [
+        //     '{export}',
+        //     ExportMenu::widget([
+        //         'dataProvider' => $dataProvider,
+        //         'columns' => $gridColumn,
+        //         'target' => ExportMenu::TARGET_BLANK,
+        //         'fontAwesome' => true,
+        //         'dropdownOptions' => [
+        //             'label' => 'Full',
+        //             'class' => 'btn btn-default',
+        //             'itemsBefore' => [
+        //                 '<li class="dropdown-header">Export All Data</li>',
+        //             ],
+        //         ],
+        //     ]) ,
+        // ],
     ]); ?>
 
 </div>

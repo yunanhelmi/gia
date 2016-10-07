@@ -8,7 +8,7 @@ use kartik\grid\GridView;
 /* @var $model app\models\InstruksiKerja */
 
 $this->title = 'Outstanding '.$model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Outstanding ', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Outstanding ', 'url' => ['outstanding']];
 $this->params['breadcrumbs'][] = $model->id;
 ?>
 <div class="instruksi-kerja-view">
@@ -45,13 +45,13 @@ $this->params['breadcrumbs'][] = $model->id;
         'type_of_instruction',
         'date_of_instruction',
         'assurers',
-        'assured',
+        'insured',
         'broker',
         'conveyence',
         'interest',
         'date_of_loss',
-        'detail_of_loss',
-        'amount_of_claim',
+        'casualty',
+        'amount_of_loss',
         'sum_insured',
         'fee_code',
         'not_relevant',
@@ -61,6 +61,7 @@ $this->params['breadcrumbs'][] = $model->id;
         'date_entered',
         'adjuster',
         // 'actual_fee',
+        // 'expenses',
         // 'status',
         // 'date_send_of_pa',
         // 'date_send_of_dfr',

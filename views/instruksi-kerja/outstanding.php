@@ -69,7 +69,7 @@ $this->registerJs($search);
             'template' => ' {view} {update} ',
             'buttons' => [
                 'view' => function ($url, $model){
-                    return Html::a('detail', 'index.php?r=instruksi-kerja/viewoutstanding&id='.$model->id);
+                    return Html::a('detail<br>', 'index.php?r=instruksi-kerja/viewoutstanding&id='.$model->id);
                 },
                 'update' => function ($model) {
                     $test = explode("=", $model);

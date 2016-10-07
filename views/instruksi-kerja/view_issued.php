@@ -28,8 +28,6 @@ $this->params['breadcrumbs'][] = $model->id;
                     'title' => 'Will open the generated PDF file in a new window'
                 ]
             )?>
-            
-            <?= Html::a('Update', ['update2', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
 
@@ -45,13 +43,13 @@ $this->params['breadcrumbs'][] = $model->id;
         'type_of_instruction',
         'date_of_instruction',
         'assurers',
-        'assured',
+        'insured',
         'broker',
         'conveyence',
         'interest',
         'date_of_loss',
-        'detail_of_loss',
-        'amount_of_claim',
+        'casualty',
+        'amount_of_loss',
         'sum_insured',
         'fee_code',
         'not_relevant',
@@ -61,6 +59,7 @@ $this->params['breadcrumbs'][] = $model->id;
         'date_entered',
         'adjuster',
         'actual_fee',
+        'expenses',
         'status',
         'date_send_of_pa',
         'date_send_of_dfr',
