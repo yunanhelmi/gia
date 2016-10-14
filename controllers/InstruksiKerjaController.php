@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\filters\AccessRule;
 
+
 /**
  * InstruksiKerjaController implements the CRUD actions for InstruksiKerja model.
  */
@@ -31,7 +32,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['index','printreport','outstandingmodalreport','outstandingreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -276,4 +277,63 @@ class InstruksiKerjaController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionOutstandingmodalreport(){
+        $year = InstruksiKerja::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        // var_dump($year);
+        // exit();
+        return $this->renderAjax('outstandingmodalreport',[
+                'year' => $year,
+            ]);
+    }
+
+    public function actionOutstandingreport($year = null){
+        if($year == null){
+            $year = date('Y');
+        }
+        $tahun = InstruksiKerja::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        
+        $model = InstruksiKerja::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+        return $this->render('outstandingreport',[
+                'model' => $model,
+                'tahun' => $tahun
+            ]);
+    }
+
+    public function actionPrintreport($year = NULL){
+        if($year == null){
+            $year = date('Y');
+        }
+        $model = InstruksiKerja::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+
+        $content = $this->render('_outstandingpdf', [
+            'model' => $model,
+        ]);
+        
+        $pdf = new \kartik\mpdf\Pdf([
+            'mode' => \kartik\mpdf\Pdf::MODE_CORE,
+            'format' => \kartik\mpdf\Pdf::FORMAT_A4,
+            'orientation' => \kartik\mpdf\Pdf::ORIENT_PORTRAIT,
+            'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
+            'content' => $content,
+            //'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            //'cssInline' => '.kv-heading-1{font-size:18px}',
+            'options' => ['title' => \Yii::$app->name],
+            'methods' => [
+                'SetHeader' => [\Yii::$app->name],
+                'SetFooter' => ['{PAGENO}'],
+            ]
+        ]);
+
+        return $pdf->render();
+    }
+
+    public function actionIssuedmodalreport(){
+        return $this->renderAjax('issuedmodalreport');
+    }
+
+    public function actionIssuedreport($year = null){
+        return $this->render('issuedreport');
+    }
+
 }

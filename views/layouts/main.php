@@ -3,11 +3,14 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\bootstrap\Modal;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\widgets\ActiveForm;
 
 AppAsset::register($this);
 ?>
@@ -42,6 +45,13 @@ AppAsset::register($this);
             ['label' => 'Incoming', 'url' => ['/instruksi-kerja/create']],
             ['label' => 'Outstanding', 'url' => ['/instruksi-kerja/outstanding']],
             ['label' => 'Issued', 'url' => ['/instruksi-kerja/issued']],
+            [
+                'label' => 'Report',
+                'items' => [
+                     '<li>'. Html::a('Outstanding','#',['value' => Url::to('index.php?r=instruksi-kerja/outstandingmodalreport'), 'id' => 'modalButtonOutstanding']) .'</li>',
+                     '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
+                ],
+            ],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -57,6 +67,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();
+
     ?>
 
     <div class="container">
@@ -64,6 +75,23 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
+        <?php
+            Modal::begin([
+                'header' => '<h4>Outstanding Report</h4>',
+                'id' => 'modalOutstanding',
+                'size' => 'modal-sm',
+                ]);
+            echo "<div id='modalContentOutstanding'></div>";
+            Modal::end();
+
+            Modal::begin([
+                'header' => '<h4>Issued Report</h4>',
+                'id' => 'modalIssued',
+                'size' => 'modal-sm',
+                ]);
+            echo "<div id='modalContentIssued'></div>";
+            Modal::end();
+        ?>
     </div>
 </div>
 
