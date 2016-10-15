@@ -8,7 +8,7 @@ use kartik\grid\GridView;
 /* @var $model app\models\Client */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Client', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Client', 'url' => ['viewclient']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="client-view">

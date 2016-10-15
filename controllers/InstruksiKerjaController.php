@@ -308,12 +308,13 @@ class InstruksiKerjaController extends Controller
 
         $content = $this->render('_outstandingpdf', [
             'model' => $model,
+            'year' => $year,
         ]);
-        
+
         $pdf = new \kartik\mpdf\Pdf([
             'mode' => \kartik\mpdf\Pdf::MODE_CORE,
             'format' => \kartik\mpdf\Pdf::FORMAT_A4,
-            'orientation' => \kartik\mpdf\Pdf::ORIENT_PORTRAIT,
+            'orientation' => \kartik\mpdf\Pdf::ORIENT_LANDSCAPE,
             'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
             'content' => $content,
             //'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
@@ -329,10 +330,16 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionIssuedmodalreport(){
+        if($year == null){
+            $year = date('Y');
+        }
         return $this->renderAjax('issuedmodalreport');
     }
 
     public function actionIssuedreport($year = null){
+        if($year == null){
+            $year = date('Y');
+        }
         return $this->render('issuedreport');
     }
 

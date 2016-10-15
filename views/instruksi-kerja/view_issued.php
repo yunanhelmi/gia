@@ -8,7 +8,7 @@ use kartik\grid\GridView;
 /* @var $model app\models\InstruksiKerja */
 
 $this->title = 'Issued '.$model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Issued ', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Issued ', 'url' => ['issued']];
 $this->params['breadcrumbs'][] = $model->id;
 ?>
 <div class="instruksi-kerja-view">

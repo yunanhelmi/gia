@@ -69,13 +69,16 @@ $this->title = 'Outstanding Report ';
                         <?php foreach ($model as $row): ?>
                             <tr>
                                 <td><?php  echo $row["case_number"] ?></td>
-                                <td><?php  echo $row["date_of_instruction"] ?></td>
+                                <td><?php  echo date("D, j F Y", strtotime($row["date_of_instruction"]));?></td>
                                 <td><?php  echo $row["conveyence"] ?></td>
                                 <td><?php  echo $row["date_of_loss"] ?></td>
                                 <td><?php  echo $row["casualty"] ?></td>
                                 <?php
-                                    $nama = Client::find()->select('nama')->where('id = '.$row["id_client"].'')->asArray()->one(); 
-                                    
+                                    if($row["id_client"] == null){
+                                        $nama['nama'] = "-";
+                                    }else {
+                                        $nama = Client::find()->select('nama')->where('id = '.$row["id_client"].'')->asArray()->one(); 
+                                    }
                                 ?>
                                 <td><?php  echo $nama['nama'] ?></td>
                                 <td><?php  echo $row["broker"] ?></td>
@@ -89,7 +92,7 @@ $this->title = 'Outstanding Report ';
                     </table>
                 </div>
                 <div class="text-right">
-                    <font size="1">The accompanying notes form an integral part of these consolidated financial statements</font>
+                    
                 </div>
                 <!-- /.panel-body -->
             </div>
