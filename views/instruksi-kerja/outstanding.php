@@ -7,6 +7,7 @@
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use app\models\Client;
 
 $this->title = 'Outstanding';
 $this->params['breadcrumbs'][] = $this->title;
@@ -32,8 +33,12 @@ $this->registerJs($search);
         ['class' => 'yii\grid\SerialColumn'],
         [
             'attribute' => 'id_client',
-            'label' => 'Id Client',
+            'label' => 'Client Name',
             'value' => function($model){
+                // echo "<pre>";
+                // var_dump($model->client->nama);
+                // echo "</pre>";
+                // exit();
                 return $model->client->nama;
             },
             'filterType' => GridView::FILTER_SELECT2,

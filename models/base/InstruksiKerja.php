@@ -75,7 +75,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_client' => 'Id Client',
+            'id_client' => 'Client Name',
             'case_number' => 'Case Number',
             'type_of_instruction' => 'Type Of Instruction',
             'date_of_instruction' => 'Date Of Instruction',
