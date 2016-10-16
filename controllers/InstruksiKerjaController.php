@@ -128,9 +128,12 @@ class InstruksiKerjaController extends Controller
     public function actionCreate()
     {
         $model = new InstruksiKerja();
-
-        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['index']);
+        $hasil = $model->loadAll(Yii::$app->request->post()) && $model->saveAll();
+        //var_dump($hasil); 
+        //exit();
+        if ($hasil) {
+            Yii::$app->session->setFlash('success','Data was successfully submitted');
+            return $this->redirect(['create']);
         } else {
             return $this->render('create', [
                 'model' => $model,
