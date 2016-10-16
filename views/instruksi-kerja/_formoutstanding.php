@@ -27,7 +27,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
 
-    <?= $form->field($model, 'type_of_instruction')->textInput(['maxlength' => true, 'placeholder' => 'Type Of Instruction']) ?>
+    <?php 
+        $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
+        echo $form->field($model, 'type_of_instruction')->dropDownList($type_of_instruction,['prompt'=>'Select Option']);
+    ?>
 
     <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
@@ -41,7 +44,8 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'assured')->textInput(['maxlength' => true, 'placeholder' => 'Assured']) ?>
+    <?= $form->field($model, 'assurers')->textInput(['maxlength' => true, 'placeholder' => 'Assurers']) ?>
+    <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
 
     <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
 
@@ -61,9 +65,8 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'detail_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Detail Of Loss']) ?>
-
-    <?= $form->field($model, 'amount_of_claim')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Claim']) ?>
+    <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+    <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss']) ?>
 
     <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
 
@@ -85,6 +88,7 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
+    <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
     <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
 
     <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [

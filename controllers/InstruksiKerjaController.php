@@ -32,7 +32,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','printreport','outstandingmodalreport','outstandingreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['index','printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -128,9 +128,12 @@ class InstruksiKerjaController extends Controller
     public function actionCreate()
     {
         $model = new InstruksiKerja();
-
-        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['index']);
+        $hasil = $model->loadAll(Yii::$app->request->post()) && $model->saveAll();
+        //var_dump($hasil); 
+        //exit();
+        if ($hasil) {
+            Yii::$app->session->setFlash('success','Data was successfully submitted');
+            return $this->redirect(['create']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -300,7 +303,7 @@ class InstruksiKerjaController extends Controller
             ]);
     }
 
-    public function actionPrintreport($year = NULL){
+    public function actionPrintoutstandingreport($year = NULL){
         if($year == null){
             $year = date('Y');
         }
@@ -330,17 +333,54 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionIssuedmodalreport(){
-        if($year == null){
-            $year = date('Y');
-        }
-        return $this->renderAjax('issuedmodalreport');
+        $year = InstruksiKerja::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        // var_dump($year);
+        // exit();
+        return $this->renderAjax('issuedmodalreport',[
+                'year' => $year,
+            ]);
     }
 
     public function actionIssuedreport($year = null){
         if($year == null){
             $year = date('Y');
         }
-        return $this->render('issuedreport');
+        $tahun = InstruksiKerja::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        
+        $model = InstruksiKerja::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+        return $this->render('issuedreport',[
+                'model' => $model,
+                'tahun' => $tahun
+            ]);
+    }
+
+    public function actionPrintissuedreport($year = NULL){
+        if($year == null){
+            $year = date('Y');
+        }
+        $model = InstruksiKerja::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+
+        $content = $this->render('_issuedpdf', [
+            'model' => $model,
+            'year' => $year,
+        ]);
+
+        $pdf = new \kartik\mpdf\Pdf([
+            'mode' => \kartik\mpdf\Pdf::MODE_CORE,
+            'format' => \kartik\mpdf\Pdf::FORMAT_A4,
+            'orientation' => \kartik\mpdf\Pdf::ORIENT_LANDSCAPE,
+            'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
+            'content' => $content,
+            //'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            //'cssInline' => '.kv-heading-1{font-size:18px}',
+            'options' => ['title' => \Yii::$app->name],
+            'methods' => [
+                'SetHeader' => [\Yii::$app->name],
+                'SetFooter' => ['{PAGENO}'],
+            ]
+        ]);
+
+        return $pdf->render();
     }
 
 }

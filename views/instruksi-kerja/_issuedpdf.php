@@ -8,43 +8,17 @@ use app\models\Client;
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerja */
 
-$this->title = 'Outstanding Report ';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "Issued Report";
+
 ?>
 <div class="instruksi-kerja-view">
-    <h1><?= Html::encode($this->title) ?></h1>
+
     <div class="row">
-        <div class="col-sm-4">
-            <div class="form-group col-lg-12">
-                <label>Select Year: </label>
-                <select onchange="if (this.value) window.location.href=this.value" class="form-control">
-                    <option default> Select </option>
-                    <?php for($i = 0;$i<sizeof($tahun);$i++){ ?> 
-                    <option value="index.php?r=instruksi-kerja/outstandingreport&year=<?= $tahun[$i]['year']?>"><?= $tahun[$i]['year']?></option>
-                    <?php } ?>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-4" style="margin-top: 15px; text-align: right">
-            <?=             
-             Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> ' . 'PDF', 
-                ['printoutstandingreport', 'id' => $tahun],
-                [
-                    'class' => 'btn btn-danger',
-                    'target' => '_blank',
-                    'data-toggle' => 'tooltip',
-                    'title' => 'Will open the generated PDF file in a new window'
-                ]
-            )?>
+        <div class="col-sm-9">
+            <h2><?= Html::encode($this->title).' - '.$year ?></h2>
         </div>
     </div>
-    <div class="row">
-        <!-- <pre>
-            <?= var_dump($model) ?>
-        </pre> -->
-    </div>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">     
@@ -98,8 +72,5 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <!-- /.panel -->
         </div>
-
-        <!-- /.col-lg-12 -->
     </div>
-
 </div>
