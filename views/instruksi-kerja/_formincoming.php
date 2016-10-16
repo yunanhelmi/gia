@@ -78,6 +78,7 @@ use yii\widgets\ActiveForm;
             ],
         ]); 
         ?>
+        <?= $form->field($model, 'time_bar_issue')->radioList(array('Not Relevant' => 'Not Relevant', 'Protected' => 'Protected')); ?>
         <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
         <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
             'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,

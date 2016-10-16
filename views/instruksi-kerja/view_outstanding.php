@@ -57,6 +57,7 @@ $this->params['breadcrumbs'][] = $model->id;
         'not_relevant',
         'protected',
         'time_bar_due',
+        'time_bar_issue',
         'comment',
         'date_entered',
         'adjuster',

@@ -26,6 +26,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $not_relevant
  * @property string $protected
  * @property string $time_bar_due
+ * @property string $time_bar_issue
  * @property string $comment
  * @property string $date_entered
  * @property string $adjuster
@@ -56,7 +57,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             [['id_client'], 'integer'],
             [['date_of_instruction', 'date_of_loss', 'time_bar_due', 'date_entered', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent'], 'safe'],
             [['not_relevant', 'protected', 'status'], 'string'],
-            [['case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'amount_of_loss', 'sum_insured', 'fee_code', 'comment', 'adjuster', 'actual_fee', 'expenses', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255]
+            [['case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'amount_of_loss', 'sum_insured', 'fee_code', 'time_bar_issue', 'comment', 'adjuster', 'actual_fee', 'expenses', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255]
         ];
     }
     
@@ -92,6 +93,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             'not_relevant' => 'Not Relevant',
             'protected' => 'Protected',
             'time_bar_due' => 'Time Bar Due',
+            'time_bar_issue' => 'Time Bar Issue',
             'comment' => 'Comment',
             'date_entered' => 'Date Entered',
             'adjuster' => 'Adjuster',

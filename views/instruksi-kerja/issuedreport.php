@@ -8,7 +8,7 @@ use app\models\Client;
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerja */
 
-$this->title = 'Outstanding Report ';
+$this->title = 'Issued Report ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="instruksi-kerja-view">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <select onchange="if (this.value) window.location.href=this.value" class="form-control">
                     <option default> Select </option>
                     <?php for($i = 0;$i<sizeof($tahun);$i++){ ?> 
-                    <option value="index.php?r=instruksi-kerja/outstandingreport&year=<?= $tahun[$i]['year']?>"><?= $tahun[$i]['year']?></option>
+                    <option value="index.php?r=instruksi-kerja/issuedreport&year=<?= $tahun[$i]['year']?>"><?= $tahun[$i]['year']?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-4" style="margin-top: 15px; text-align: right">
             <?=             
              Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> ' . 'PDF', 
-                ['printoutstandingreport', 'id' => $tahun],
+                ['printissuedreport', 'id' => $tahun],
                 [
                     'class' => 'btn btn-danger',
                     'target' => '_blank',
