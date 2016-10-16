@@ -33,7 +33,7 @@ $this->registerJs($search);
         ['attribute' => 'id', 'visible' => false],
         [
             'attribute' => 'id_client',
-            'label' => 'Id Client',
+            'label' => 'Client Name',
             'value' => function($model){
                 return $model->client->nama;
             },
@@ -86,7 +86,7 @@ $this->registerJs($search);
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'exportConfig'=> [
             GridView::CSV=>[
