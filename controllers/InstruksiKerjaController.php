@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\InstruksiKerja;
 use app\models\InstruksiKerjaSearch;
+use app\models\InstruksiKerjaIssued;
+use app\models\InstruksiKerjaOutstanding;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -71,7 +73,7 @@ class InstruksiKerjaController extends Controller
 
     public function actionOutstanding()
     {
-        $searchModel = new InstruksiKerjaSearch();
+        $searchModel = new InstruksiKerjaOutstanding();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('outstanding', [
@@ -82,7 +84,7 @@ class InstruksiKerjaController extends Controller
 
     public function actionIssued()
     {
-        $searchModel = new InstruksiKerjaSearch();
+        $searchModel = new InstruksiKerjaIssued();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('issued', [

@@ -26,7 +26,7 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?php // echo  $this->render('_search', ['model' => $searchModel]); ?>
+        <?php echo  $this->render('_search', ['model' => $searchModel]); ?>
     </div>
     <?php 
     $gridColumn = [
@@ -98,7 +98,7 @@ $this->registerJs($search);
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'exportConfig'=> [
             GridView::CSV=>[
