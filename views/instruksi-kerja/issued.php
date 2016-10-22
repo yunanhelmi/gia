@@ -86,7 +86,7 @@ $this->registerJs($search);
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'exportConfig'=> [
             GridView::CSV=>[
