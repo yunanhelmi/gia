@@ -63,13 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <th>Assured</th>
                                 <th>Fee Code</th>
                                 <th>Remark</th>
-                                <th>date of Last Correspondent</th>
                             </tr>
                         </thead>
                         <?php foreach ($model as $row): ?>
                             <tr>
                                 <td><?php  echo $row["case_number"] ?></td>
-                                <td><?php  echo date("D, j F Y", strtotime($row["date_of_instruction"]));?></td>
+                                <td><?php  echo date("j F Y", strtotime($row["date_of_instruction"]));?></td>
                                 <td><?php  echo $row["conveyence"] ?></td>
                                 <td><?php  echo $row["date_of_loss"] ?></td>
                                 <td><?php  echo $row["casualty"] ?></td>
@@ -85,7 +84,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td><?php  echo $row["assurers"] ?></td>
                                 <td><?php  echo $row["fee_code"] ?></td>
                                 <td><?php  echo $row["remark"] ?></td>
-                                <td><?php  echo $row["date_of_last_correspondent"] ?></td>
                             </tr>
                             
                         <?php endforeach ?> 
