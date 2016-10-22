@@ -26,7 +26,11 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
+<<<<<<< HEAD
+        <?php  echo  $this->render('_search', ['model' => $searchModel]); ?>
+=======
         <?php echo  $this->render('_search', ['model' => $searchModel]); ?>
+>>>>>>> cadbaff90087634761fbb27afe2b5d768f55f11e
     </div>
     <?php 
     $gridColumn = [
@@ -59,7 +63,9 @@ $this->registerJs($search);
         // 'date_of_loss',
         // 'casualty',
         // 'amount_of_loss',
+        // 'amount_of_loss_usd',
         // 'sum_insured',
+        // 'sum_insured_usd',
         // 'fee_code',
         // 'not_relevant',
         // 'protected',
@@ -85,7 +91,9 @@ $this->registerJs($search);
             ],
         ],
         // 'actual_fee',
+        // 'actual_fee_usd',
         // 'expenses',
+        // 'expenses_usd',
         // 'status',
         // 'date_send_of_pa',
         // 'date_send_of_dfr',

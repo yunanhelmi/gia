@@ -30,7 +30,7 @@ $this->title = "Outstanding Report";
                                 <th>Case No</th>
                                 <th>Instruction Date</th>
                                 <th>Conveyance</th>
-                                <th>Date of Loss</th>
+                                <th>DOL</th>
                                 <th>Casualty</th>
                                 <th>Client</th>
                                 <th>Broker</th>
@@ -43,7 +43,7 @@ $this->title = "Outstanding Report";
                         <?php foreach ($model as $row): ?>
                             <tr>
                                 <td><?php  echo $row["case_number"] ?></td>
-                                <td><?php  echo date("D, j F Y", strtotime($row["date_of_instruction"]));?></td>
+                                <td><?php  echo date("j F Y", strtotime($row["date_of_instruction"]));?></td>
                                 <td><?php  echo $row["conveyence"] ?></td>
                                 <td><?php  echo $row["date_of_loss"] ?></td>
                                 <td><?php  echo $row["casualty"] ?></td>

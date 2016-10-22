@@ -284,7 +284,11 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionOutstandingmodalreport(){
+<<<<<<< HEAD
         $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+=======
+        $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
+>>>>>>> b7f4026ed761fb11cf674c9293c93558475765c7
         // var_dump($year);
         // exit();
         return $this->renderAjax('outstandingmodalreport',[
@@ -296,7 +300,11 @@ class InstruksiKerjaController extends Controller
         if($year == null){
             $year = date('Y');
         }
+<<<<<<< HEAD
         $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+=======
+        $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
+>>>>>>> b7f4026ed761fb11cf674c9293c93558475765c7
         
         $model = InstruksiKerjaOutstanding::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
         return $this->render('outstandingreport',[
@@ -335,7 +343,7 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionIssuedmodalreport(){
-        $year = InstruksiKerja::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        $year = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->asArray()->distinct()->all();
         // var_dump($year);
         // exit();
         return $this->renderAjax('issuedmodalreport',[
@@ -347,9 +355,9 @@ class InstruksiKerjaController extends Controller
         if($year == null){
             $year = date('Y');
         }
-        $tahun = InstruksiKerja::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->asArray()->distinct()->all();
         
-        $model = InstruksiKerja::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+        $model = InstruksiKerjaIssued::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
         return $this->render('issuedreport',[
                 'model' => $model,
                 'tahun' => $tahun
