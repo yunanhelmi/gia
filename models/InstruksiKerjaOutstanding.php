@@ -10,7 +10,7 @@ use app\models\InstruksiKerja;
 /**
  * app\models\InstruksiKerjaSearch represents the model behind the search form about `app\models\InstruksiKerja`.
  */
- class InstruksiKerjaSearch extends InstruksiKerja
+ class InstruksiKerjaOutstanding extends InstruksiKerja
 {
     /**
      * @inheritdoc
@@ -68,6 +68,7 @@ use app\models\InstruksiKerja;
             'date_send_of_doc_request' => $this->date_send_of_doc_request,
             'date_of_issued' => $this->date_of_issued,
             'date_of_last_correspondent' => $this->date_of_last_correspondent,
+            'status' => 'outstanding',
         ]);
 
         $query->andFilterWhere(['like', 'case_number', $this->case_number])

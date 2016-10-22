@@ -7,6 +7,7 @@
 use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use app\models\Client;
 
 $this->title = 'Outstanding';
 $this->params['breadcrumbs'][] = $this->title;
@@ -25,7 +26,11 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
+<<<<<<< HEAD
         <?php  echo  $this->render('_search', ['model' => $searchModel]); ?>
+=======
+        <?php echo  $this->render('_search', ['model' => $searchModel]); ?>
+>>>>>>> cadbaff90087634761fbb27afe2b5d768f55f11e
     </div>
     <?php 
     $gridColumn = [
@@ -34,6 +39,10 @@ $this->registerJs($search);
             'attribute' => 'id_client',
             'label' => 'Client Name',
             'value' => function($model){
+                // echo "<pre>";
+                // var_dump($model->client->nama);
+                // echo "</pre>";
+                // exit();
                 return $model->client->nama;
             },
             'filterType' => GridView::FILTER_SELECT2,

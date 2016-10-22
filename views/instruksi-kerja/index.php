@@ -56,9 +56,9 @@ $this->registerJs($search);
         [
                 'attribute' => 'id_client',
                 'label' => 'Id Client',
-                'value' => function($model){
-                    return $model->client->nama;
-                },
+                // 'value' => function($model){
+                //     return $model->client->id;
+                // },
                 'filterType' => GridView::FILTER_SELECT2,
                 'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
                 'filterWidgetOptions' => [
