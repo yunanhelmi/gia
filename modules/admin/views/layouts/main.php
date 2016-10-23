@@ -53,9 +53,8 @@ AppAsset::register($this);
                 <li><a href="index.php?r=sd"><i class="glyphicon glyphicon-tag"></i> SD</a></li>
                 <li><a href="index.php?r=production/pp-production-order"><i class="glyphicon glyphicon-gift"></i> PP</a></li>
                 <li><a href="index.php?r=hrm"><i class="glyphicon glyphicon-user"></i> HRM</a></li>
-                
+                    <li><a href="#"><i class="glyphicon glyphicon-briefcase"></i> Tenant</a></li>
                     <li class="active"><a href="index.php?r=admin/user"><i class="glyphicon glyphicon-cog"></i> Admin</a></li>
-                
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin-right: 30px">
                 <?php if(Yii::$app->user->isGuest == true)
@@ -73,8 +72,8 @@ AppAsset::register($this);
                                 <div class="navbar-login">
                                     <div class="row">
                                         <div class="col-lg-12" style="margin-left: 10px;">
-                                            <p class="text-left"><strong><?php echo Yii::$app->user->identity->username.' - '.Yii::$app->user->identity->position; ?></strong></p>
-                                            <p class="text-left small"><?php echo Yii::$app->user->identity->email; ?></p>
+                                            <p class="text-left"><strong><?php echo Yii::$app->user->identity->username.' - ' ?></strong></p>
+                                           
                                         </div>
                                     </div>
                                 </div>

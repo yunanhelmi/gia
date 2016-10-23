@@ -292,7 +292,9 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionIncomingmodalreport(){
-        $year = InstruksiKerjaIncoming::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->orderBy('year')->all();
+
+        $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+
         // var_dump($year);
         // exit();
         return $this->renderAjax('incomingmodalreport',[
@@ -327,6 +329,7 @@ class InstruksiKerjaController extends Controller
         if($year == null){
             $year = date('Y');
         }
+
         $model = InstruksiKerjaIncoming::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
 
         $content = $this->render('_incomingpdf', [
@@ -358,6 +361,14 @@ class InstruksiKerjaController extends Controller
         // exit();
         return $this->renderAjax('outstandingmodalreport',[
                 'year' => $year,
+
+        $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
+
+        
+        $model = InstruksiKerjaOutstanding::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+        return $this->render('outstandingreport',[
+                'model' => $model,
+                'tahun' => $tahun
             ]);
     }
 
