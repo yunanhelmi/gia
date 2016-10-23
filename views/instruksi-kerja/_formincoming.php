@@ -42,7 +42,6 @@ use yii\widgets\ActiveForm;
         ],
     ]); 
     ?>
-    <?= $form->field($model, 'assurers')->textInput(['maxlength' => true, 'placeholder' => 'Assurers']) ?>
     <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
     <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
     <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>

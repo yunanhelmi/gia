@@ -26,32 +26,30 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-<<<<<<< HEAD
-        <?php  echo  $this->render('_search', ['model' => $searchModel]); ?>
-=======
-        <?php echo  $this->render('_search', ['model' => $searchModel]); ?>
->>>>>>> cadbaff90087634761fbb27afe2b5d768f55f11e
+
+        <?php  echo  $this->render('searchoutstanding', ['model' => $searchModel]); ?>
+
     </div>
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        [
-            'attribute' => 'id_client',
-            'label' => 'Client Name',
-            'value' => function($model){
-                // echo "<pre>";
-                // var_dump($model->client->nama);
-                // echo "</pre>";
-                // exit();
-                return $model->client->nama;
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
-        ],
+        // [
+        //     'attribute' => 'id_client',
+        //     'label' => 'Client Name',
+        //     'value' => function($model){
+        //         // echo "<pre>";
+        //         // var_dump($model->client->nama);
+        //         // echo "</pre>";
+        //         // exit();
+        //         return $model->client->nama;
+        //     },
+        //     'filterType' => GridView::FILTER_SELECT2,
+        //     'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
+        //     'filterWidgetOptions' => [
+        //         'pluginOptions' => ['allowClear' => true],
+        //     ],
+        //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
+        // ],
         'case_number',
         'type_of_instruction',
         'date_of_instruction',
@@ -75,7 +73,6 @@ $this->registerJs($search);
         'date_entered',
         'adjuster',
         [
-
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Action',
             'template' => ' {view} {update} ',

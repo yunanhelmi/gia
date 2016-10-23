@@ -8,11 +8,11 @@ use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 
-$this->title = 'Incoming';
+$this->title = 'Incoming Report';
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
-	$('.search-form').toggle(1000);
-	return false;
+    $('.search-form').toggle(1000);
+    return false;
 });";
 $this->registerJs($search);
 ?>
@@ -25,27 +25,15 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?=  $this->render('_search', ['model' => $searchModel]); ?>
+        <?=  $this->render('searchincomingreport', ['model' => $searchModel]); ?>
     </div>
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        // [
-        //     'class' => 'kartik\grid\ExpandRowColumn',
-        //     'width' => '50px',
-        //     'value' => function ($model, $key, $index, $column) {
-        //         return GridView::ROW_COLLAPSED;
-        //     },
-        //     'detail' => function ($model, $key, $index, $column) {
-        //         return Yii::$app->controller->renderPartial('_expand', ['model' => $model]);
-        //     },
-        //     'headerOptions' => ['class' => 'kartik-sheet-style'],
-        //     'expandOneOnly' => true
-        // ],
         ['attribute' => 'id', 'visible' => false],
         // [
         //     'attribute' => 'id_client',
-        //     'label' => 'Id Client',
+        //     'label' => 'Client Name',
         //     'value' => function($model){
         //         return $model->client->nama;
         //     },
@@ -57,35 +45,38 @@ $this->registerJs($search);
         //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         // ],
         'case_number',
-        'type_of_instruction',
         'date_of_instruction',
         'assurers',
         'insured',
         'broker',
         'conveyence',
-        'interest',
+        // 'interest',
         'date_of_loss',
         'casualty',
-        'amount_of_loss',
-        'amount_of_loss_usd',
-        'sum_insured',
-        'sum_insured_usd',
+        // 'detail_of_loss',
+        // 'amount_of_loss',
+        // 'amount_of_loss_usd',
+        // 'sum_insured',
+        // 'sum_insured_usd',
         'fee_code',
-        'not_relevant',
-        'protected',
-        'time_bar_due',
-        'time_bar_issue',
-        'comment',
-        'date_entered',
-        'adjuster',
-        // 'actual_fee',
+        // 'not_relevant',
+        // 'protected',
+        // 'time_bar_due',
+        // 'time_bar_issue',
+        // 'comment',
+        // 'date_entered',
+        // 'adjuster',
+        'actual_fee',
+        'actual_fee_usd',
+        'expenses',
+        'expenses_usd',
         // 'status',
         // 'date_send_of_pa',
         // 'date_send_of_dfr',
         // 'date_send_of_doc_request',
         // 'date_of_issued',
         // 'date_of_last_correspondent',
-        // 'remark',
+        'remark',
         
     ]; 
     ?>
@@ -93,6 +84,21 @@ $this->registerJs($search);
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
         'columns' => $gridColumn,
+        'exportConfig'=> [
+            GridView::PDF=>[
+                'label' => 'PDF',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'Incoming Report PT. GIA',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/pdf',
+            ],
+        ],
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-instruksi-kerja']],
         'panel' => [
@@ -100,22 +106,22 @@ $this->registerJs($search);
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
         // your toolbar can include the additional full export menu
-        'toolbar' => [
-            '{export}',
-            ExportMenu::widget([
-                'dataProvider' => $dataProvider,
-                'columns' => $gridColumn,
-                'target' => ExportMenu::TARGET_BLANK,
-                'fontAwesome' => true,
-                'dropdownOptions' => [
-                    'label' => 'Full',
-                    'class' => 'btn btn-default',
-                    'itemsBefore' => [
-                        '<li class="dropdown-header">Export All Data</li>',
-                    ],
-                ],
-            ]) ,
-        ],
+        // 'toolbar' => [
+        //     '{export}',
+        //     ExportMenu::widget([
+        //         'dataProvider' => $dataProvider,
+        //         'columns' => $gridColumn,
+        //         'target' => ExportMenu::TARGET_BLANK,
+        //         'fontAwesome' => true,
+        //         'dropdownOptions' => [
+        //             'label' => 'Full',
+        //             'class' => 'btn btn-default',
+        //             'itemsBefore' => [
+        //                 '<li class="dropdown-header">Export All Data</li>',
+        //             ],
+        //         ],
+        //     ]) ,
+        // ],
     ]); ?>
 
 </div>

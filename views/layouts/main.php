@@ -48,8 +48,12 @@ AppAsset::register($this);
             [
                 'label' => 'Report',
                 'items' => [
-                     '<li>'. Html::a('Outstanding','#',['value' => Url::to('index.php?r=instruksi-kerja/outstandingmodalreport'), 'id' => 'modalButtonOutstanding']) .'</li>',
-                     '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
+                    '<li>'. Html::a('Incoming','index.php?r=instruksi-kerja/incomingreport') .'</li>',
+                    '<li>'. Html::a('Outstanding','index.php?r=instruksi-kerja/outstandingreport') .'</li>',
+                    '<li>'. Html::a('Issued','index.php?r=instruksi-kerja/issuedreport') .'</li>',
+                    // '<li>'. Html::a('Incoming','#',['value' => Url::to('index.php?r=instruksi-kerja/incomingmodalreport'), 'id' => 'modalButtonIncoming']) .'</li>',
+                    // '<li>'. Html::a('Outstanding','#',['value' => Url::to('index.php?r=instruksi-kerja/outstandingmodalreport'), 'id' => 'modalButtonOutstanding']) .'</li>',
+                    // '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
                 ],
             ],
             Yii::$app->user->isGuest ? (
@@ -76,6 +80,14 @@ AppAsset::register($this);
         ]) ?>
         <?= $content ?>
         <?php
+            Modal::begin([
+                'header' => '<h4>Incoming Report</h4>',
+                'id' => 'modalIncoming',
+                'size' => 'modal-sm',
+                ]);
+            echo "<div id='modalContentIncoming'></div>";
+            Modal::end();
+
             Modal::begin([
                 'header' => '<h4>Outstanding Report</h4>',
                 'id' => 'modalOutstanding',

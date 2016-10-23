@@ -25,27 +25,26 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?=  $this->render('_search', ['model' => $searchModel]); ?>
+        <?=  $this->render('searchissued', ['model' => $searchModel]); ?>
     </div>
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         ['attribute' => 'id', 'visible' => false],
-        [
-            'attribute' => 'id_client',
-            'label' => 'Client Name',
-            'value' => function($model){
-                return $model->client->nama;
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
-        ],
+        // [
+        //     'attribute' => 'id_client',
+        //     'label' => 'Client Name',
+        //     'value' => function($model){
+        //         return $model->client->nama;
+        //     },
+        //     'filterType' => GridView::FILTER_SELECT2,
+        //     'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
+        //     'filterWidgetOptions' => [
+        //         'pluginOptions' => ['allowClear' => true],
+        //     ],
+        //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
+        // ],
         'case_number',
-        'type_of_instruction',
         'date_of_instruction',
         'assurers',
         'insured',
@@ -68,11 +67,16 @@ $this->registerJs($search);
         'adjuster',
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => ' {view} ',
+            'template' => ' {view} {update} ',
             'buttons' => [
                 'view' => function ($url, $model){
                     return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
                 },
+                'update' => function ($model) {
+                    $test = explode("=", $model);
+                    $url = "instruksi-kerja/updateoutstanding";
+                    return Html::a('update', [$url, 'id' => $test[2]], ['title' => 'View']);
+                }
             ],
         ],
         // 'actual_fee',
