@@ -67,15 +67,10 @@ $this->registerJs($search);
         'adjuster',
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => ' {view} {update} ',
+            'template' => ' {view} ',
             'buttons' => [
                 'view' => function ($url, $model){
                     return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
-                },
-                'update' => function ($model) {
-                    $test = explode("=", $model);
-                    $url = "instruksi-kerja/updateoutstanding";
-                    return Html::a('update', [$url, 'id' => $test[2]], ['title' => 'View']);
                 }
             ],
         ],

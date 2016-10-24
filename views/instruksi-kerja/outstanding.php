@@ -51,7 +51,7 @@ $this->registerJs($search);
         //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         // ],
         'case_number',
-        'type_of_instruction',
+        //'type_of_instruction',
         'date_of_instruction',
         'assurers',
         'insured',
