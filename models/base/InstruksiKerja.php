@@ -51,6 +51,7 @@ use yii\behaviors\TimestampBehavior;
 class InstruksiKerja extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
+    public $tahun;
 
     /**
      * @inheritdoc

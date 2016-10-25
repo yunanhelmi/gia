@@ -305,10 +305,15 @@ class InstruksiKerjaController extends Controller
     public function actionIncomingreport(){
         $searchModel = new InstruksiKerjaIncoming();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $tahun = InstruksiKerjaIncoming::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        // echo "<pre>";
+        // var_dump($tahun[2]['year']); 
+        // echo "<pre>";
+        // exit();
         return $this->render('incomingreport1', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'tahun' => $tahun
         ]);
     }
 
