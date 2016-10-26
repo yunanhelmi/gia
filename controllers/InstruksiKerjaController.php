@@ -321,10 +321,12 @@ class InstruksiKerjaController extends Controller
         $searchModel = new InstruksiKerjaIncoming();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $tahun = InstruksiKerjaIncoming::find()->select('extract(YEAR from date_of_instruction) as year')->distinct()->asArray()->orderBy('year')->all();
+        // kodingan ini menyimpan kembali array yang benar
+        // array berisi key dan nilai yg sama
         $arr = array();
         for($i=0;$i<sizeof($tahun);$i++){
             $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
-            //array_push($arr, $tahun[$i]['year']);
+           
         }
         // echo "<pre>";
         // var_dump($arr);

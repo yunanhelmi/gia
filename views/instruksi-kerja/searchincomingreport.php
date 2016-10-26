@@ -27,18 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
 
-    <?php //echo $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
-    //     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-    //     'saveFormat' => 'php:Y-m-d',
-    //     'ajaxConversion' => true,
-    //     'options' => [
-    //         'pluginOptions' => [
-    //             'placeholder' => 'Choose Date Of Instruction',
-    //             'autoclose' => true
-    //         ],
-    //     ],
-    // ]); ?>
-
+    <!-- start: Bagian ini adalah form untuk memilih tahun yang akan diparsing pada model -->
     <?= $form->field($model, 'date_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
         'data' => $tahun,
         'options' => ['placeholder' => 'Choose Year'],
