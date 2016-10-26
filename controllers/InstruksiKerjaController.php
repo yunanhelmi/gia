@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\InstruksiKerja;
+use app\models\Client;
 use app\models\InstruksiKerjaSearch;
 use app\models\InstruksiKerjaIssued;
 use app\models\InstruksiKerjaOutstanding;
@@ -130,17 +131,26 @@ class InstruksiKerjaController extends Controller
     public function actionCreate()
     {
         $model = new InstruksiKerja();
-        $hasil = $model->loadAll(Yii::$app->request->post()) && $model->saveAll();
-        //var_dump($hasil); 
-        //exit();
-        if ($hasil) {
-            Yii::$app->session->setFlash('success','Data was successfully submitted');
-            return $this->redirect(['create']);
-        } else {
+        if($model->loadAll(Yii::$app->request->post())){
+             
+             $nama_client = Client::find()->select('nama')->where('id = '.$model->id_client.'')->asArray()->one();
+             $model->assurers = $nama_client['nama'];
+             $hasil = $model->save();
+             if ($hasil) {
+                Yii::$app->session->setFlash('success','Data was successfully submitted');
+                return $this->redirect(['create']);
+            } else {
+                Yii::$app->session->setFlash('success','Data was failed');
+                return $this->redirect(['create']);
+            }
+        }else{
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+        
+        //var_dump($hasil); 
+        //exit();
     }
 
     /**
@@ -284,11 +294,8 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionOutstandingmodalreport(){
-<<<<<<< HEAD
+
         $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
-=======
-        $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
->>>>>>> b7f4026ed761fb11cf674c9293c93558475765c7
         // var_dump($year);
         // exit();
         return $this->renderAjax('outstandingmodalreport',[
@@ -300,11 +307,9 @@ class InstruksiKerjaController extends Controller
         if($year == null){
             $year = date('Y');
         }
-<<<<<<< HEAD
-        $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
-=======
+
         $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
->>>>>>> b7f4026ed761fb11cf674c9293c93558475765c7
+
         
         $model = InstruksiKerjaOutstanding::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
         return $this->render('outstandingreport',[
