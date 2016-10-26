@@ -74,23 +74,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
 
-    <?= $form->field($model, 'not_relevant')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'protected')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Time Bar Due',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
     <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
 
     <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
@@ -112,8 +95,6 @@ use yii\widgets\ActiveForm;
 
     <?php  echo $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
     <?php  echo $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>
-
-    <?php echo $form->field($model, 'status')->dropDownList([ 'outstanding' => 'Outstanding', ' issued' => ' issued', ], ['prompt' => '']) ?>
 
     <?php  echo $form->field($model, 'date_send_of_pa')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
@@ -163,6 +144,24 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
+    <?= $form->field($model, 'not_relevant')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
+
+    <?= $form->field($model, 'protected')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
+
+    <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
+        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+        'saveFormat' => 'php:Y-m-d',
+        'ajaxConversion' => true,
+        'options' => [
+            'pluginOptions' => [
+                'placeholder' => 'Choose Time Bar Due',
+                'autoclose' => true
+            ]
+        ],
+    ]); ?>
+
+    <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
+
     <?php  echo  $form->field($model, 'date_of_last_correspondent')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
         'saveFormat' => 'php:Y-m-d',
@@ -176,6 +175,7 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?php echo $form->field($model, 'remark')->textInput(['maxlength' => true, 'placeholder' => 'Remark']) ?>
+    <?php echo $form->field($model, 'status')->dropDownList([ 'outstanding' => 'Outstanding', ' issued' => ' Issued', ], ['prompt' => '']) ?>
 
     <div class="form-group">
     <?php if(Yii::$app->controller->action->id != 'save-as-new'): ?>

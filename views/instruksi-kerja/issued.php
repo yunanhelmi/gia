@@ -45,7 +45,10 @@ $this->registerJs($search);
         //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         // ],
         'case_number',
-        'date_of_instruction',
+        [
+            'attribute' => 'date_of_instruction',
+            'format' => ['date', 'php:d/m/Y']
+        ],
         'assurers',
         'insured',
         'broker',
@@ -63,7 +66,7 @@ $this->registerJs($search);
         // 'time_bar_due',
         // 'time_bar_issue',
         // 'comment',
-        'date_entered',
+        //'date_entered',
         'adjuster',
         [
             'class' => 'yii\grid\ActionColumn',
