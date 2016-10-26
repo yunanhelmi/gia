@@ -60,14 +60,14 @@ use app\models\InstruksiKerja;
             'id' => $this->id,
             'id_client' => $this->id_client,
             // 'date_of_instruction' => $this->date_of_instruction,
-            // 'date_of_loss' => $this->date_of_loss,
-            // 'time_bar_due' => $this->time_bar_due,
-            // 'date_entered' => $this->date_entered,
-            // 'date_send_of_pa' => $this->date_send_of_pa,
-            // 'date_send_of_dfr' => $this->date_send_of_dfr,
-            // 'date_send_of_doc_request' => $this->date_send_of_doc_request,
-            // 'date_of_issued' => $this->date_of_issued,
-            // 'date_of_last_correspondent' => $this->date_of_last_correspondent,
+            'date_of_loss' => $this->date_of_loss,
+            'time_bar_due' => $this->time_bar_due,
+            'date_entered' => $this->date_entered,
+            'date_send_of_pa' => $this->date_send_of_pa,
+            'date_send_of_dfr' => $this->date_send_of_dfr,
+            'date_send_of_doc_request' => $this->date_send_of_doc_request,
+            'date_of_issued' => $this->date_of_issued,
+            'date_of_last_correspondent' => $this->date_of_last_correspondent,
         ]);
 
         $query->andFilterWhere(['like', 'case_number', $this->case_number])
