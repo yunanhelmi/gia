@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="form-instruksi-kerja-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['outstanding'],
+        'action' => ['incomingreport'],
         'method' => 'get',
     ]); ?>
 
@@ -35,9 +35,11 @@ use yii\widgets\ActiveForm;
             'pluginOptions' => [
                 'placeholder' => 'Choose Date Of Instruction',
                 'autoclose' => true
-            ]
+            ],
         ],
     ]); ?>
+
+    <?php echo $form->field($model, 'date_of_instruction')->dropDownList($tahun) ?>
 
     <?php /* echo $form->field($model, 'assured')->textInput(['maxlength' => true, 'placeholder' => 'Assured']) */ ?>
 

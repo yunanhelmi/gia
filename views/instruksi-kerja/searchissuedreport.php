@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="form-instruksi-kerja-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['outstanding'],
+        'action' => ['issuedreport'],
         'method' => 'get',
     ]); ?>
 

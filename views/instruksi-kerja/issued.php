@@ -25,28 +25,30 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?=  $this->render('_search', ['model' => $searchModel]); ?>
+        <?=  $this->render('searchissued', ['model' => $searchModel]); ?>
     </div>
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         ['attribute' => 'id', 'visible' => false],
-        [
-            'attribute' => 'id_client',
-            'label' => 'Client Name',
-            'value' => function($model){
-                return $model->client->nama;
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
-        ],
+        // [
+        //     'attribute' => 'id_client',
+        //     'label' => 'Client Name',
+        //     'value' => function($model){
+        //         return $model->client->nama;
+        //     },
+        //     'filterType' => GridView::FILTER_SELECT2,
+        //     'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
+        //     'filterWidgetOptions' => [
+        //         'pluginOptions' => ['allowClear' => true],
+        //     ],
+        //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
+        // ],
         'case_number',
-        'type_of_instruction',
-        'date_of_instruction',
+        [
+            'attribute' => 'date_of_instruction',
+            'format' => ['date', 'php:d/m/Y']
+        ],
         'assurers',
         'insured',
         'broker',
@@ -64,7 +66,7 @@ $this->registerJs($search);
         // 'time_bar_due',
         // 'time_bar_issue',
         // 'comment',
-        'date_entered',
+        //'date_entered',
         'adjuster',
         [
             'class' => 'yii\grid\ActionColumn',
@@ -72,7 +74,7 @@ $this->registerJs($search);
             'buttons' => [
                 'view' => function ($url, $model){
                     return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
-                },
+                }
             ],
         ],
         // 'actual_fee',

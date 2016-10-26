@@ -8,6 +8,8 @@ use app\models\Client;
 use app\models\InstruksiKerjaSearch;
 use app\models\InstruksiKerjaIssued;
 use app\models\InstruksiKerjaOutstanding;
+use app\models\InstruksiKerjaIncoming;
+use app\models\Client;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +37,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['index', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -133,10 +135,17 @@ class InstruksiKerjaController extends Controller
         $model = new InstruksiKerja();
         if($model->loadAll(Yii::$app->request->post())){
              
+<<<<<<< HEAD
              $nama_client = Client::find()->select('nama')->where('id = '.$model->id_client.'')->asArray()->one();
              $model->assurers = $nama_client['nama'];
              $hasil = $model->save();
              if ($hasil) {
+=======
+            $nama_client = Client::find()->select('nama')->where('id = '.$model->id_client.'')->asArray()->one();
+            $model->assurers = $nama_client['nama'];
+            $hasil = $model->save();
+            if ($hasil) {
+>>>>>>> a847481ef561727d45e11beb1190d958d80f165a
                 Yii::$app->session->setFlash('success','Data was successfully submitted');
                 return $this->redirect(['create']);
             } else {
@@ -293,21 +302,57 @@ class InstruksiKerjaController extends Controller
         }
     }
 
+<<<<<<< HEAD
     public function actionOutstandingmodalreport(){
 
         $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+=======
+    public function actionIncomingmodalreport(){
+
+        $year = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+
+>>>>>>> a847481ef561727d45e11beb1190d958d80f165a
         // var_dump($year);
         // exit();
-        return $this->renderAjax('outstandingmodalreport',[
+        return $this->renderAjax('incomingmodalreport',[
                 'year' => $year,
             ]);
     }
 
-    public function actionOutstandingreport($year = null){
+    public function actionIncomingreport(){
+        $searchModel = new InstruksiKerjaIncoming();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $tahun = InstruksiKerjaIncoming::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        // echo "<pre>";
+        // var_dump($tahun[2]['year']); 
+        // echo "<pre>";
+        // exit();
+        return $this->render('incomingreport1', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'tahun' => $tahun
+        ]);
+    }
+
+    // public function actionIncomingreport($year = null){
+    //     if($year == null){
+    //         $year = date('Y');
+    //     }
+    //     $tahun = InstruksiKerjaIncoming::find()->select('extract(YEAR from date_of_instruction) as year')->asArray()->distinct()->all();
+        
+    //     $model = InstruksiKerjaIncoming::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+    //     return $this->render('incomingreport',[
+    //             'model' => $model,
+    //             'tahun' => $tahun
+    //         ]);
+    // }
+
+    public function actionPrintoutincomingreport($year = NULL){
         if($year == null){
             $year = date('Y');
         }
 
+<<<<<<< HEAD
         $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
 
         
@@ -316,7 +361,64 @@ class InstruksiKerjaController extends Controller
                 'model' => $model,
                 'tahun' => $tahun
             ]);
+=======
+        $model = InstruksiKerjaIncoming::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+
+        $content = $this->render('_incomingpdf', [
+            'model' => $model,
+            'year' => $year,
+        ]);
+
+        $pdf = new \kartik\mpdf\Pdf([
+            'mode' => \kartik\mpdf\Pdf::MODE_CORE,
+            'format' => \kartik\mpdf\Pdf::FORMAT_A4,
+            'orientation' => \kartik\mpdf\Pdf::ORIENT_LANDSCAPE,
+            'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
+            'content' => $content,
+            //'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            //'cssInline' => '.kv-heading-1{font-size:18px}',
+            'options' => ['title' => \Yii::$app->name],
+            'methods' => [
+                'SetHeader' => [\Yii::$app->name],
+                'SetFooter' => ['{PAGENO}'],
+            ]
+        ]);
+
+        return $pdf->render();
     }
+
+    public function actionOutstandingmodalreport(){
+        $year = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->orderBy('year')->all();
+        // var_dump($year);
+        // exit();
+        return $this->renderAjax('outstandingmodalreport',[
+                'year' => $year,
+        ]);
+>>>>>>> a847481ef561727d45e11beb1190d958d80f165a
+    }
+
+    public function actionOutstandingreport(){
+        $searchModel = new InstruksiKerjaOutstanding();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('outstandingreport1', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    // public function actionOutstandingreport($year = null){
+    //     if($year == null){
+    //         $year = date('Y');
+    //     }
+    //     $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->asArray()->distinct()->all();
+        
+    //     $model = InstruksiKerjaOutstanding::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+    //     return $this->render('outstandingreport',[
+    //             'model' => $model,
+    //             'tahun' => $tahun
+    //         ]);
+    // }
 
     public function actionPrintoutstandingreport($year = NULL){
         if($year == null){
@@ -348,7 +450,7 @@ class InstruksiKerjaController extends Controller
     }
 
     public function actionIssuedmodalreport(){
-        $year = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->asArray()->distinct()->all();
+        $year = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->asArray()->distinct()->orderBy('year')->all();
         // var_dump($year);
         // exit();
         return $this->renderAjax('issuedmodalreport',[
@@ -356,18 +458,28 @@ class InstruksiKerjaController extends Controller
             ]);
     }
 
-    public function actionIssuedreport($year = null){
-        if($year == null){
-            $year = date('Y');
-        }
-        $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->asArray()->distinct()->all();
-        
-        $model = InstruksiKerjaIssued::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
-        return $this->render('issuedreport',[
-                'model' => $model,
-                'tahun' => $tahun
-            ]);
+    public function actionIssuedreport(){
+        $searchModel = new InstruksiKerjaIssued();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('issuedreport1', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
+
+    // public function actionIssuedreport($year = null){
+    //     if($year == null){
+    //         $year = date('Y');
+    //     }
+    //     $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->asArray()->distinct()->all();
+        
+    //     $model = InstruksiKerjaIssued::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
+    //     return $this->render('issuedreport',[
+    //             'model' => $model,
+    //             'tahun' => $tahun
+    //         ]);
+    // }
 
     public function actionPrintissuedreport($year = NULL){
         if($year == null){
