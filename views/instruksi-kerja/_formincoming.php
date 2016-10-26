@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+//use yii\widgets\ActiveForm;
+use kartik\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerja */
@@ -11,37 +12,64 @@ use yii\widgets\ActiveForm;
 
 <div class="instruksi-kerja-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'type' => ActiveForm::TYPE_HORIZONTAL,
+        //'formConfig' => ['labelSpan' => 3, 'deviceSize' => ActiveForm::SIZE_SMALL],
+    ]); ?>
 
     <?= $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
     <!--<div class="col-lg-8">-->
+    <div class="row">
+        <div class="col-md-6">
+            
+        </div>
+        <div class="col-md-3">
+            
+        </div>
+         <div class="col-md-4">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            
+        </div>
+        <div class="col-md-3">
+            
+        </div>
+    </div>
     <?= $form->field($model, 'id_client')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
-        'options' => ['placeholder' => 'Choose Client'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); 
-    ?>
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                'options' => ['placeholder' => 'Choose Client'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); 
+            ?>
     <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
     <?php 
-        $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
-        echo $form->field($model, 'type_of_instruction')->dropDownList($type_of_instruction,['prompt'=>'Select Option']);
-    ?>
+                $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
+                echo $form->field($model, 'type_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => $type_of_instruction,
+                    'options' => ['placeholder' => 'Choose Year'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ]);
+            ?>
     <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Of Instruction',
-                'autoclose' => true
-            ]
-        ],
-    ]); 
-    ?>
+                'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                'saveFormat' => 'php:Y-m-d',
+                'ajaxConversion' => true,
+                'options' => [
+                    'pluginOptions' => [
+                        'placeholder' => 'Choose Date Of Instruction',
+                        'autoclose' => true
+                    ]
+                ],
+            ]); 
+            ?>
     <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
     <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
     <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
