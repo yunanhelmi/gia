@@ -14,115 +14,158 @@ use kartik\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin([
         'type' => ActiveForm::TYPE_HORIZONTAL,
-        //'formConfig' => ['labelSpan' => 3, 'deviceSize' => ActiveForm::SIZE_SMALL],
+        'formConfig' => ['labelSpan' => 5, 'deviceSize' => ActiveForm::SIZE_SMALL],
     ]); ?>
 
-    <?= $form->errorSummary($model); ?>
+    <?php // $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
     <!--<div class="col-lg-8">-->
-    <div class="row">
-        <div class="col-md-6">
-            
-        </div>
-        <div class="col-md-3">
-            
-        </div>
-         <div class="col-md-4">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            
-        </div>
-        <div class="col-md-3">
-            
-        </div>
-    </div>
-    <?= $form->field($model, 'id_client')->widget(\kartik\widgets\Select2::classname(), [
-                'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
-                'options' => ['placeholder' => 'Choose Client'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]); 
-            ?>
-    <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
-    <?php 
-                $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
-                echo $form->field($model, 'type_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
-                    'data' => $type_of_instruction,
-                    'options' => ['placeholder' => 'Choose Year'],
+    <h4>Header</h4>
+    <div class="alert alert-info" role="alert">
+        
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'id_client')->label('Applicant')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
                     'pluginOptions' => [
                         'allowClear' => true
                     ],
-                ]);
-            ?>
-    <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
-                'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-                'saveFormat' => 'php:Y-m-d',
-                'ajaxConversion' => true,
-                'options' => [
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'assurers')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
                     'pluginOptions' => [
-                        'placeholder' => 'Choose Date Of Instruction',
-                        'autoclose' => true
-                    ]
-                ],
-            ]); 
-            ?>
-    <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
-    <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
-    <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
-    <?= $form->field($model, 'interest')->textInput(['maxlength' => true, 'placeholder' => 'Interest']) ?>
-    <?= $form->field($model, 'date_of_loss')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Of Loss',
-                'autoclose' => true
-            ]
-        ],
-    ]); 
-    ?>
-    <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
-    <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
-    <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
-    <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
-    <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
-    <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
-    <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
-    <?= $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>
-    <?= $form->field($model, 'not_relevant')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
-    <?= $form->field($model, 'protected')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
-    <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Time Bar Due',
-                'autoclose' => true
-            ]
-        ],
-    ]); 
-    ?>
-    <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
-    <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
-    <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
-        'saveFormat' => 'php:Y-m-d H:i:s',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Entered',
-                'autoclose' => true,
-            ]
-        ],
-    ]); 
-    ?>
-    <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
+                        'allowClear' => true
+                    ],
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php 
+                    $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
+                    echo $form->field($model, 'type_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => $type_of_instruction,
+                        'options' => ['placeholder' => 'Choose Type Of Instruction'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
+                
+            </div>
+            <div class="col-md-4">
+               <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+    <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab">Detail Of Claim</a></li>
+    <li role="presentation"><a href="#update" aria-controls="profile" role="tab" data-toggle="tab">Data Update</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="doc">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
+                <?= $form->field($model, 'interest')->textInput(['maxlength' => true, 'placeholder' => 'Interest']) ?>
+                <?= $form->field($model, 'date_of_loss')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Loss',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
+                <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+                <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
+                <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
+                <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
+                <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="update">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
+                <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
+                <?= $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>
+                <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Time Bar Due',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
+                <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
+                <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
+                <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
+                    'saveFormat' => 'php:Y-m-d H:i:s',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Entered',
+                            'autoclose' => true,
+                        ]
+                    ],
+                ]); 
+                ?>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+    
+   
+    
+    
+    
+    
+    
+    
     <!--</div>-->
     
 
