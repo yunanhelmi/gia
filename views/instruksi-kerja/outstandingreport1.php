@@ -25,7 +25,7 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?=  $this->render('searchoutstandingreport', ['model' => $searchModel]); ?>
+        <?=  $this->render('searchoutstandingreport', ['model' => $searchModel, 'tahun' => $tahun]); ?>
     </div>
     <?php 
     $gridColumn = [
@@ -45,7 +45,10 @@ $this->registerJs($search);
         //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         // ],
         'case_number',
-        'date_of_instruction',
+        [
+            'attribute' => 'date_of_instruction',
+            'format' => ['date', 'php:d/m/Y']
+        ],
         'assurers',
         'insured',
         'broker',

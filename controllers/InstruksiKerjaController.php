@@ -390,10 +390,22 @@ class InstruksiKerjaController extends Controller
     public function actionOutstandingreport(){
         $searchModel = new InstruksiKerjaOutstanding();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->distinct()->asArray()->orderBy('year')->all();
+        // kodingan ini menyimpan kembali array yang benar
+        // array berisi key dan nilai yg sama
+        $arr = array();
+        for($i=0;$i<sizeof($tahun);$i++){
+            $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
+           
+        }
+        // echo "<pre>";
+        // var_dump($arr);
+        // echo "</pre>";
+        // exit(); 
         return $this->render('outstandingreport1', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'tahun' => $arr
         ]);
     }
 
@@ -439,10 +451,19 @@ class InstruksiKerjaController extends Controller
     public function actionIssuedreport(){
         $searchModel = new InstruksiKerjaIssued();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->distinct()->asArray()->orderBy('year')->all();
+        // kodingan ini menyimpan kembali array yang benar
+        // array berisi key dan nilai yg sama
+        $arr = array();
+        for($i=0;$i<sizeof($tahun);$i++){
+            $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
+           
+        }
 
         return $this->render('issuedreport1', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'tahun' => $arr
         ]);
     }
 

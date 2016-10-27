@@ -45,7 +45,10 @@ $this->registerJs($search);
         //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         // ],
         'case_number',
-        'date_of_instruction',
+        [
+            'attribute' => 'date_of_instruction',
+            'format' => ['date', 'php:d/m/Y']
+        ],
         'assurers',
         'insured',
         'broker',
