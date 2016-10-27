@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\filters\AccessRule;
 
-
+date_default_timezone_set("Asia/Bangkok");
 /**
  * InstruksiKerjaController implements the CRUD actions for InstruksiKerja model.
  */
@@ -148,6 +148,7 @@ class InstruksiKerjaController extends Controller
             } else if($model->type_of_instruction== "Risks Survey"){
                 $model->case_number = "MRI.".$model->case_number;
             }
+            $model->date_of_instruction = date("Y-m-d");
             $hasil = $model->save();
             if ($hasil) {
 

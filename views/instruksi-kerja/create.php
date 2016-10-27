@@ -10,7 +10,7 @@ $this->title = 'Create Instruksi Kerja';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php if(Yii::$app->session->hasFlash('success')):?>
-    <div class="info">
+    <div class="alert alert-success" role="alert">
         <?php echo Yii::$app->session->getFlash('success'); ?>
     </div>
 <?php endif; ?>

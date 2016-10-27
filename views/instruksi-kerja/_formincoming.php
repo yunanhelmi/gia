@@ -16,7 +16,12 @@ use kartik\widgets\ActiveForm;
         'type' => ActiveForm::TYPE_HORIZONTAL,
         'formConfig' => ['labelSpan' => 5, 'deviceSize' => ActiveForm::SIZE_SMALL],
     ]); ?>
-
+    <?php
+        // $session = Yii::$app->user->identity->role;
+        // echo "<pre>";
+        // var_dump($session);
+        // echo "<pre>"; 
+    ?>
     <?php // $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>

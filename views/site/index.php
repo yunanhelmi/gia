@@ -13,9 +13,4 @@ $this->title = 'PT Global Internusa Adjusting Surabaya';
         
     </div>
 
-    <div class="body-content">
-
-      
-
-    </div>
 </div>

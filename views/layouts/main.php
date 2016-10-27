@@ -37,39 +37,145 @@ AppAsset::register($this);
             'class' => 'navbar navbar-default navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'activateParents' => true,
-        'items' => [
-            ['label' => 'Client', 'url' => ['/client/viewclient']],
-            ['label' => 'Incoming', 'url' => ['/instruksi-kerja/create']],
-            ['label' => 'Outstanding', 'url' => ['/instruksi-kerja/outstanding']],
-            ['label' => 'Issued', 'url' => ['/instruksi-kerja/issued']],
-            [
-                'label' => 'Report',
-                'items' => [
-                    '<li>'. Html::a('Incoming','index.php?r=instruksi-kerja/incomingreport') .'</li>',
-                    '<li>'. Html::a('Outstanding','index.php?r=instruksi-kerja/outstandingreport') .'</li>',
-                    '<li>'. Html::a('Issued','index.php?r=instruksi-kerja/issuedreport') .'</li>',
-                    // '<li>'. Html::a('Incoming','#',['value' => Url::to('index.php?r=instruksi-kerja/incomingmodalreport'), 'id' => 'modalButtonIncoming']) .'</li>',
-                    // '<li>'. Html::a('Outstanding','#',['value' => Url::to('index.php?r=instruksi-kerja/outstandingmodalreport'), 'id' => 'modalButtonOutstanding']) .'</li>',
-                    // '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
-                ],
-            ],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
+    // $session = Yii::$app->user->identity;
+    //     echo "<pre>";
+    //     var_dump($session);
+    //     echo "<pre>"; 
+    //     exit();
+    if(Yii::$app->user->identity == null){
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'activateParents' => true,
+            'items' => [
+                Yii::$app->user->isGuest ? (
+                    ['label' => 'Login', 'url' => ['/site/login']]
+                ) : (
+                    '<li>'
+                    . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                    . Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn btn-link']
+                    )
+                    . Html::endForm()
+                    . '</li>'
                 )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
+            ],
+        ]);
+    } else {
+        if(Yii::$app->user->identity->role == 'admin'){
+            echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'activateParents' => true,
+            'items' => [
+                
+                    ['label' => 'Client', 'url' => ['/client/viewclient']],
+                    ['label' => 'Incoming', 'url' => ['/instruksi-kerja/create']],
+                    ['label' => 'Outstanding', 'url' => ['/instruksi-kerja/outstanding']],
+                    ['label' => 'Issued', 'url' => ['/instruksi-kerja/issued']],
+                
+                    [
+                        'label' => 'Report',
+                        'items' => [
+                            '<li>'. Html::a('Incoming','index.php?r=instruksi-kerja/incomingreport') .'</li>',
+                            '<li>'. Html::a('Outstanding','index.php?r=instruksi-kerja/outstandingreport') .'</li>',
+                            '<li>'. Html::a('Issued','index.php?r=instruksi-kerja/issuedreport') .'</li>',
+                            // '<li>'. Html::a('Incoming','#',['value' => Url::to('index.php?r=instruksi-kerja/incomingmodalreport'), 'id' => 'modalButtonIncoming']) .'</li>',
+                            // '<li>'. Html::a('Outstanding','#',['value' => Url::to('index.php?r=instruksi-kerja/outstandingmodalreport'), 'id' => 'modalButtonOutstanding']) .'</li>',
+                            // '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
+                        ],
+                    ],
+                
+                Yii::$app->user->isGuest ? (
+                    ['label' => 'Login', 'url' => ['/site/login']]
+                ) : (
+                    '<li>'
+                    . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                    . Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn btn-link']
+                    )
+                    . Html::endForm()
+                    . '</li>'
+                )
+            ],
+        ]);
+        } else if(Yii::$app->user->identity->role == 'sekretaris'){
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'activateParents' => true,
+                'items' => [
+                        ['label' => 'Incoming', 'url' => ['/instruksi-kerja/create']],
+                    Yii::$app->user->isGuest ? (
+                        ['label' => 'Login', 'url' => ['/site/login']]
+                    ) : (
+                        '<li>'
+                        . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link']
+                        )
+                        . Html::endForm()
+                        . '</li>'
+                    )
+                ],
+            ]);
+        } else if(Yii::$app->user->identity->role == 'adjuster'){
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'activateParents' => true,
+                'items' => [
+                    ['label' => 'Outstanding', 'url' => ['/instruksi-kerja/outstanding']],
+                    Yii::$app->user->isGuest ? (
+                        ['label' => 'Login', 'url' => ['/site/login']]
+                    ) : (
+                        '<li>'
+                        . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link']
+                        )
+                        . Html::endForm()
+                        . '</li>'
+                    )
+                ],
+            ]);
+        } else if(Yii::$app->user->identity->role == 'applicant'){
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'activateParents' => true,
+                'items' => [
+                    ['label' => 'Outstanding', 'url' => ['/instruksi-kerja/outstanding']],
+                    ['label' => 'Issued', 'url' => ['/instruksi-kerja/issued']],
+                
+                    [
+                        'label' => 'Report',
+                        'items' => [
+                            '<li>'. Html::a('Incoming','index.php?r=instruksi-kerja/incomingreport') .'</li>',
+                            '<li>'. Html::a('Outstanding','index.php?r=instruksi-kerja/outstandingreport') .'</li>',
+                            '<li>'. Html::a('Issued','index.php?r=instruksi-kerja/issuedreport') .'</li>',
+                            // '<li>'. Html::a('Incoming','#',['value' => Url::to('index.php?r=instruksi-kerja/incomingmodalreport'), 'id' => 'modalButtonIncoming']) .'</li>',
+                            // '<li>'. Html::a('Outstanding','#',['value' => Url::to('index.php?r=instruksi-kerja/outstandingmodalreport'), 'id' => 'modalButtonOutstanding']) .'</li>',
+                            // '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
+                        ],
+                    ], 
+                    Yii::$app->user->isGuest ? (
+                        ['label' => 'Login', 'url' => ['/site/login']]
+                    ) : (
+                        '<li>'
+                        . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link']
+                        )
+                        . Html::endForm()
+                        . '</li>'
+                    )
+                ],
+            ]);
+        }
+    }
+    
+    
     NavBar::end();
 
     ?>

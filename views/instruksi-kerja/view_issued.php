@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $model->id;
             )?>
         </div>
     </div>
+    
 
     <div class="row">
 <?php 
