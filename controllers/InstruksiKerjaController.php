@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\InstruksiKerja;
 use app\models\Client;
+use app\models\Record;
 use app\models\InstruksiKerjaSearch;
 use app\models\InstruksiKerjaIssued;
 use app\models\InstruksiKerjaOutstanding;
@@ -24,12 +25,6 @@ class InstruksiKerjaController extends Controller
     public function behaviors()
     {
         return [
-            // 'verbs' => [
-            //     'class' => VerbFilter::className(),
-            //     'actions' => [
-            //         'delete' => ['post'],
-            //     ],
-            // ],
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 //'only' => [],
@@ -132,10 +127,9 @@ class InstruksiKerjaController extends Controller
     public function actionCreate()
     {
         $model = new InstruksiKerja();
+        $record = new Record();
         if($model->loadAll(Yii::$app->request->post())){
-            if($model->id_client == null) {
-                $model->id_client = 1;
-            }
+
             $nama_client = Client::find()->select('nama')->where('id = '.$model->id_client.'')->asArray()->one();
             $model->assurers = $nama_client['nama'];
             
@@ -148,9 +142,18 @@ class InstruksiKerjaController extends Controller
             } else if($model->type_of_instruction== "Risks Survey"){
                 $model->case_number = "MRI.".$model->case_number;
             }
+            // var_dump($record->description);
+            // exit();
             $model->date_of_instruction = date("Y-m-d");
             $hasil = $model->save();
-            if ($hasil) {
+
+            $record->instruksi_kerja_id = $model->id;
+            $record->time = date("Y-m-d");
+            $record->description = "Data Created";
+            $hasil2 = $record->save();
+
+
+            if ($hasil && $hasil2) {
 
                 Yii::$app->session->setFlash('success','Data was successfully submitted');
                 return $this->redirect(['create']);
@@ -161,6 +164,7 @@ class InstruksiKerjaController extends Controller
         }else{
             return $this->render('create', [
                 'model' => $model,
+                'record' => $record,
             ]);
         }
         
@@ -186,6 +190,7 @@ class InstruksiKerjaController extends Controller
         } else {
             return $this->render('updateincoming', [
                 'model' => $model,
+                
             ]);
         }
     }
@@ -196,13 +201,27 @@ class InstruksiKerjaController extends Controller
             $model = new InstruksiKerja();
         }else{
             $model = $this->findModel($id);
+            $record = $this->findModelRecord($id);
         }
 
-        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+        // var_dump($record);
+        // exit();
+
+        if ($model->loadAll(Yii::$app->request->post())) {
+            // var_dump($model->description_record);
+            // exit();
+
+            $new_record = new Record();
+            $new_record->time = date('Y-m-d');
+            $new_record->instruksi_kerja_id = $model->id;
+            $new_record->description = "dw";
+            $new_record->save();
+            $model->save();
             return $this->redirect(['viewoutstanding', 'id' => $model->id]);
         } else {
             return $this->render('updateoutstanding', [
                 'model' => $model,
+                'record' => $record,
             ]);
         }
     }
@@ -234,7 +253,7 @@ class InstruksiKerjaController extends Controller
         ]);
 
         $pdf = new \kartik\mpdf\Pdf([
-            'mode' => \kartik\mpdf\Pdf::MODE_CORE,
+            //'mode' => \kartik\mpdf\Pdf::MODE_CORE,
             'format' => \kartik\mpdf\Pdf::FORMAT_A4,
             'orientation' => \kartik\mpdf\Pdf::ORIENT_PORTRAIT,
             'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
@@ -304,6 +323,15 @@ class InstruksiKerjaController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findModelRecord($id)
+    {
+        if (($model = Record::find($id)->where(['instruksi_kerja_id' => $id])->one()) !== null) {
+            return $model;
+        } else {
+            return null;
         }
     }
 

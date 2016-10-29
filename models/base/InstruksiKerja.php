@@ -52,6 +52,8 @@ class InstruksiKerja extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
     public $year_option;
+    public $time_record;
+    public $description_record;
 
     /**
      * @inheritdoc
@@ -62,7 +64,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             [['id_client', 'amount_of_loss', 'amount_of_loss_usd', 'sum_insured', 'sum_insured_usd', 'fee_code', 'actual_fee', 'actual_fee_usd', 'expenses', 'expenses_usd'], 'integer'],
             [['date_of_instruction', 'date_of_loss', 'time_bar_due', 'date_entered', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent'], 'safe'],
             [['not_relevant', 'protected', 'status'], 'string'],
-            [['case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
+            [['description_record','time_record','case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
             [['type_of_instruction','id_client','case_number','assurers','conveyence'],'required']
         ];
     }
@@ -117,6 +119,8 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             'date_of_issued' => 'Date Of Issued',
             'date_of_last_correspondent' => 'Date Of Last Correspondent',
             'remark' => 'Remark',
+            'time_record' => "Time Record",
+            'description_record' => "Description Record",
         ];
     }
     
@@ -127,8 +131,16 @@ class InstruksiKerja extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\Client::className(), ['id' => 'id_client']);
     }
-    
-/**
+
+    /** 
+    * @return \yii\db\ActiveQuery 
+    */ 
+   public function getRecords() 
+   { 
+       return $this->hasMany(\app\models\Record::className(), ['instruksi_kerja_id' => 'id']); 
+   }
+        
+    /**
      * @inheritdoc
      * @return array mixed
      */ 

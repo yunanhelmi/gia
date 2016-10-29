@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $model->id;
         </div>
         <div class="col-sm-4" style="margin-top: 15px; text-align: right">
             <?=             
-             Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> ' . 'PDF', 
+             Html::a('<i class="fa glyphicon glyphicon-print"></i> ' . 'PDF', 
                 ['pdf', 'id' => $model->id],
                 [
                     'class' => 'btn btn-danger',

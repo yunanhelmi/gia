@@ -8,6 +8,15 @@ use kartik\widgets\ActiveForm;
 /* @var $model app\models\InstruksiKerja */
 /* @var $form yii\widgets\ActiveForm */
 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+    'viewParams' => [
+        'class' => 'Record', 
+        'relID' => 'record', 
+        'value' => \yii\helpers\Json::encode($model->records),
+        'isNewRecord' => ($model->isNewRecord) ? 1 : 0
+    ]
+]);
+
 ?>
 
 <div class="instruksi-kerja-form">
@@ -92,8 +101,9 @@ use kartik\widgets\ActiveForm;
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab">Detail Of Claim</a></li>
-    <li role="presentation"><a href="#update" aria-controls="profile" role="tab" data-toggle="tab">Data Update</a></li>
+    <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
+    
+    
   </ul>
 
   <!-- Tab panes -->
@@ -117,20 +127,19 @@ use kartik\widgets\ActiveForm;
                 ]); 
                 ?>
                 <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+                
+            </div>
+             <div class="col-md-4">
                 <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
                 <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
                 <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
                 <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
-            </div>
-        </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="update">
-        <br>
-        <div class="row">
-            <div class="col-md-4">
                 <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
                 <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
                 <?= $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>
+                
+            </div>
+            <div class="col-md-4">
                 <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
                     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
                     'saveFormat' => 'php:Y-m-d',
@@ -144,22 +153,17 @@ use kartik\widgets\ActiveForm;
                 ]); 
                 ?>
                 <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
-                <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
-                <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
-                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
-                    'saveFormat' => 'php:Y-m-d H:i:s',
-                    'ajaxConversion' => true,
-                    'options' => [
-                        'pluginOptions' => [
-                            'placeholder' => 'Choose Date Entered',
-                            'autoclose' => true,
-                        ]
-                    ],
-                ]); 
-                ?>
+                <?= $form->field($model, 'comment')->textArea(['rows' => '6','placeholder' => 'Comment']) ?>
             </div>
         </div>
     </div>
+    <div role="tabpanel" class="tab-pane" id="update">
+        <br>
+        <div class="row">
+           
+        </div>
+    </div>
+    
   </div>
 
 </div>

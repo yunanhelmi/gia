@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerja */
@@ -11,182 +11,222 @@ use yii\widgets\ActiveForm;
 
 <div class="instruksi-kerja-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'type' => ActiveForm::TYPE_HORIZONTAL,
+        'formConfig' => ['labelSpan' => 5, 'deviceSize' => ActiveForm::SIZE_SMALL],
+    ]); ?>
 
-    <?= $form->errorSummary($model); ?>
+    <?php // $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'id_client')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
-        'options' => ['placeholder' => 'Choose Client'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
-
-    <?php 
-        $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
-        echo $form->field($model, 'type_of_instruction')->dropDownList($type_of_instruction,['prompt'=>'Select Option']);
-    ?>
-
-    <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Of Instruction',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'assurers')->textInput(['maxlength' => true, 'placeholder' => 'Assurers']) ?>
-    <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
-
-    <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
-
-    <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
-
-    <?= $form->field($model, 'interest')->textInput(['maxlength' => true, 'placeholder' => 'Interest']) ?>
-
-    <?= $form->field($model, 'date_of_loss')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Of Loss',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
-    <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
-    <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
-
-    <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
-    <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
-
-    <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
-
-    <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
-
-    <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
-        'saveFormat' => 'php:Y-m-d H:i:s',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Entered',
-                'autoclose' => true,
-            ]
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
-
-    <?php  echo $form->field($model, 'actual_fee')->textInput(['maxlength' => true, 'placeholder' => 'Actual Fee (Rp)']) ?>
-    <?php  echo $form->field($model, 'actual_fee_usd')->textInput(['maxlength' => true, 'placeholder' => 'Actual Fee (USD)']) ?>
-
-    <?php  echo $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
-    <?php  echo $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>
-
-    <?php  echo $form->field($model, 'date_send_of_pa')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Send Of Pa',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?php  echo $form->field($model, 'date_send_of_dfr')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Send Of Dfr',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?php  echo $form->field($model, 'date_send_of_doc_request')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Send Of Doc Request',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?php  echo $form->field($model, 'date_of_issued')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Of Issued',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'not_relevant')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'protected')->dropDownList([ '0', '1', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Time Bar Due',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
-
-    <?php  echo  $form->field($model, 'date_of_last_correspondent')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date Of Last Correspondent',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?php echo $form->field($model, 'remark')->textInput(['maxlength' => true, 'placeholder' => 'Remark']) ?>
-    <?php echo $form->field($model, 'status')->dropDownList([ 'outstanding' => 'Outstanding', ' issued' => ' Issued', ], ['prompt' => '']) ?>
-
-    <div class="form-group">
-    <?php if(Yii::$app->controller->action->id != 'save-as-new'): ?>
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    <?php endif; ?>
-    <?php if(Yii::$app->controller->action->id != 'create'): ?>
+    <h4>Header</h4>
+    <div class="alert alert-info" role="alert">
         
-    <?php endif; ?>
-        <?= Html::a(Yii::t('app', 'Cancel'), Yii::$app->request->referrer , ['class'=> 'btn btn-danger']) ?>
-    </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'id_client')->label('Applicant')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'readonly' => true,
+                    ],
+                    'disabled' => true,
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'assurers')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'nama', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
 
-    <?php ActiveForm::end(); ?>
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php 
+                    $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
+                    echo $form->field($model, 'type_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => $type_of_instruction,
+                        'options' => ['placeholder' => 'Choose Type Of Instruction'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'case_number')->textInput(['readOnly' => true,'maxlength' => true, 'placeholder' => 'Case Number']) ?>
+                
+            </div>
+            <div class="col-md-4">
+               <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+    <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
+    <li role="presentation"><a href="#record" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update</strong></a></li>
+    <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab"><strong>Status & Recovery Aspect</strong></a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="doc">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'conveyence')->textInput(['readOnly' => true,'maxlength' => true, 'placeholder' => 'Conveyence']) ?>
+                <?= $form->field($model, 'interest')->textInput(['maxlength' => true, 'placeholder' => 'Interest']) ?>
+                <?= $form->field($model, 'date_of_loss')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Loss',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
+                <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+                
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
+                <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
+                <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
+                <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
+                <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
+                <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
+                <?= $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>    
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Time Bar Due',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
+                <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
+                <?= $form->field($model, 'comment')->textArea(['rows' => '6','placeholder' => 'Comment']) ?>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="record">
+        <br>
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table">
+                    <tr>
+                        <td><?php echo $form->field($model, 'time_record')->textInput(['readonly'=>true,'placeholder'=> date('Y-m-d')]) ?></td>
+                        <td><?php 
+                            $type_of_description = [
+                                "Survey" =>"Survey", 
+                                "Attandance Advice (AA)" => "Attandance Advice (AA)", 
+                                "Preliminary Advice (PA)" => "Preliminary Advice (PA)", 
+                                "Chasing Support Documents (CSD)" => "Chasing Support Documents (CSD)",
+                                "Draft Final Report (DFR)" => "Draft Final Report (DFR)",
+                                ];
+                            echo $form->field($model, 'description_record')->widget(\kartik\widgets\Select2::classname(), [
+                                'data' => $type_of_description,
+                                'options' => ['placeholder' => 'Choose Status'],
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ]); ?>
+                        </td>
+                    </tr>
+                    
+                    
+                </table>
+
+            </div>
+            <div class="col-md-5">
+                <table class="table">
+                    <tr>
+                        <td><strong>Time</strong></td>
+                        <td><strong>Description</strong></td>
+                    </tr>
+                    <?php
+                    // echo "<pre>";
+                    // var_dump($record);
+                    // echo "</pre>";
+                    // exit(); 
+                    if($record != NULL){
+                    ?>
+                    <tr>
+                        <td><?= $record->time?></td>
+                        <td><?= $record->description?></td>
+                    </tr>
+                    <?php } else {?>
+                    <tr>
+                        <td>contoh waktu</td>
+                        <td>contoh deskripsi</td>
+                    </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+     <div role="tabpanel" class="tab-pane" id="status">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+               
+            </div>
+            
+        </div>
+        
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-group pull-right">
+            <?php if(Yii::$app->controller->action->id != 'save-as-new'): ?>
+                <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            <?php endif; ?>
+            <?php if(Yii::$app->controller->action->id != 'create'): ?>
+                
+            <?php endif; ?>
+                <?= Html::a(Yii::t('app', 'Cancel'), Yii::$app->request->referrer , ['class'=> 'btn btn-danger']) ?>
+        </div>
+    </div>
+  </div>
+    
+
+        <?php ActiveForm::end(); ?>
 
 </div>
