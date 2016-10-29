@@ -106,8 +106,18 @@ class InstruksiKerjaController extends Controller
     public function actionViewoutstanding($id)
     {
         $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        // if($record == null){
+        //     echo '1';
+        // } else {
+        //     echo '2';
+        // }
+        // var_dump($record);
+        // exit();
+
         return $this->render('view_outstanding', [
             'model' => $this->findModel($id),
+            'record' => $record,
         ]);
     }
 
@@ -247,9 +257,11 @@ class InstruksiKerjaController extends Controller
      */
     public function actionPdf($id) {
         $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
 
         $content = $this->render('_pdf', [
             'model' => $model,
+            'record' => $record,
         ]);
 
         $pdf = new \kartik\mpdf\Pdf([

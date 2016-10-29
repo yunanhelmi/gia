@@ -52,9 +52,17 @@ $this->params['breadcrumbs'][] = $model->id;
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <h4>Detail Of Claim</h4>
-            <div class="alert alert-warning" role="alert">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
+            <li role="presentation"><a href="#update" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update</strong></a></li>
+            <li role="presentation"><a href="#status" aria-controls="messages" role="tab" data-toggle="tab"><strong>Status and Recovery Aspect</strong></a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="detail">
+                <br>
                 <div class="row">
                     <div class="col-md-8">
                         <p><strong>Conyenyence</strong> : <?= $model->conveyence?></p>
@@ -66,66 +74,39 @@ $this->params['breadcrumbs'][] = $model->id;
                         <p><strong>Sum Insured (Rp)</strong> : <?= $model->sum_insured ?></p>
                         <p><strong>Sum Insured (USD)</strong> : <?= $model->sum_insured_usd ?></p>
                     </div>
-                    
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <h4>Update</h4>
-            <div class="alert alert-warning" role="alert">
-                <div class="row">
-                    
-                </div>
+            <div role="tabpanel" class="tab-pane" id="update">
+                <?php if($record != null){ ?>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Time</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                      </table>
+                    </div>
+                <?php } else { ?>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Time</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                      </table>
+                    </div>
+                <?php } ?>
             </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <?php 
-            // $gridColumn = [
-            //     ['attribute' => 'id', 'visible' => false],
-            //     [
-            //         'attribute' => 'client.id',
-            //         'label' => 'Id Client',
-            //     ],
-            //     'case_number',
-            //     'type_of_instruction',
-            //     'date_of_instruction',
-            //     'assurers',
-            //     'insured',
-            //     'broker',
-            //     'conveyence',
-            //     'interest',
-            //     'date_of_loss',
-            //     'casualty',
-            //     'amount_of_loss',
-            //     'amount_of_loss_usd',
-            //     'sum_insured',
-            //     'sum_insured_usd',
-            //     'fee_code',
-            //     'not_relevant',
-            //     'protected',
-            //     'time_bar_due',
-            //     'time_bar_issue',
-            //     'comment',
-            //     'date_entered',
-            //     'adjuster',
-            //     'actual_fee',
-            //     'actual_fee_usd',
-            //     'expenses',
-            //     'expenses_usd',
-            //     'status',
-            //     'date_send_of_pa',
-            //     'date_send_of_dfr',
-            //     'date_send_of_doc_request',
-            //     'date_of_issued',
-            //     'date_of_last_correspondent',
-            //     'remark',
-            // ];
-            // echo DetailView::widget([
-            //     'model' => $model,
-            //     'attributes' => $gridColumn
-            // ]); 
-        ?>
+            <div role="tabpanel" class="tab-pane" id="status">
+            </div>
+            
+          </div>
+        </div>   
     </div>
 </div>

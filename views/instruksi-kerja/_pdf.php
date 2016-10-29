@@ -20,64 +20,72 @@ $this->title = $model->case_number;
     </div>
 
     <h4>Header</h4>
-    <div class="alert alert-info" role="alert">
-        <div class="row">
-            <div class="col-md-1">
-                <p><strong>Applicant</strong> : <?= $model->client->nama ?></p>
-                <p><strong>Type Of Instruction</strong> : <?= $model->type_of_instruction ?></p>
-                <p><strong>Case Number</strong> : <?= $model->case_number ?></p>
-            </div>
-            <div class="col-md-1">
-                <p><strong>Assurers</strong> : <?= $model->assurers ?></p>
-                <p><strong>Insured</strong> : <?= $model->insured ?></p>
-                <p><strong>Broker</strong> : <?= $model->broker ?></p>
-            </div>
-            <div class="col-md-2">
-                <p><strong>Adjuster</strong> : <?= $model->adjuster ?></p>
-                
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover active">
+                <tbody>
+                  <tr class="active">
+                    <th>Applicant</th>
+                    <td>: <?= $model->client->nama ?></td>
+                    <th>Assurers</th>
+                    <td>: <?= $model->assurers ?></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr class="active">
+                    <th>Type Of Instruction</th>
+                    <td>: <?= $model->type_of_instruction ?></td>
+                    <th>Insured</th>
+                    <td>: <?= $model->insured ?></td>
+                  </tr>
+                  <tr class="active">
+                    <th>Case Number</th>
+                    <td>: <?= $model->case_number ?></td>
+                    <th>Broker</th>
+                    <td>: <?= $model->broker ?></td>
+                  </tr>
+                  <tr class="active">
+                    <th>Adjuster</th>
+                    <td>: <?= $model->adjuster ?></td>
+                    <th></th>
+                    <td></td>
+                  </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
+    <br>
+    <h4>Detail of Claim</h4>
     <div class="row">
-<?php 
-    $gridColumn = [
-        ['attribute' => 'id', 'visible' => false],
-        [
-                'attribute' => 'client.id',
-                'label' => 'Id Client'
-            ],
-        'case_number',
-        'type_of_instruction',
-        'date_of_instruction',
-        //'assured',
-        'broker',
-        'conveyence',
-        'interest',
-        'date_of_loss',
-        //'detail_of_loss',
-        //'amount_of_claim',
-        'sum_insured',
-        'fee_code',
-        'not_relevant',
-        'protected',
-        'time_bar_due',
-        'comment',
-        'date_entered',
-        'adjuster',
-        'actual_fee',
-        'status',
-        'date_send_of_pa',
-        'date_send_of_dfr',
-        'date_send_of_doc_request',
-        'date_of_issued',
-        'date_of_last_correspondent',
-        'remark',
-    ];
-    echo DetailView::widget([
-        'model' => $model,
-        'attributes' => $gridColumn
-    ]); 
-?>
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th>Conyenyence</th>
+                    <td> <?= $model->conveyence?></td>
+                    <th>Interest</th>
+                    <td> <?= $model->interest ?></td>
+                  </tr>
+                  <tr>
+                    <th>Date Of Loss</th>
+                    <td> <?= $model->date_of_loss ?></td>
+                    <th>Casuality</th>
+                    <td> <?= $model->casualty ?></td>
+                  </tr>
+                  <tr>
+                    <th>Amount Of Loss (Rp)</th>
+                    <td> <?= number_format($model->amount_of_loss) ?></td>
+                    <th>Amount Of Loss (USD)</th>
+                    <td> <?= number_format($model->amount_of_loss_usd) ?></td>
+                  </tr>
+                  <tr>
+                    <th>Sum Insured (Rp)</th>
+                    <td> <?= number_format($model->sum_insured) ?></td>
+                    <th>Sum Insured (USD)</th>
+                    <td> <?= number_format($model->sum_insured_usd) ?></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
