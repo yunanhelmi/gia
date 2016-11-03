@@ -59,7 +59,7 @@ $this->registerJs($search);
         'assurers',
         'insured',
         'broker',
-        // 'conveyence',
+        'conveyence',
         // 'interest',
         // 'date_of_loss',
         'casualty',

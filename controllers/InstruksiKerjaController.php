@@ -31,7 +31,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['index', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -98,8 +98,10 @@ class InstruksiKerjaController extends Controller
     public function actionViewincoming($id)
     {
         $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
         return $this->render('view_incoming', [
             'model' => $this->findModel($id),
+            'record' => $record,
         ]);
     }
 
@@ -107,14 +109,6 @@ class InstruksiKerjaController extends Controller
     {
         $model = $this->findModel($id);
         $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
-        // if($record == null){
-        //     echo '1';
-        // } else {
-        //     echo '2';
-        // }
-        // var_dump($record);
-        // exit();
-
         return $this->render('view_outstanding', [
             'model' => $this->findModel($id),
             'record' => $record,
@@ -124,8 +118,10 @@ class InstruksiKerjaController extends Controller
     public function actionViewissued($id)
     {
         $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
         return $this->render('view_issued', [
             'model' => $this->findModel($id),
+            'record' => $record,
         ]);
     }
 
@@ -536,6 +532,36 @@ class InstruksiKerjaController extends Controller
         ]);
 
         return $pdf->render();
+    }
+
+    public function actionViewincomingreport($id)
+    {
+        $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        return $this->render('view_incomingreport', [
+            'model' => $this->findModel($id),
+            'record' => $record,
+        ]);
+    }
+
+    public function actionViewoutstandingreport($id)
+    {
+        $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        return $this->render('view_outstandingreport', [
+            'model' => $this->findModel($id),
+            'record' => $record,
+        ]);
+    }
+
+    public function actionViewissuedreport($id)
+    {
+        $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        return $this->render('view_issuedreport', [
+            'model' => $this->findModel($id),
+            'record' => $record,
+        ]);
     }
 
 }
