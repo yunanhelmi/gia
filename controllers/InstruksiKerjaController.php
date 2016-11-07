@@ -6,10 +6,12 @@ use Yii;
 use app\models\InstruksiKerja;
 use app\models\Client;
 use app\models\Record;
+use app\models\Login;
 use app\models\InstruksiKerjaSearch;
 use app\models\InstruksiKerjaIssued;
 use app\models\InstruksiKerjaOutstanding;
 use app\models\InstruksiKerjaIncoming;
+use app\models\LoginSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -31,7 +33,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['user','deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -563,5 +565,36 @@ class InstruksiKerjaController extends Controller
             'record' => $record,
         ]);
     }
+
+    // fungsi di bawah ini untuk management user 
+    public function actionUser(){
+        $searchModel = new LoginSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('user_index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionCreateuser(){
+        $model = new Login();
+
+        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+            return $this->redirect(['user_view', 'id' => $model->id]);
+        } else {
+            return $this->render('user_create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionDeleteuser($id)
+    {
+        $this->findModel($id)->deleteWithRelated();
+
+        return $this->redirect(['user_index']);
+    }
+    
 
 }
