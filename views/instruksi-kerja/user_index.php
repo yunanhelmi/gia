@@ -22,7 +22,7 @@ $this->registerJs($search);
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create User', ['createUser'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create User', ['createuser'], ['class' => 'btn btn-success']) ?>
         
     </p>
     
@@ -42,22 +42,26 @@ $this->registerJs($search);
         //     'expandOneOnly' => true
         // ],
         ['attribute' => 'id', 'visible' => false],
-        [
-            'class' => 'yii\grid\ActionColumn',
-            'template' => '{save-as-new} {view} {update} {delete}',
-            'buttons' => [
-                'save-as-new' => function($url) {
-                    return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, ['title' => 'Save As New']);
-                },
-                'delete' => function($model){
-                    return Html::a('<span class="glyphicon glyphicon-trash"></span>', 'index.php?r=instruksi-kerja/deleteuser', ['title' => 'Delete User']);
-                },
-            ],
-        ],
        'username',
        'password',
        'role',
-        
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '{update} {delete}',
+            'header' => 'Action',
+            'buttons' => [
+                'update' => function ($model) {
+                    $test = explode("=", $model);
+                    $url = "instruksi-kerja/updateuser";
+                    return Html::a('update <br>', [$url, 'id' => $test[2]], ['title' => 'Update']);
+                },
+                'delete' => function ($model) {
+                    $test = explode("=", $model);
+                    $url = "instruksi-kerja/deleteuser";
+                    return Html::a('delete', [$url, 'id' => $test[2]], ['title' => 'Delete']);
+                },
+            ],
+        ],
     ]; 
     ?>
     <?= GridView::widget([

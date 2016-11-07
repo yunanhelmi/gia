@@ -16,15 +16,19 @@ use kartik\widgets\ActiveForm;
     <?php // $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'Username']) ?>
+            <?= $form->field($model, 'password')->textInput(['maxlength' => true, 'placeholder' => 'Username']) ?>
+            <?php echo $form->field($model, 'role')->dropDownList(['sekretaris' => 'sekretaris', 'adjuster' => 'adjuster', 'applicant' => 'applicant'],['prompt'=>'Choose Role For User']);?>
+        </div>
+    </div>
 
-    <h4>Header</h4>
-   <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'Username']) ?>
 
 
- 
-  <div class="row">
+    <div class="row">
     <div class="col-md-12">
-        <div class="form-group pull-right">
+        <div class="form-group pull-left">
             <?php if(Yii::$app->controller->action->id != 'save-as-new'): ?>
                 <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
             <?php endif; ?>
@@ -34,9 +38,9 @@ use kartik\widgets\ActiveForm;
                 <?= Html::a(Yii::t('app', 'Cancel'), Yii::$app->request->referrer , ['class'=> 'btn btn-danger']) ?>
         </div>
     </div>
-  </div>
+    </div>
     
 
-        <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

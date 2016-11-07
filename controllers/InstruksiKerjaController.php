@@ -581,7 +581,7 @@ class InstruksiKerjaController extends Controller
         $model = new Login();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['user_view', 'id' => $model->id]);
+            return $this->redirect(['user', 'id' => $model->id]);
         } else {
             return $this->render('user_create', [
                 'model' => $model,
