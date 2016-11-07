@@ -205,7 +205,7 @@ use kartik\widgets\ActiveForm;
         <br>
         <div class="row">
             <div class="col-md-4">
-               
+                <?php echo $form->field($model, 'status')->dropDownList(['Outstanding' => 'outstanding', 'Issued' => 'issued'],['prompt'=>'Choose Status']);?>
             </div>
             
         </div>

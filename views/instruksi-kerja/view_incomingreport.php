@@ -7,8 +7,8 @@ use kartik\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerja */
 
-$this->title = 'Outstanding '.$model->case_number;
-$this->params['breadcrumbs'][] = ['label' => 'Outstanding ', 'url' => ['outstanding']];
+$this->title = 'Incoming Report '.$model->case_number;
+$this->params['breadcrumbs'][] = ['label' => 'Incoming Report', 'url' => ['incomingreport']];
 $this->params['breadcrumbs'][] = $model->case_number;
 ?>
 <div class="instruksi-kerja-view">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $model->case_number;
         </div>
         <div class="col-sm-4" style="margin-top: 15px; text-align: right">
             <?=             
-             Html::a('<i class="fa glyphicon glyphicon-print"></i> ' . 'PDF', 
+             Html::a('<i class="fa glyphicon glyphicon-hand-up"></i> ' . 'PDF', 
                 ['pdf', 'id' => $model->id],
                 [
                     'class' => 'btn btn-danger',
@@ -28,10 +28,9 @@ $this->params['breadcrumbs'][] = $model->case_number;
                     'title' => 'Will open the generated PDF file in a new window'
                 ]
             )?>
-            
-            <?= Html::a('Update', ['updateoutstanding', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
+
     <h4>Header</h4>
     <div class="alert alert-info" role="alert">
         <div class="row">
@@ -47,7 +46,7 @@ $this->params['breadcrumbs'][] = $model->case_number;
             </div>
             <div class="col-md-4">
                 <p><strong>Adjuster</strong> : <?= $model->adjuster ?></p>
-                <p><strong>Status</strong> : <?= $model->status ?></p>
+                
             </div>
         </div>
     </div>
@@ -65,7 +64,7 @@ $this->params['breadcrumbs'][] = $model->case_number;
                 <br>
                 <div class="row">
                     <div class="col-md-8">
-                        <p><strong>Conveyence</strong> : <?= $model->conveyence?></p>
+                        <p><strong>Conyenyence</strong> : <?= $model->conveyence?></p>
                         <p><strong>Interest</strong> : <?= $model->interest ?></p>
                         <p><strong>Date Of Loss</strong> : <?= $model->date_of_loss ?></p>
                         <p><strong>Casuality</strong> : <?= $model->casualty ?></p>
@@ -115,4 +114,5 @@ $this->params['breadcrumbs'][] = $model->case_number;
           </div>
         </div>   
     </div>
+    
 </div>

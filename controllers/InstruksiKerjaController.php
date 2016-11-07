@@ -6,10 +6,12 @@ use Yii;
 use app\models\InstruksiKerja;
 use app\models\Client;
 use app\models\Record;
+use app\models\Login;
 use app\models\InstruksiKerjaSearch;
 use app\models\InstruksiKerjaIssued;
 use app\models\InstruksiKerjaOutstanding;
 use app\models\InstruksiKerjaIncoming;
+use app\models\LoginSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -31,7 +33,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['user','deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -98,8 +100,10 @@ class InstruksiKerjaController extends Controller
     public function actionViewincoming($id)
     {
         $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
         return $this->render('view_incoming', [
             'model' => $this->findModel($id),
+            'record' => $record,
         ]);
     }
 
@@ -107,14 +111,6 @@ class InstruksiKerjaController extends Controller
     {
         $model = $this->findModel($id);
         $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
-        // if($record == null){
-        //     echo '1';
-        // } else {
-        //     echo '2';
-        // }
-        // var_dump($record);
-        // exit();
-
         return $this->render('view_outstanding', [
             'model' => $this->findModel($id),
             'record' => $record,
@@ -124,8 +120,10 @@ class InstruksiKerjaController extends Controller
     public function actionViewissued($id)
     {
         $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
         return $this->render('view_issued', [
             'model' => $this->findModel($id),
+            'record' => $record,
         ]);
     }
 
@@ -537,5 +535,66 @@ class InstruksiKerjaController extends Controller
 
         return $pdf->render();
     }
+
+    public function actionViewincomingreport($id)
+    {
+        $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        return $this->render('view_incomingreport', [
+            'model' => $this->findModel($id),
+            'record' => $record,
+        ]);
+    }
+
+    public function actionViewoutstandingreport($id)
+    {
+        $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        return $this->render('view_outstandingreport', [
+            'model' => $this->findModel($id),
+            'record' => $record,
+        ]);
+    }
+
+    public function actionViewissuedreport($id)
+    {
+        $model = $this->findModel($id);
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        return $this->render('view_issuedreport', [
+            'model' => $this->findModel($id),
+            'record' => $record,
+        ]);
+    }
+
+    // fungsi di bawah ini untuk management user 
+    public function actionUser(){
+        $searchModel = new LoginSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('user_index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionCreateuser(){
+        $model = new Login();
+
+        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+            return $this->redirect(['user', 'id' => $model->id]);
+        } else {
+            return $this->render('user_create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionDeleteuser($id)
+    {
+        $this->findModel($id)->deleteWithRelated();
+
+        return $this->redirect(['user_index']);
+    }
+    
 
 }

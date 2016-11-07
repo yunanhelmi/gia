@@ -84,6 +84,7 @@ AppAsset::register($this);
                             // '<li>'. Html::a('Issued','#',['value' => Url::to('index.php?r=instruksi-kerja/issuedmodalreport'), 'id' => 'modalButtonIssued']) .'</li>',
                         ],
                     ],
+                    ['label' => 'User', 'url' => ['/instruksi-kerja/user']],
                 
                 Yii::$app->user->isGuest ? (
                     ['label' => 'Login', 'url' => ['/site/login']]

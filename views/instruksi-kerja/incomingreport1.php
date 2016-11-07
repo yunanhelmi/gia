@@ -25,6 +25,7 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
+
         <?=  $this->render('searchincomingreport', ['model' => $searchModel, 'tahun' => $tahun]); ?>
     </div>
     <?php 
@@ -54,7 +55,7 @@ $this->registerJs($search);
         'broker',
         'conveyence',
         // 'interest',
-        'date_of_loss',
+        //'date_of_loss',
         'casualty',
         // 'detail_of_loss',
         // 'amount_of_loss',
@@ -69,18 +70,28 @@ $this->registerJs($search);
         // 'comment',
         // 'date_entered',
         // 'adjuster',
-        'actual_fee',
-        'actual_fee_usd',
-        'expenses',
-        'expenses_usd',
+        // 'actual_fee',
+        // 'actual_fee_usd',
+        // 'expenses',
+        // 'expenses_usd',
         // 'status',
         // 'date_send_of_pa',
         // 'date_send_of_dfr',
         // 'date_send_of_doc_request',
         // 'date_of_issued',
         // 'date_of_last_correspondent',
-        'remark',
-        
+        //'remark',
+        'adjuster',
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'header' => 'Action',
+            'template' => ' {view}',
+            'buttons' => [
+                'view' => function ($url, $model){
+                    return Html::a('detail<br>', 'index.php?r=instruksi-kerja/viewincomingreport&id='.$model->id);
+                }
+            ],
+        ],
     ]; 
     ?>
     <?= GridView::widget([

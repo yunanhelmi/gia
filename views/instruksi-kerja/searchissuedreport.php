@@ -17,27 +17,43 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
+    <div class="row">
+        <div class="col-md-4">
+            
 
-    <?= $form->field($model, 'id_client')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
-        'options' => ['placeholder' => 'Choose Assurer'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
-    <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
-
-    <!-- start: Bagian ini adalah form untuk memilih tahun yang akan diparsing pada model -->
-    <?= $form->field($model, 'date_of_instruction')->label("Year of Instruction")->widget(\kartik\widgets\Select2::classname(), [
-        'data' => $tahun,
-        'options' => ['placeholder' => 'Choose Year'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
+            <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
+            <?php $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"]; ?>
+            <?= $form->field($model, 'type_of_instruction')->label("Type of Instruction")->widget(\kartik\widgets\Select2::classname(), [
+                'data' => $type_of_instruction,
+                'options' => ['placeholder' => 'Choose Type of Instruction'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+            <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'id_client')->widget(\kartik\widgets\Select2::classname(), [
+                'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                'options' => ['placeholder' => 'Choose Assurer'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+            <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
+            <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
+            <?= $form->field($model, 'date_of_instruction')->label("Year of Instruction")->widget(\kartik\widgets\Select2::classname(), [
+                'data' => $tahun,
+                'options' => ['placeholder' => 'Choose Year'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
+        </div>
+    </div>
 
     <?php /* echo $form->field($model, 'assured')->textInput(['maxlength' => true, 'placeholder' => 'Assured']) */ ?>
 

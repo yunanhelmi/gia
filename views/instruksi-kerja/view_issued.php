@@ -7,9 +7,9 @@ use kartik\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerja */
 
-$this->title = 'Issued '.$model->id;
+$this->title = 'Issued '.$model->case_number;
 $this->params['breadcrumbs'][] = ['label' => 'Issued ', 'url' => ['issued']];
-$this->params['breadcrumbs'][] = $model->id;
+$this->params['breadcrumbs'][] = $model->case_number;
 ?>
 <div class="instruksi-kerja-view">
 
@@ -31,53 +31,91 @@ $this->params['breadcrumbs'][] = $model->id;
         </div>
     </div>
     
+    <h4>Header</h4>
+    <div class="alert alert-info" role="alert">
+        <div class="row">
+            <div class="col-md-4">
+                <p><strong>Applicant</strong> : <?= $model->client->nama ?></p>
+                <p><strong>Type Of Instruction</strong> : <?= $model->type_of_instruction ?></p>
+                <p><strong>Case Number</strong> : <?= $model->case_number ?></p>
+            </div>
+            <div class="col-md-4">
+                <p><strong>Assurers</strong> : <?= $model->assurers ?></p>
+                <p><strong>Insured</strong> : <?= $model->insured ?></p>
+                <p><strong>Broker</strong> : <?= $model->broker ?></p>
+            </div>
+            <div class="col-md-4">
+                <p><strong>Adjuster</strong> : <?= $model->adjuster ?></p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#detail" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
+            <li role="presentation"><a href="#update" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update</strong></a></li>
+            <li role="presentation"><a href="#status" aria-controls="messages" role="tab" data-toggle="tab"><strong>Status and Recovery Aspect</strong></a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="detail">
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        <p><strong>Conyenyence</strong> : <?= $model->conveyence?></p>
+                        <p><strong>Interest</strong> : <?= $model->interest ?></p>
+                        <p><strong>Date Of Loss</strong> : <?= $model->date_of_loss ?></p>
+                        <p><strong>Casuality</strong> : <?= $model->casualty ?></p>
+                        <p><strong>Amount Of Loss (Rp)</strong> : <?= $model->amount_of_loss ?></p>
+                        <p><strong>Amount Of Loss (USD)</strong> : <?= $model->amount_of_loss_usd ?></p>
+                        <p><strong>Sum Insured (Rp)</strong> : <?= $model->sum_insured ?></p>
+                        <p><strong>Sum Insured (USD)</strong> : <?= $model->sum_insured_usd ?></p>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="update">
+                <?php if($record != null){ ?>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Time</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                      </table>
+                    </div>
+                <?php } else { ?>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Time</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                      </table>
+                    </div>
+                <?php } ?>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="status">
+                <br>
+                <div class="row">
+                    <div class="col-md-8">
+                        <p><strong>Status</strong> : <?= $model->status?></p>
+                    </div>
+                </div>
+            </div>
+            
+          </div>
+        </div>   
+    </div>
 
     <div class="row">
-<?php 
-    $gridColumn = [
-        ['attribute' => 'id', 'visible' => false],
-        [
-            'attribute' => 'client.id',
-            'label' => 'Id Client',
-        ],
-        'case_number',
-        'type_of_instruction',
-        'date_of_instruction',
-        'assurers',
-        'insured',
-        'broker',
-        'conveyence',
-        'interest',
-        'date_of_loss',
-        'casualty',
-        'amount_of_loss',
-        'amount_of_loss_usd',
-        'sum_insured',
-        'sum_insured_usd',
-        'fee_code',
-        'not_relevant',
-        'protected',
-        'time_bar_due',
-        'time_bar_issue',
-        'comment',
-        'date_entered',
-        'adjuster',
-        'actual_fee',
-        'actual_fee_usd',
-        'expenses',
-        'expenses_usd',
-        'status',
-        'date_send_of_pa',
-        'date_send_of_dfr',
-        'date_send_of_doc_request',
-        'date_of_issued',
-        'date_of_last_correspondent',
-        'remark',
-    ];
-    echo DetailView::widget([
-        'model' => $model,
-        'attributes' => $gridColumn
-    ]); 
-?>
+
     </div>
 </div>
