@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+//use yii\widgets\DetailView;
 use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -15,14 +15,14 @@ $this->title = $model->case_number;
 
     <div class="row">
         <div class="col-sm-9">
-            <h2><?= 'Instruksi Kerja'.' '. Html::encode($this->title) ?></h2>
+            <h2><?= 'Outstanding'.' '. Html::encode($this->title) ?></h2>
         </div>
     </div>
 
     <h4>Header</h4>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-hover active">
+            <table class="table table-hover active table-bordered table-sm">
                 <tbody>
                   <tr class="active">
                     <th>Applicant</th>
@@ -47,21 +47,20 @@ $this->title = $model->case_number;
                   <tr class="active">
                     <th>Adjuster</th>
                     <td>: <?= $model->adjuster ?></td>
-                    <th></th>
-                    <td></td>
+                    <th>Status</th>
+                    <td>: <?= $model->status ?></td>
                   </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <br>
     <h4>Detail of Claim</h4>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <th>Conyenyence</th>
+                    <th>Conveyence</th>
                     <td> <?= $model->conveyence?></td>
                     <th>Interest</th>
                     <td> <?= $model->interest ?></td>

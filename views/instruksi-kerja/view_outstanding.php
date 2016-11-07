@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $model->id;
             </div>
             <div class="col-md-4">
                 <p><strong>Adjuster</strong> : <?= $model->adjuster ?></p>
-                
+                <p><strong>Status</strong> : <?= $model->status ?></p>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $model->id;
                 <br>
                 <div class="row">
                     <div class="col-md-8">
-                        <p><strong>Conyenyence</strong> : <?= $model->conveyence?></p>
+                        <p><strong>Conveyence</strong> : <?= $model->conveyence?></p>
                         <p><strong>Interest</strong> : <?= $model->interest ?></p>
                         <p><strong>Date Of Loss</strong> : <?= $model->date_of_loss ?></p>
                         <p><strong>Casuality</strong> : <?= $model->casualty ?></p>
