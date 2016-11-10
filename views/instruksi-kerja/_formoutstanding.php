@@ -205,7 +205,15 @@ use kartik\widgets\ActiveForm;
         <br>
         <div class="row">
             <div class="col-md-4">
-                <?php echo $form->field($model, 'status')->dropDownList(['Outstanding' => 'outstanding', 'Issued' => 'issued'],['prompt'=>'Choose Status']);?>
+                <?= $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
+                    'options' => ['placeholder' => 'Choose Status'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+
+                ]); 
+                ?>
             </div>
             
         </div>
