@@ -80,6 +80,7 @@ $this->registerJs($search);
         //'amount_of_claim',
         'sum_insured',
         'fee_code',
+        'fee_code_usd',
         'not_relevant',
         'protected',
         'time_bar_due',

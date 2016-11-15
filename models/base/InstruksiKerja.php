@@ -25,6 +25,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $sum_insured
  * @property string $sum_insured_usd
  * @property string $fee_code
+ * @property string $fee_code_usd
  * @property string $not_relevant
  * @property string $protected
  * @property string $time_bar_due

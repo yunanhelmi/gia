@@ -177,7 +177,30 @@ use kartik\widgets\ActiveForm;
                     ],
                     
                 ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
-                <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
+                <?= $form->field($model, 'fee_code',[
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                    
+                ])->label("Fee Code")->textInput(['placeholder' => 'Fee Code']) ?>
+                <?= $form->field($model, 'fee_code_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                    
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
             </div>
         </div>
     </div>

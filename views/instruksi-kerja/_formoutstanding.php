@@ -118,13 +118,98 @@ use kartik\widgets\ActiveForm;
                 
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
-                <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
-                <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
-                <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
-                <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
-                <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
-                <?= $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>    
+                <?= $form->field($model, 'amount_of_loss', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Amount Of Loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss']); ?>
+                <?= $form->field($model, 'amount_of_loss_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss']) ?>
+
+                <?= $form->field($model, 'sum_insured', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Sum Insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']); ?>
+                <?= $form->field($model, 'sum_insured_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
+                
+                <?= $form->field($model, 'fee_code', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Fee COde')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']); ?>
+                <?= $form->field($model, 'fee_code_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
+                
+                <?= $form->field($model, 'expenses', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses']); ?>
+                <?= $form->field($model, 'expenses_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Expenses']) ?>
+
             </div>
             <div class="col-md-4">
                 <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
