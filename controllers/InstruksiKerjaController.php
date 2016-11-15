@@ -33,7 +33,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['user','deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['user', 'findmodeluser', 'viewuser', 'updateuser', 'deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -567,6 +567,15 @@ class InstruksiKerjaController extends Controller
     }
 
     // fungsi di bawah ini untuk management user 
+    protected function findModeluser($id)
+    {
+        if (($model = Login::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
     public function actionUser(){
         $searchModel = new LoginSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -574,6 +583,14 @@ class InstruksiKerjaController extends Controller
         return $this->render('user_index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewuser($id)
+    {
+        $model = $this->findModeluser($id);
+        return $this->render('view_user', [
+            'model' => $this->findModeluser($id),
         ]);
     }
 
@@ -589,11 +606,36 @@ class InstruksiKerjaController extends Controller
         }
     }
 
+    public function actionUpdateuser($id)
+    {
+        //$searchModel = new LoginSearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // var_dump($id);
+        // exit();
+        if (Yii::$app->request->post('_asnew') == '1') {
+            $model = new Login();
+        }
+        else{
+            $model = $this->findModeluser($id);
+        }
+
+
+
+        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+                return $this->redirect(['viewuser', 'id' => $model->id]);
+        } 
+        else {
+            return $this->render('user_update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     public function actionDeleteuser($id)
     {
-        $this->findModel($id)->deleteWithRelated();
+        $this->findModeluser($id)->deleteWithRelated();
 
-        return $this->redirect(['user_index']);
+        return $this->redirect(['user']);
     }
     
 

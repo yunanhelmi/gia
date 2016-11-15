@@ -174,7 +174,7 @@ use kartik\widgets\ActiveForm;
                         'autoGroup' => true,
                         'removeMaskOnSubmit' => true,
                     ],
-                ])->label('Fee COde')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']); ?>
+                ])->label('Fee Code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']); ?>
                 <?= $form->field($model, 'fee_code_usd',[
                         'addon' => ['prepend' => ['content'=>'USD']]
                     ])->widget(\yii\widgets\MaskedInput::className(),[
