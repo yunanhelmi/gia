@@ -163,7 +163,8 @@ use kartik\widgets\ActiveForm;
                         'removeMaskOnSubmit' => true,
                     ],
                 ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
-                
+            </div>
+            <div class="col-md-4">
                 <?= $form->field($model, 'fee_code', [
                         'addon' => ['prepend' => ['content'=>'Rp']]
                     ])->widget(\yii\widgets\MaskedInput::className(),[
@@ -209,27 +210,28 @@ use kartik\widgets\ActiveForm;
                         'removeMaskOnSubmit' => true,
                     ],
                 ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Expenses']) ?>
-
-            </div>
-            <div class="col-md-4">
-                <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
-                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-                    'saveFormat' => 'php:Y-m-d',
-                    'ajaxConversion' => true,
-                    'options' => [
-                        'pluginOptions' => [
-                            'placeholder' => 'Choose Time Bar Due',
-                            'autoclose' => true
-                        ]
-                    ],
-                ]); 
-                ?>
-                <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
-                <?= $form->field($model, 'comment')->textArea(['rows' => '6','placeholder' => 'Comment']) ?>
             </div>
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="record">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
+                    'options' => ['placeholder' => 'Choose Status'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+
+                ]); 
+                ?>
+            </div>
+        </div>
         <br>
         <div class="row">
             <div class="col-md-7">
@@ -290,17 +292,26 @@ use kartik\widgets\ActiveForm;
         <br>
         <div class="row">
             <div class="col-md-4">
-                <?= $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
-                    'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
-                    'options' => ['placeholder' => 'Choose Status'],
-                    'pluginOptions' => [
-                        'allowClear' => false
+                <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Time Bar Due',
+                            'autoclose' => true
+                        ]
                     ],
-
                 ]); 
                 ?>
+            </div>    
+            <div class="col-md-4">
+                <?= $form->field($model, 'comment')->textArea(['rows' => '6','placeholder' => 'Comment']) ?>
             </div>
-            
+            <div class="col-md-4">
+                <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
+
+            </div>
         </div>
         
     </div>
