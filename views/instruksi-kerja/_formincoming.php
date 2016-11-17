@@ -53,9 +53,9 @@ use kartik\widgets\ActiveForm;
             <div class="col-md-4">
                 <?php 
                     $adjuster = [
-                        "OK" =>"Omar Koswara", 
-                        "AR" => "Aulia Rahman", 
-                        "DB" => "Dimas Bagus", 
+                        "Aulia Rahman" => "Aulia Rahman", 
+                        "Dimas Bagus" => "Dimas Bagus",
+                        "Omar Koswara" =>"Omar Koswara", 
                         ];
                     echo $form->field($model, 'adjuster')->widget(\kartik\widgets\Select2::classname(), [
                         'data' => $adjuster,
@@ -177,7 +177,7 @@ use kartik\widgets\ActiveForm;
                     ],
                     
                 ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
-                <?= $form->field($model, 'fee_code',[
+                <?= $form->field($model, 'fee_code_rp',[
                         'addon' => ['prepend' => ['content'=>'Rp']]
                     ])->widget(\yii\widgets\MaskedInput::className(),[
                     'name' => 'input-33',
@@ -189,7 +189,7 @@ use kartik\widgets\ActiveForm;
                     ],
                     
                 ])->label("Fee Code")->textInput(['placeholder' => 'Fee Code']) ?>
-                <?= $form->field($model, 'fee_code_usd',[
+                <?= $form->field($model, 'fee_code',[
                         'addon' => ['prepend' => ['content'=>'USD']]
                     ])->widget(\yii\widgets\MaskedInput::className(),[
                     'name' => 'input-33',
