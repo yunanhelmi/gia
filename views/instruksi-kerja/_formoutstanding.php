@@ -48,8 +48,20 @@ use kartik\widgets\ActiveForm;
                 ?>
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
-                
+                <?php 
+                    $adjuster = [
+                        "Aulia Rahman" =>"Aulia Rahman", 
+                        "Dimas Bagus" => "Dimas Bagus", 
+                        "Omar Kaswara" => "Omar Kaswara", 
+                        ];
+                    echo $form->field($model, 'adjuster')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => $adjuster,
+                        'options' => ['placeholder' => 'Choose Adjuster'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]); 
+                ?>
             </div>
         </div>
         <div class="row">
