@@ -48,6 +48,7 @@ $this->params['breadcrumbs'][] = $model->case_number;
             <div class="col-md-4">
                 <p><strong>Adjuster</strong> : <?= $model->adjuster ?></p>
                 <p><strong>Status</strong> : <?= $model->status ?></p>
+                <p><strong>Date of Instruction</strong> : <?= $model->date_of_instruction ?></p>
             </div>
         </div>
     </div>
@@ -70,9 +71,11 @@ $this->params['breadcrumbs'][] = $model->case_number;
                         <p><strong>Date Of Loss</strong> : <?= $model->date_of_loss ?></p>
                         <p><strong>Casuality</strong> : <?= $model->casualty ?></p>
                         <p><strong>Amount Of Loss (Rp)</strong> : <?= $model->amount_of_loss ?></p>
-                        <p><strong>Amount Of Loss (USD)</strong> : <?= $model->amount_of_loss_usd ?></p>
+                        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            (USD)</strong> : <?= $model->amount_of_loss_usd ?></p>
                         <p><strong>Sum Insured (Rp)</strong> : <?= $model->sum_insured ?></p>
-                        <p><strong>Sum Insured (USD)</strong> : <?= $model->sum_insured_usd ?></p>
+                        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            (USD)</strong> : <?= $model->sum_insured_usd ?></p>
                     </div>
                 </div>
             </div>

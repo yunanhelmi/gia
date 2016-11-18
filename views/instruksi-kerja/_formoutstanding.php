@@ -76,7 +76,18 @@ use kartik\widgets\ActiveForm;
                 <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
             </div>
             <div class="col-md-4">
-                
+                <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Loss',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
             </div>
         </div>
         <div class="row">
