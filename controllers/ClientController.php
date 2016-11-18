@@ -32,7 +32,7 @@ class ClientController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','viewclient','view','create','update','delete','pdf','saveasnew'],
+                        'actions' => ['send', 'index','viewclient','view','create','update','delete','pdf','saveasnew'],
                         'roles' => ['@']
                     ],
                     [
@@ -41,6 +41,16 @@ class ClientController extends Controller
                 ]
             ]
         ];
+    }
+
+    public function actionSend(){
+        Yii::$app->mailer->compose()
+        ->setFrom('admin@giadj-sby.com')
+        ->setTo('alajiseno@gmail.com')
+        ->setSubject('Email Pemberitahuan')
+        ->setTextBody('Bro iki email e wes isok ngirim email. aku ngirim tekan localhost.')
+        ->setHtmlBody('<b>Mantab Jiwaaaaaa</b>')
+        ->send();
     }
 
     /**
