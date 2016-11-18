@@ -27,7 +27,7 @@ $this->registerJs($search);
     </p>
     <div class="search-form" style="display:none">
 
-        <?php  echo  $this->render('searchoutstanding', ['model' => $searchModel]); ?>
+        <?php  echo  $this->render('searchoutstanding', ['model' => $searchModel, 'adjuster' => $adjuster]); ?>
 
     </div>
     <?php 

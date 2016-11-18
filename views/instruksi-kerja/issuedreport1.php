@@ -25,7 +25,7 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?=  $this->render('searchissuedreport', ['model' => $searchModel, 'tahun' => $tahun]); ?>
+        <?=  $this->render('searchissuedreport', ['model' => $searchModel, 'tahun' => $tahun, 'adjuster' => $adjuster]); ?>
     </div>
     <?php 
     $gridColumn = [

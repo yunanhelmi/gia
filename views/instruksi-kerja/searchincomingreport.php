@@ -42,7 +42,13 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'conveyence')->textInput(['maxlength' => true, 'placeholder' => 'Conveyence']) ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
+            <?= $form->field($model, 'adjuster')->label("Adjuster")->widget(\kartik\widgets\Select2::classname(), [
+                'data' => $adjuster,
+                'options' => ['placeholder' => 'Adjuster'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]); ?>
             <?= $form->field($model, 'date_of_instruction')->label("Year of Instruction")->widget(\kartik\widgets\Select2::classname(), [
                 'data' => $tahun,
                 'options' => ['placeholder' => 'Choose Year'],

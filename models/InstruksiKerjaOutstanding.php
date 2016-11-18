@@ -19,7 +19,7 @@ use app\models\InstruksiKerja;
     {
         return [
             [['id', 'id_client'], 'integer'],
-            [['case_number', 'type_of_instruction', 'date_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'date_of_loss', 'casualty', 'amount_of_loss', 'amount_of_loss_usd', 'sum_insured', 'sum_insured_usd', 'fee_code', 'not_relevant', 'protected', 'time_bar_due', 'comment', 'date_entered', 'adjuster', 'actual_fee', 'actual_fee_usd', 'expenses', 'expenses_usd', 'status', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent', 'remark', 'created_at', 'updated_at'], 'safe'],
+            [['case_number', 'type_of_instruction', 'date_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'date_of_loss', 'casualty', 'amount_of_loss', 'amount_of_loss_usd', 'sum_insured', 'sum_insured_usd', 'fee_code', 'fee_code_rp', 'not_relevant', 'protected', 'time_bar_due', 'comment', 'date_entered', 'adjuster', 'actual_fee', 'actual_fee_usd', 'expenses', 'expenses_usd', 'status', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent', 'remark', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -68,7 +68,7 @@ use app\models\InstruksiKerja;
             'date_send_of_doc_request' => $this->date_send_of_doc_request,
             'date_of_issued' => $this->date_of_issued,
             'date_of_last_correspondent' => $this->date_of_last_correspondent,
-            'status' => 'outstanding',
+            //'status' => 'outstanding',
         ]);
 
         $query->andFilterWhere(['like', 'case_number', $this->case_number])
@@ -85,6 +85,7 @@ use app\models\InstruksiKerja;
             ->andFilterWhere(['like', 'amount_of_loss', $this->amount_of_loss])
             ->andFilterWhere(['like', 'sum_insured', $this->sum_insured])
             ->andFilterWhere(['like', 'fee_code', $this->fee_code])
+            ->andFilterWhere(['like', 'fee_code_rp', $this->fee_code_rp])
             ->andFilterWhere(['like', 'not_relevant', $this->not_relevant])
             ->andFilterWhere(['like', 'protected', $this->protected])
             ->andFilterWhere(['like', 'comment', $this->comment])

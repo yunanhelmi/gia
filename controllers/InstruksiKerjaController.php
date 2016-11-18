@@ -33,7 +33,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['user','deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['user', 'findmodeluser', 'viewuser', 'updateuser', 'deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
                         'roles' => ['@']
                     ],
                     [
@@ -74,10 +74,16 @@ class InstruksiKerjaController extends Controller
     {
         $searchModel = new InstruksiKerjaOutstanding();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $adjuster = InstruksiKerjaOutstanding::find()->select('adjuster')->where("status = 'outstanding'")->distinct()->asArray()->orderBy('adjuster')->all();
+        $arr1 = array();
+        for($i=0;$i<sizeof($adjuster);$i++){
+            $arr1[$adjuster[$i]['adjuster']] = $adjuster[$i]['adjuster'];
+        }
 
         return $this->render('outstanding', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'adjuster' => $arr1,
         ]);
     }
 
@@ -85,10 +91,16 @@ class InstruksiKerjaController extends Controller
     {
         $searchModel = new InstruksiKerjaIssued();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $adjuster = InstruksiKerjaIssued::find()->select('adjuster')->where("status = 'issued'")->distinct()->asArray()->orderBy('adjuster')->all();
+        $arr1 = array();
+        for($i=0;$i<sizeof($adjuster);$i++){
+            $arr1[$adjuster[$i]['adjuster']] = $adjuster[$i]['adjuster'];
+        }
 
         return $this->render('issued', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'adjuster' => $arr1,
         ]);
     }
 
@@ -367,6 +379,12 @@ class InstruksiKerjaController extends Controller
             $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
            
         }
+
+        $adjuster = InstruksiKerjaIncoming::find()->select('adjuster')->distinct()->asArray()->orderBy('adjuster')->all();
+        $arr1 = array();
+        for($i=0;$i<sizeof($adjuster);$i++){
+            $arr1[$adjuster[$i]['adjuster']] = $adjuster[$i]['adjuster'];
+        }
         // echo "<pre>";
         // var_dump($arr);
         // echo "</pre>";
@@ -374,7 +392,8 @@ class InstruksiKerjaController extends Controller
         return $this->render('incomingreport1', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'tahun' => $arr
+            'tahun' => $arr,
+            'adjuster' => $arr1,
         ]);
     }
 
@@ -395,9 +414,6 @@ class InstruksiKerjaController extends Controller
         if($year == null){
             $year = date('Y');
         }
-
-
-        
 
         $model = InstruksiKerjaIncoming::find()->where("extract(YEAR from date_of_instruction) = ".$year."")->asArray()->all();
 
@@ -429,22 +445,29 @@ class InstruksiKerjaController extends Controller
     public function actionOutstandingreport(){
         $searchModel = new InstruksiKerjaOutstanding();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->distinct()->asArray()->orderBy('year')->all();
+    
         // kodingan ini menyimpan kembali array yang benar
         // array berisi key dan nilai yg sama
+        $tahun = InstruksiKerjaOutstanding::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'outstanding'")->distinct()->asArray()->orderBy('year')->all();
         $arr = array();
         for($i=0;$i<sizeof($tahun);$i++){
             $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
-           
+        }
+
+        $adjuster = InstruksiKerjaOutstanding::find()->select('adjuster')->where("status = 'outstanding'")->distinct()->asArray()->orderBy('adjuster')->all();
+        $arr1 = array();
+        for($i=0;$i<sizeof($adjuster);$i++){
+            $arr1[$adjuster[$i]['adjuster']] = $adjuster[$i]['adjuster'];
         }
         // echo "<pre>";
-        // var_dump($arr);
+        // var_dump($arr1);
         // echo "</pre>";
         // exit(); 
         return $this->render('outstandingreport1', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'tahun' => $arr
+            'tahun' => $arr,
+            'adjuster' => $arr1,
         ]);
     }
 
@@ -499,10 +522,17 @@ class InstruksiKerjaController extends Controller
            
         }
 
+        $adjuster = InstruksiKerjaIssued::find()->select('adjuster')->where("status = 'issued'")->distinct()->asArray()->orderBy('adjuster')->all();
+        $arr1 = array();
+        for($i=0;$i<sizeof($adjuster);$i++){
+            $arr1[$adjuster[$i]['adjuster']] = $adjuster[$i]['adjuster'];
+        }
+
         return $this->render('issuedreport1', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'tahun' => $arr
+            'tahun' => $arr,
+            'adjuster' => $arr1,
         ]);
     }
 
@@ -567,6 +597,15 @@ class InstruksiKerjaController extends Controller
     }
 
     // fungsi di bawah ini untuk management user 
+    protected function findModeluser($id)
+    {
+        if (($model = Login::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
     public function actionUser(){
         $searchModel = new LoginSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -574,6 +613,14 @@ class InstruksiKerjaController extends Controller
         return $this->render('user_index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewuser($id)
+    {
+        $model = $this->findModeluser($id);
+        return $this->render('view_user', [
+            'model' => $this->findModeluser($id),
         ]);
     }
 
@@ -589,11 +636,36 @@ class InstruksiKerjaController extends Controller
         }
     }
 
+    public function actionUpdateuser($id)
+    {
+        //$searchModel = new LoginSearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // var_dump($id);
+        // exit();
+        if (Yii::$app->request->post('_asnew') == '1') {
+            $model = new Login();
+        }
+        else{
+            $model = $this->findModeluser($id);
+        }
+
+
+
+        if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+                return $this->redirect(['viewuser', 'id' => $model->id]);
+        } 
+        else {
+            return $this->render('user_update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     public function actionDeleteuser($id)
     {
-        $this->findModel($id)->deleteWithRelated();
+        $this->findModeluser($id)->deleteWithRelated();
 
-        return $this->redirect(['user_index']);
+        return $this->redirect(['user']);
     }
     
 

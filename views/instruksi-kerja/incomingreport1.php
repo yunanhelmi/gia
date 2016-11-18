@@ -26,7 +26,7 @@ $this->registerJs($search);
     </p>
     <div class="search-form" style="display:none">
 
-        <?=  $this->render('searchincomingreport', ['model' => $searchModel, 'tahun' => $tahun]); ?>
+        <?=  $this->render('searchincomingreport', ['model' => $searchModel, 'tahun' => $tahun, 'adjuster' => $adjuster]); ?>
     </div>
     <?php 
     $gridColumn = [

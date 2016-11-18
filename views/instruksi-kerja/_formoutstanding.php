@@ -48,8 +48,15 @@ use kartik\widgets\ActiveForm;
                 ?>
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'adjuster')->textInput(['maxlength' => true, 'placeholder' => 'Adjuster']) ?>
-                
+                <?php 
+                    echo $form->field($model, 'adjuster')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('adjuster')->asArray()->distinct()->all(), 'adjuster', 'adjuster'),
+                        'options' => ['placeholder' => 'Choose Adjuster'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]); 
+                ?>
             </div>
         </div>
         <div class="row">
@@ -69,7 +76,18 @@ use kartik\widgets\ActiveForm;
                 <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
             </div>
             <div class="col-md-4">
-                
+                <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Loss',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
             </div>
         </div>
         <div class="row">
@@ -118,33 +136,120 @@ use kartik\widgets\ActiveForm;
                 
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'amount_of_loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (Rp)']) ?>
-                <?= $form->field($model, 'amount_of_loss_usd')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss (USD)']) ?>
-                <?= $form->field($model, 'sum_insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (Rp)']) ?>
-                <?= $form->field($model, 'sum_insured_usd')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured (USD)']) ?>
-                <?= $form->field($model, 'fee_code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
-                <?= $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
-                <?= $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>    
+                <?= $form->field($model, 'amount_of_loss', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Amount Of Loss')->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss']); ?>
+                <?= $form->field($model, 'amount_of_loss_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Amount Of Loss']) ?>
+
+                <?= $form->field($model, 'sum_insured', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Sum Insured')->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']); ?>
+                <?= $form->field($model, 'sum_insured_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
-                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-                    'saveFormat' => 'php:Y-m-d',
-                    'ajaxConversion' => true,
-                    'options' => [
-                        'pluginOptions' => [
-                            'placeholder' => 'Choose Time Bar Due',
-                            'autoclose' => true
-                        ]
+                <?= $form->field($model, 'fee_code_rp', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
                     ],
-                ]); 
-                ?>
-                <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
-                <?= $form->field($model, 'comment')->textArea(['rows' => '6','placeholder' => 'Comment']) ?>
+                ])->label('Fee Code')->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']); ?>
+                <?= $form->field($model, 'fee_code',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Fee Code']) ?>
+                
+                <?= $form->field($model, 'expenses', [
+                        'addon' => ['prepend' => ['content'=>'Rp']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label('Expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses']); ?>
+                <?= $form->field($model, 'expenses_usd',[
+                        'addon' => ['prepend' => ['content'=>'USD']]
+                    ])->widget(\yii\widgets\MaskedInput::className(),[
+                    'name' => 'input-33',
+                    'clientOptions' => [
+                        'alias' =>  'decimal',
+                        'groupSeparator' => ',',
+                        'autoGroup' => true,
+                        'removeMaskOnSubmit' => true,
+                    ],
+                ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Expenses']) ?>
             </div>
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="record">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
+                    'options' => ['placeholder' => 'Choose Status'],
+                    'pluginOptions' => [
+                        'allowClear' => false
+                    ],
+
+                ]); 
+                ?>
+            </div>
+        </div>
         <br>
         <div class="row">
             <div class="col-md-7">
@@ -205,17 +310,26 @@ use kartik\widgets\ActiveForm;
         <br>
         <div class="row">
             <div class="col-md-4">
-                <?= $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
-                    'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
-                    'options' => ['placeholder' => 'Choose Status'],
-                    'pluginOptions' => [
-                        'allowClear' => false
+                <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Time Bar Due',
+                            'autoclose' => true
+                        ]
                     ],
-
                 ]); 
                 ?>
+            </div>    
+            <div class="col-md-4">
+                <?= $form->field($model, 'comment')->textArea(['rows' => '6','placeholder' => 'Comment']) ?>
             </div>
-            
+            <div class="col-md-4">
+                <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
+
+            </div>
         </div>
         
     </div>
