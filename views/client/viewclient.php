@@ -33,10 +33,27 @@ $this->registerJs($search);
         ['class' => 'yii\grid\SerialColumn'],
         
         ['attribute' => 'id', 'visible' => false],
-        'nama',
-        'bisnis',
+        [                     
+            'format' => 'html',
+            'attribute' => 'nama',
+            'label' => 'Client Name',
+            'content' => function($model){
+                return "
+                    <table style='width:100%'>
+                        <tr>
+                            <td> <strong>$model->nama</strong></td>
+                        </tr>
+                        <tr>
+                            <td> $model->bisnis</td>
+                        </tr>
+                        <tr>
+                            <td> $model->telepon</td>
+                        </tr>
+                    </table>
+                ";
+                }
+        ],
         'alamat:ntext',
-        'telepon',
         [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Action',

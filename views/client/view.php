@@ -44,10 +44,19 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php 
             $gridColumn = [
                 ['attribute' => 'id', 'visible' => false],
-                'nama',
-                'bisnis',
+                [                     
+                    'format' => 'html',
+                    'attribute' => 'nama',
+                    'label' => 'Client Name',
+                    'content' => function($model){
+                        return "
+                            Nama : <strong>$model->nama</strong> <br>
+                            Business: $model->bisnis <br>
+                            Phone Number: $model->telepon <br>
+                        ";
+                        }
+                ],
                 'alamat:ntext',
-                'telepon',
             ];
             echo DetailView::widget([
                 'model' => $model,
