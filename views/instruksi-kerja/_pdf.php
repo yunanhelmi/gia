@@ -83,6 +83,10 @@ $this->title = $model->case_number;
                     <th>Sum Insured (USD)</th>
                     <td> <?= number_format($model->sum_insured_usd) ?></td>
                   </tr>
+                  <tr>
+                    <th>Last Update</th>
+                    <td> <?= $model->updated_at ?></td>
+                  </tr>
                 </tbody>
             </table>
         </div>

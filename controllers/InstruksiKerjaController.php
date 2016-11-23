@@ -164,7 +164,8 @@ class InstruksiKerjaController extends Controller
             }
             // var_dump($record->description);
             // exit();
-            $model->date_of_instruction = date("Y-m-d");
+            //$model->date_of_instruction = date("Y-m-d");
+            $model->date_entered = date("Y-m-d");
             $hasil = $model->save();
 
             $record->instruksi_kerja_id = $model->id;
