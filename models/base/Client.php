@@ -59,10 +59,10 @@ class Client extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getInstruksiKerjas()
-    {
-        return $this->hasMany(\app\models\InstruksiKerja::className(), ['id_client' => 'id']);
-    }
+//    public function getInstruksiKerjas()
+//    {
+//        return $this->hasMany(\app\models\InstruksiKerja::className(), ['id_client' => 'id']);
+//    }
     
 /**
      * @inheritdoc

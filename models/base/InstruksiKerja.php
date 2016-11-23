@@ -55,6 +55,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
     public $year_option;
     public $time_record;
     public $description_record;
+    public $keterangan;
 
     /**
      * @inheritdoc
@@ -65,7 +66,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             [['id_client', 'amount_of_loss', 'amount_of_loss_usd', 'sum_insured', 'sum_insured_usd', 'fee_code', 'fee_code_rp', 'actual_fee', 'actual_fee_usd', 'expenses', 'expenses_usd'], 'integer'],
             [['date_of_instruction', 'date_of_loss', 'time_bar_due', 'date_entered', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent'], 'safe'],
             [['not_relevant', 'protected', 'status'], 'string'],
-            [['description_record','time_record','case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
+            [['keterangan','description_record','time_record','case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
             [['type_of_instruction','id_client','case_number','assurers','conveyence'],'required']
         ];
     }
@@ -123,6 +124,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             'remark' => 'Remark',
             'time_record' => "Time Record",
             'description_record' => "Description Record",
+            'keterangan' => "Keterangan Tambahan",
         ];
     }
     

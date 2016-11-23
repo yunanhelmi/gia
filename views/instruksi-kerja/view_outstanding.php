@@ -93,15 +93,27 @@ $this->params['breadcrumbs'][] = $model->case_number;
             <div role="tabpanel" class="tab-pane" id="update">
                 <?php if($record != null){ ?>
                     <div class="table-responsive">
-                      <table class="table table-hover">
-                        <thead>
+                      <table class="table">
                             <tr>
-                                <th>No.</th>
-                                <th>Time</th>
-                                <th>Description</th>
+                                <td><strong>User</strong></td>
+                                <td><strong>Time Record</strong></td>
+                                <td><strong>Description</strong></td>
+                                <td><strong>Notes</strong></td>
+                                <td><strong>Time Created</strong></td>
                             </tr>
-                        </thead>
-                      </table>
+                            
+                            <?php
+                            for($i=0;$i<sizeof($record);$i++){
+                            ?>
+                            <tr>
+                                <td><?= $record[$i]['user']?></td>
+                                <td><?= $record[$i]['time']?></td>
+                                <td><?= $record[$i]['description']?></td>
+                                <td><?= $record[$i]['keterangan']?></td>
+                                <td><?= $record[$i]['created_at']?></td>
+                            </tr>
+                            <?php }?>
+                        </table>
                     </div>
                 <?php } else { ?>
                     <div class="table-responsive">

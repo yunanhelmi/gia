@@ -87,6 +87,7 @@ use kartik\widgets\ActiveForm;
                 <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
                     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
                     'saveFormat' => 'php:Y-m-d',
+                    //'data' => date('php:Y-m-d'),
                     'ajaxConversion' => true,
                     'options' => [
                         'pluginOptions' => [

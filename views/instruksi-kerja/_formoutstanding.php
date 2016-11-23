@@ -252,10 +252,21 @@ use kartik\widgets\ActiveForm;
         </div>
         <br>
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-12">
                 <table class="table">
                     <tr>
-                        <td><?php echo $form->field($model, 'time_record')->textInput(['readonly'=>false,'placeholder'=> date('Y-m-d')]) ?></td>
+                        <td><?php echo $form->field($model, 'time_record')->widget(\kartik\datecontrol\DateControl::classname(), [
+                            'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                            'saveFormat' => 'php:Y-m-d',
+                            'ajaxConversion' => true,
+                            'options' => [
+                                'pluginOptions' => [
+                                    'placeholder' => 'Choose Time Record',
+                                    'autoclose' => true
+                                ]
+                            ],
+                        ]); ?>
+                        </td>
                         <td><?php 
                             $type_of_description = [
                                 "Survey" =>"Survey", 
@@ -275,39 +286,39 @@ use kartik\widgets\ActiveForm;
                                 ],
                             ]); ?>
                         </td>
+                        <td><?= $form->field($model, 'keterangan')->textInput(['maxlength' => true, 'placeholder' => 'Keterangan']) ?></td>
                     </tr>
                     
                     
                 </table>
 
             </div>
-            <div class="col-md-5">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <table class="table">
                     <tr>
-                        <td><strong>Time</strong></td>
+                        <td><strong>User</strong></td>
+                        <td><strong>Time Record</strong></td>
                         <td><strong>Description</strong></td>
+                        <td><strong>Notes</strong></td>
+                        <td><strong>Time Created</strong></td>
                     </tr>
+                    
                     <?php
-                    // echo "<pre>";
-                    // var_dump($record);
-                    // echo "</pre>";
-                    // exit(); 
-                    if($record != NULL){
+                    for($i=0;$i<sizeof($record);$i++){
                     ?>
                     <tr>
-                        <td><?= $record->time?></td>
-                        <td><?= $record->description?></td>
+                        <td><?= $record[$i]['user']?></td>
+                        <td><?= $record[$i]['time']?></td>
+                        <td><?= $record[$i]['description']?></td>
+                        <td><?= $record[$i]['keterangan']?></td>
+                        <td><?= $record[$i]['created_at']?></td>
                     </tr>
-                    <?php } else {?>
-                    <tr>
-                        <td>contoh waktu</td>
-                        <td>contoh deskripsi</td>
-                    </tr>
-                    <?php } ?>
+                    <?php }?>
                 </table>
             </div>
         </div>
-        
     </div>
      <div role="tabpanel" class="tab-pane" id="status">
         <br>

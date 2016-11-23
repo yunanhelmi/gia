@@ -122,7 +122,7 @@ class InstruksiKerjaController extends Controller
     public function actionViewoutstanding($id)
     {
         $model = $this->findModel($id);
-        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->orderBy(['created_at' => SORT_DESC])->all();
         return $this->render('view_outstanding', [
             'model' => $this->findModel($id),
             'record' => $record,
@@ -222,21 +222,27 @@ class InstruksiKerjaController extends Controller
             $model = new InstruksiKerja();
         }else{
             $model = $this->findModel($id);
-            $record = $this->findModelRecord($id);
+            $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->orderBy(['time' => SORT_ASC])->all();
         }
 
         // var_dump($record);
         // exit();
+        //$record = Record::find()
 
         if ($model->loadAll(Yii::$app->request->post())) {
-            // var_dump($model->description_record);
-            // exit();
-
-            $new_record = new Record();
-            $new_record->time = date('Y-m-d');
-            $new_record->instruksi_kerja_id = $model->id;
-            $new_record->description = "dw";
-            $new_record->save();
+            $POST_VARIABLE=Yii::$app->request->post('InstruksiKerja');
+            //$request = $POST_VARIABLE['description_record']; 
+//             var_dump($request);
+//             exit();
+            if($POST_VARIABLE['description_record'] != null && $POST_VARIABLE['time_record'] != null){
+                $new_record = new Record();
+                $new_record->time = $POST_VARIABLE['time_record'];
+                $new_record->user = Yii::$app->user->identity->username;
+                $new_record->instruksi_kerja_id = $model->id;
+                $new_record->description = $POST_VARIABLE['description_record'];
+                $new_record->keterangan = $POST_VARIABLE['keterangan'];
+                $new_record->save();
+            }
             $model->save();
             return $this->redirect(['viewoutstanding', 'id' => $model->id]);
         } else {

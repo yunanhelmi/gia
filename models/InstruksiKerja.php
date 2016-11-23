@@ -9,6 +9,10 @@ use \app\models\base\InstruksiKerja as BaseInstruksiKerja;
  */
 class InstruksiKerja extends BaseInstruksiKerja
 {
+    public $year_option;
+    public $time_record;
+    public $description_record;
+    
     /**
      * @inheritdoc
      */
