@@ -84,7 +84,18 @@ use kartik\widgets\ActiveForm;
                 <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
             </div>
             <div class="col-md-4">
-                
+                <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Instruction',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
             </div>
         </div>
         <div class="row">
@@ -93,10 +104,10 @@ use kartik\widgets\ActiveForm;
                 
             </div>
             <div class="col-md-4">
-               <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
+                <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
             </div>
             <div class="col-md-4">
-                
+                <?= $form->field($model, 'date_entered')->textInput(['readonly' => true, 'maxlength' => true, 'value' => date("Y-m-d")]) ?>
             </div>
         </div>
     </div>

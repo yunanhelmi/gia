@@ -82,7 +82,7 @@ use kartik\widgets\ActiveForm;
                     'ajaxConversion' => true,
                     'options' => [
                         'pluginOptions' => [
-                            'placeholder' => 'Choose Date Of Loss',
+                            'placeholder' => 'Choose Date Of Instruction',
                             'autoclose' => true
                         ]
                     ],
@@ -108,8 +108,8 @@ use kartik\widgets\ActiveForm;
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
-    <li role="presentation"><a href="#record" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update</strong></a></li>
-    <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab"><strong>Status & Recovery Aspect</strong></a></li>
+    <li role="presentation"><a href="#record" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update & Status</strong></a></li>
+    <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab"><strong>Recovery Aspect</strong></a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -255,7 +255,7 @@ use kartik\widgets\ActiveForm;
             <div class="col-md-7">
                 <table class="table">
                     <tr>
-                        <td><?php echo $form->field($model, 'time_record')->textInput(['readonly'=>true,'placeholder'=> date('Y-m-d')]) ?></td>
+                        <td><?php echo $form->field($model, 'time_record')->textInput(['readonly'=>false,'placeholder'=> date('Y-m-d')]) ?></td>
                         <td><?php 
                             $type_of_description = [
                                 "Survey" =>"Survey", 
@@ -263,6 +263,9 @@ use kartik\widgets\ActiveForm;
                                 "Preliminary Advice (PA)" => "Preliminary Advice (PA)", 
                                 "Chasing Support Documents (CSD)" => "Chasing Support Documents (CSD)",
                                 "Draft Final Report (DFR)" => "Draft Final Report (DFR)",
+                                "Meeting" => "Meeting",
+                                "Telephone" => "Telephone",
+                                "Other Activity" => "Other Activity"
                                 ];
                             echo $form->field($model, 'description_record')->widget(\kartik\widgets\Select2::classname(), [
                                 'data' => $type_of_description,

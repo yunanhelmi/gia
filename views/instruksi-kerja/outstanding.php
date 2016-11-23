@@ -54,6 +54,7 @@ $this->registerJs($search);
         //'type_of_instruction',
         [
             'attribute' => 'date_of_instruction',
+            'label' => 'DOI',
             'format' => ['date', 'php:d/m/Y']
         ],
         'assurers',
@@ -67,7 +68,14 @@ $this->registerJs($search);
         // 'amount_of_loss_usd',
         // 'sum_insured',
         // 'sum_insured_usd',
-        'fee_code',
+        [
+            'attribute' => 'fee_code',
+            'format' => ['decimal', 0]
+        ],
+        [
+            'attribute' => 'fee_code_rp',
+            'format' => ['decimal', 0]
+        ],
         // 'not_relevant',
         // 'protected',
         // 'time_bar_due',
