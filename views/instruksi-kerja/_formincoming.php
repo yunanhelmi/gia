@@ -141,6 +141,8 @@ use kartik\widgets\ActiveForm;
                 ]); 
                 ?>
                 <?= $form->field($model, 'casualty')->textInput(['maxlength' => true, 'placeholder' => 'Casualty']) ?>
+            </div>
+            <div class="col-md-4">
                 <?= $form->field($model, 'amount_of_loss', [
                         'addon' => ['prepend' => ['content'=>'Rp']]
                     ])->widget(\yii\widgets\MaskedInput::className(),[
@@ -189,6 +191,8 @@ use kartik\widgets\ActiveForm;
                     ],
                     
                 ])->label("")->textInput(['maxlength' => true, 'placeholder' => 'Sum Insured']) ?>
+            </div>
+            <div class="col-md-4">
                 <?= $form->field($model, 'fee_code_rp',[
                         'addon' => ['prepend' => ['content'=>'Rp']]
                     ])->widget(\yii\widgets\MaskedInput::className(),[
@@ -220,7 +224,6 @@ use kartik\widgets\ActiveForm;
         <br>
         <div class="row">
             <div class="col-md-4">
-                
                 <?php // $form->field($model, 'expenses')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (Rp)']) ?>
                 <?php // $form->field($model, 'expenses_usd')->textInput(['maxlength' => true, 'placeholder' => 'Expenses (USD)']) ?>
                 <?= $form->field($model, 'time_bar_due')->widget(\kartik\datecontrol\DateControl::classname(), [
@@ -235,20 +238,12 @@ use kartik\widgets\ActiveForm;
                     ],
                 ]); 
                 ?>
+            </div>
+            <div class="col-md-4">
                 <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
+            </div>
+            <div class="col-md-4">
                 <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
-                <?= $form->field($model, 'date_entered')->widget(\kartik\datecontrol\DateControl::classname(), [
-                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
-                    'saveFormat' => 'php:Y-m-d H:i:s',
-                    'ajaxConversion' => true,
-                    'options' => [
-                        'pluginOptions' => [
-                            'placeholder' => 'Choose Date Entered',
-                            'autoclose' => true,
-                        ]
-                    ],
-                ]); 
-                ?>
             </div>
         </div>
     </div>

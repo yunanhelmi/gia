@@ -67,7 +67,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             [['date_of_instruction', 'date_of_loss', 'time_bar_due', 'date_entered', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent'], 'safe'],
             [['not_relevant', 'protected', 'status'], 'string'],
             [['keterangan','description_record','time_record','case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
-            [['type_of_instruction','id_client','case_number','assurers','conveyence'],'required']
+            [['type_of_instruction','id_client','case_number','assurers','conveyence','description_record','time_record'],'required']
         ];
     }
     
@@ -124,7 +124,7 @@ class InstruksiKerja extends \yii\db\ActiveRecord
             'remark' => 'Remark',
             'time_record' => "Time Record",
             'description_record' => "Description Record",
-            'keterangan' => "Keterangan Tambahan",
+            'keterangan' => "Additional Information",
         ];
     }
     

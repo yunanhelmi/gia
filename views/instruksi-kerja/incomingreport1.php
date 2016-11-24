@@ -99,6 +99,23 @@ $this->registerJs($search);
         //'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'exportConfig'=> [
+        GridView::EXCEL=>[
+                'label' => 'Excel',
+                'icon' => '',
+                'iconOptions' => '',
+                'showHeader' => false,
+                'showPageSummary' => false,
+                'showFooter' => false,
+                'showCaption' => false,
+                'filename' => 'yii',
+                'alertMsg' => 'created',
+                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'mime' => 'application/excel',
+                'config' => [
+                    'colDelimiter' => ";",
+                    'rowDelimiter' => "\r\n",
+                ], 
+            ],
             GridView::PDF=>[
                 'label' => 'PDF',
                 'icon' => '',

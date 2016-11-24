@@ -274,6 +274,7 @@ use kartik\widgets\ActiveForm;
                                 "Preliminary Advice (PA)" => "Preliminary Advice (PA)", 
                                 "Chasing Support Documents (CSD)" => "Chasing Support Documents (CSD)",
                                 "Draft Final Report (DFR)" => "Draft Final Report (DFR)",
+                                "Sending DFR To Insurer" => "Sending DFR To Insurer",
                                 "Meeting" => "Meeting",
                                 "Telephone" => "Telephone",
                                 "Other Activity" => "Other Activity"
@@ -286,10 +287,8 @@ use kartik\widgets\ActiveForm;
                                 ],
                             ]); ?>
                         </td>
-                        <td><?= $form->field($model, 'keterangan')->textInput(['maxlength' => true, 'placeholder' => 'Keterangan']) ?></td>
-                    </tr>
-                    
-                    
+                        <td><?= $form->field($model, 'keterangan')->textArea(['maxlength' => true, 'placeholder' => 'Notes']) ?></td>
+                    </tr>   
                 </table>
 
             </div>

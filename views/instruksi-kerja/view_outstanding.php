@@ -35,20 +35,49 @@ $this->params['breadcrumbs'][] = $model->case_number;
     <h4>Header</h4>
     <div class="alert alert-info" role="alert">
         <div class="row">
-            <div class="col-md-4">
-                <p><strong>Applicant</strong> : <?= $model->client->nama ?></p>
-                <p><strong>Type Of Instruction</strong> : <?= $model->type_of_instruction ?></p>
-                <p><strong>Case Number</strong> : <?= $model->case_number ?></p>
-            </div>
-            <div class="col-md-4">
-                <p><strong>Assurers</strong> : <?= $model->assurers ?></p>
-                <p><strong>Insured</strong> : <?= $model->insured ?></p>
-                <p><strong>Broker</strong> : <?= $model->broker ?></p>
-            </div>
-            <div class="col-md-4">
-                <p><strong>Adjuster</strong> : <?= $model->adjuster ?></p>
-                <p><strong>Status</strong> : <?= $model->status ?></p>
-                <p><strong>Date of Instruction</strong> : <?= $model->date_of_instruction ?></p>
+            <div class="col-md-12">
+                <table style="width:100%">
+                    <tr>
+                        <td><strong>Applicant</strong></td>
+                        <td>: <?= $model->client->nama ?></td>
+                        <td><strong>Assurers</strong></td>
+                        <td>: <?= $model->assurers ?></td>
+                        <td><strong>Adjuster</strong></td>
+                        <td>: <?= $model->adjuster ?></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type Of Instruction</strong></td>
+                        <td>: <?= $model->type_of_instruction ?></td>
+                        <td><strong>Insured</strong></td>
+                        <td>: <?= $model->insured ?></td>
+                        <td><strong>Status</strong></td>
+                        <td>: <?= $model->status ?></td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Case Number</strong></td>
+                        <td>: <?= $model->case_number ?></td>
+                        <td><strong>Broker</strong></td>
+                        <td>: <?= $model->broker ?></td>
+                        <td><strong>Date of Instruction</strong></td>
+                        <td>: <?= $model->date_of_instruction ?></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -65,29 +94,71 @@ $this->params['breadcrumbs'][] = $model->case_number;
             <div role="tabpanel" class="tab-pane active" id="detail">
                 <br>
                 <div class="row">
-                    <div class="col-md-2">
-                        <p><strong>Conveyence</strong> </p>
-                        <p><strong>Interest</strong></p>
-                        <p><strong>Date Of Loss</strong></p>
-                        <p><strong>Casuality</strong></p>
-                        <p><strong>Amount Of Loss (Rp)</strong></p>
-                        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            (USD)</strong></p>
-                        <p><strong>Sum Insured (Rp)</strong></p>
-                        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            (USD)</strong></p>
-                    </div>
-
                     <div class="col-md-4">
-                        <p>: <?= $model->conveyence?></p>
-                        <p>: <?= $model->interest?></p>
-                        <p>: <?= $model->date_of_loss?></p>
-                        <p>: <?= $model->casualty?></p>
-                        <p>: <?= number_format($model->amount_of_loss)?></p>
-                        <p>: <?= number_format($model->amount_of_loss_usd) ?></p>
-                        <p>: <?= number_format($model->sum_insured) ?></p>
-                        <p>: <?= number_format($model->sum_insured_usd) ?></p>
+                        <table style="width:100%">
+                            <tr>
+                                <td><strong>Conveyence</strong></td>
+                                <td>: <?= $model->conveyence?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interest</strong></td>
+                                <td>: <?= $model->interest?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date Of Loss</strong></td>
+                                <td>: <?= $model->date_of_loss?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date Of Loss</strong></td>
+                                <td>: <?= $model->date_of_loss?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Casuality</strong></td>
+                                <td>: <?= $model->casualty?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Amount Of Loss</strong></td>
+                                <td>: Rp <?= number_format($model->amount_of_loss)?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td></strong></td>
+                                <td>: USD <?= number_format($model->amount_of_loss_usd)?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sum Insured</strong></td>
+                                <td>: Rp <?= number_format($model->sum_insured)?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong></strong></td>
+                                <td>: USD <?= number_format($model->sum_insured_usd)?></td>
+                            </tr>
+                        </table>
                     </div>
+                    
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="update">
@@ -132,11 +203,13 @@ $this->params['breadcrumbs'][] = $model->case_number;
             <div role="tabpanel" class="tab-pane" id="status">
                 <br>
                 <div class="row">
-                    <div class="col-md-1">
-                        <p><strong>Status</strong></p>
-                    </div>
-                    <div class="col-md-4">
-                        <p>: <?= $model->status?></p>
+                    <div class="col-md-3">
+                        <table style="width:100%">
+                            <tr>
+                                <td><strong>Status</strong></td>
+                                <td>: <?= $model->status?></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
