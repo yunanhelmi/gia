@@ -6,6 +6,7 @@ use Yii;
 use app\models\InstruksiKerja;
 use app\models\Client;
 use app\models\Record;
+use app\models\Reminder;
 use app\models\Login;
 use app\models\InstruksiKerjaSearch;
 use app\models\InstruksiKerjaIssued;
@@ -148,6 +149,7 @@ class InstruksiKerjaController extends Controller
     {
         $model = new InstruksiKerja();
         $record = new Record();
+        $reminder = new Reminder();
         if($model->loadAll(Yii::$app->request->post())){
 
             $nama_client = Client::find()->select('nama')->where('id = '.$model->id_client.'')->asArray()->one();
@@ -162,11 +164,23 @@ class InstruksiKerjaController extends Controller
             } else if($model->type_of_instruction== "Risks Survey"){
                 $model->case_number = "MRI.".$model->case_number;
             }
-            // var_dump($record->description);
-            // exit();
-            //$model->date_of_instruction = date("Y-m-d");
+            
+            
             $model->date_entered = date("Y-m-d");
             $hasil = $model->save();
+            // print_r($model->getErrors());
+            // exit();
+
+            $reminder->id_instruksi = $model->id;
+            $reminder->tgl_survei = "2016-11-24";
+            $reminder->tgl_aa = strtotime("+1 days", strtotime($reminder->tgl_survei));
+            $reminder->tgl_pa = strtotime("+7 days", strtotime($reminder->tgl_aa));
+            $reminder->tgl_csd = strtotime("+14 days", strtotime($reminder->tgl_pa));
+            $reminder->tgl_dfr = strtotime("+10 days", strtotime($reminder->tgl_csd));
+            $reminder->tgl_completed = strtotime("+10 days", strtotime($reminder->tgl_dfr));
+            $reminder->saveAll();
+            print_r($reminder->getErrors());
+            exit();
 
             $record->instruksi_kerja_id = $model->id;
             $record->time = date("Y-m-d");
@@ -175,7 +189,7 @@ class InstruksiKerjaController extends Controller
 
 
             if ($hasil && $hasil2) {
-
+               
                 Yii::$app->session->setFlash('success','Data was successfully submitted');
                 return $this->redirect(['create']);
             } else {

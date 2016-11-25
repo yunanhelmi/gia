@@ -10,8 +10,10 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property integer $instruksi_kerja_id
+ * @property string $user
  * @property string $time
  * @property string $description
+ * @property string $keterangan
  * @property string $created_at
  * @property string $updated_at
  *
@@ -28,8 +30,9 @@ class Record extends \yii\db\ActiveRecord
     {
         return [
             [['instruksi_kerja_id'], 'integer'],
-            [['time', 'created_at', 'updated_at'], 'string', 'max' => 50],
-            [['description'], 'string', 'max' => 100]
+            [['keterangan'], 'string'],
+            [['user', 'description'], 'string', 'max' => 100],
+            [['time', 'created_at', 'updated_at'], 'string', 'max' => 50]
         ];
     }
     
@@ -49,8 +52,10 @@ class Record extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'instruksi_kerja_id' => 'Instruksi Kerja ID',
+            'user' => 'User',
             'time' => 'Time',
             'description' => 'Description',
+            'keterangan' => 'Keterangan',
         ];
     }
     

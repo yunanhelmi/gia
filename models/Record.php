@@ -17,8 +17,9 @@ class Record extends BaseRecord
         return array_replace_recursive(parent::rules(),
 	    [
             [['instruksi_kerja_id'], 'integer'],
-            [['time', 'created_at', 'updated_at'], 'string', 'max' => 50],
-            [['description'], 'string', 'max' => 100]
+            [['keterangan'], 'string'],
+            [['user', 'description'], 'string', 'max' => 100],
+            [['time', 'created_at', 'updated_at'], 'string', 'max' => 50]
         ]);
     }
 	

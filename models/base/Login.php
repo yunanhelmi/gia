@@ -18,14 +18,14 @@ use yii\behaviors\TimestampBehavior;
 class Login extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
-
+    public $email;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['username', 'password', 'authKey', 'accessToken'], 'string', 'max' => 50],
+            [['username', 'password','email', 'authKey', 'accessToken'], 'string', 'max' => 50],
             [['role'], 'string', 'max' => 10]
         ];
     }
@@ -47,6 +47,7 @@ class Login extends \yii\db\ActiveRecord
             'id' => 'ID',
             'username' => 'Username',
             'password' => 'Password',
+            'email' => 'Email',
             'authKey' => 'Auth Key',
             'accessToken' => 'Access Token',
             'role' => 'Role',

@@ -16,7 +16,7 @@ class Login extends BaseLogin
     {
         return array_replace_recursive(parent::rules(),
 	    [
-            [['username', 'password', 'authKey', 'accessToken'], 'string', 'max' => 50],
+            [['username', 'password','email', 'authKey', 'accessToken'], 'string', 'max' => 50],
             [['role'], 'string', 'max' => 10]
         ]);
     }

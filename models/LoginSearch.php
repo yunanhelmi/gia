@@ -19,7 +19,7 @@ use app\models\Login;
     {
         return [
             [['id'], 'integer'],
-            [['username', 'password', 'authKey', 'accessToken', 'role'], 'safe'],
+            [['username', 'password','email', 'authKey', 'accessToken', 'role'], 'safe'],
         ];
     }
 
