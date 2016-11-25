@@ -118,7 +118,7 @@ use kartik\widgets\ActiveForm;
         <br>
         <div class="row">
             <div class="col-md-4">
-                <?= $form->field($model, 'conveyence')->textInput(['readOnly' => true,'maxlength' => true, 'placeholder' => 'Conveyence']) ?>
+                <?= $form->field($model, 'conveyence')->textInput(['readOnly' => false,'maxlength' => true, 'placeholder' => 'Conveyence']) ?>
                 <?= $form->field($model, 'interest')->textInput(['maxlength' => true, 'placeholder' => 'Interest']) ?>
                 <?= $form->field($model, 'date_of_loss')->widget(\kartik\datecontrol\DateControl::classname(), [
                     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
