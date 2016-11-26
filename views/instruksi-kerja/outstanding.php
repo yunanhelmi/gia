@@ -30,6 +30,7 @@ $this->registerJs($search);
         <?php  echo  $this->render('searchoutstanding', ['model' => $searchModel, 'adjuster' => $adjuster]); ?>
 
     </div>
+    
     <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
@@ -50,13 +51,31 @@ $this->registerJs($search);
         //     ],
         //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
         // ],
-        'case_number',
-        //'type_of_instruction',
-        [
-            'attribute' => 'date_of_instruction',
-            'label' => 'DOI',
-            'format' => ['date', 'php:d/m/Y']
+        [                     
+            'format' => 'html',
+            'attribute' => 'case_number',
+            'label' => 'Case Number',
+            'content' => function($model){
+                $date = date_create($model->date_of_instruction);
+                return "
+                    <table style='width:100%'>
+                        <tr>
+                            <td> <strong>$model->case_number</strong></td>
+                        </tr>
+                        <tr>
+                            <td>DOI ".date_format($date,'d/m/Y')."</td>
+                        </tr>
+                    </table>
+                ";
+                }
         ],
+//        'case_number',
+//        //'type_of_instruction',
+//        [
+//            'attribute' => 'date_of_instruction',
+//            'label' => 'DOI',
+//            'format' => ['date', 'php:d/m/Y']
+//        ],
         'assurers',
         'insured',
         'broker',
