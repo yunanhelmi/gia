@@ -99,7 +99,7 @@ use kartik\widgets\ActiveForm;
                <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
             </div>
             <div class="col-md-4">
-                
+                <?= $form->field($model, 'date_entered')->textInput(['readonly' => true])?>
             </div>
         </div>
     </div>

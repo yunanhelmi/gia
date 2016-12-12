@@ -58,8 +58,8 @@ $this->params['breadcrumbs'][] = $model->case_number;
                         <td>: <?= $model->type_of_instruction ?></td>
                         <td><strong>Insured</strong></td>
                         <td>: <?= $model->insured ?></td>
-                        <td><strong>Status</strong></td>
-                        <td>: <?= $model->status ?></td>
+                        <td><strong>Date of Instruction</strong></td>
+                        <td>: <?= $model->date_of_instruction ?></td>
                     </tr>
                     <tr>
                         <td><br></td>
@@ -74,8 +74,8 @@ $this->params['breadcrumbs'][] = $model->case_number;
                         <td>: <?= $model->case_number ?></td>
                         <td><strong>Broker</strong></td>
                         <td>: <?= $model->broker ?></td>
-                        <td><strong>Date of Instruction</strong></td>
-                        <td>: <?= $model->date_of_instruction ?></td>
+                        <td><strong>Date Entered</strong></td>
+                        <td>: <?= $model->date_entered ?></td>
                     </tr>
                 </table>
             </div>
@@ -166,6 +166,10 @@ $this->params['breadcrumbs'][] = $model->case_number;
                     <div class="table-responsive">
                       <table class="table">
                             <tr>
+                                <td><strong>Status</strong></td>
+                                <td>: <?= $model->status?></td>
+                            </tr>
+                            <tr>
                                 <td><strong>User</strong></td>
                                 <td><strong>Time Record</strong></td>
                                 <td><strong>Description</strong></td>
@@ -174,7 +178,7 @@ $this->params['breadcrumbs'][] = $model->case_number;
                             </tr>
                             
                             <?php
-                            for($i=0;$i<sizeof($record);$i++){
+                            for($i=sizeof($record)-1;$i>=0;$i--){
                             ?>
                             <tr>
                                 <td><?= $record[$i]['user']?></td>
@@ -191,9 +195,15 @@ $this->params['breadcrumbs'][] = $model->case_number;
                       <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Time</th>
-                                <th>Description</th>
+                                <td><strong>Status</strong></td>
+                                <td>: <?= $model->status?></td>
+                            </tr>
+                            <tr>
+                                <td><strong>User</strong></td>
+                                <td><strong>Time Record</strong></td>
+                                <td><strong>Description</strong></td>
+                                <td><strong>Notes</strong></td>
+                                <td><strong>Time Created</strong></td>
                             </tr>
                         </thead>
                       </table>
@@ -203,11 +213,25 @@ $this->params['breadcrumbs'][] = $model->case_number;
             <div role="tabpanel" class="tab-pane" id="status">
                 <br>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <table style="width:100%">
                             <tr>
-                                <td><strong>Status</strong></td>
-                                <td>: <?= $model->status?></td>
+                                <td><strong>Time Bar Due</strong></td>
+                                <td>: <?= $model->time_bar_due?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comment</strong></td>
+                                <td>: <?= $model->comment?></td>
+                            </tr>
+                            <tr>
+                                <td><br></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Time Bar Issue</strong></td>
+                                <td>: <?= $model->time_bar_issue?></td>
                             </tr>
                         </table>
                     </div>

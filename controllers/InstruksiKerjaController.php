@@ -179,8 +179,8 @@ class InstruksiKerjaController extends Controller
             $reminder->tgl_dfr = strtotime("+10 days", strtotime($reminder->tgl_csd));
             $reminder->tgl_completed = strtotime("+10 days", strtotime($reminder->tgl_dfr));
             $reminder->saveAll();
-            print_r($reminder->getErrors());
-            exit();
+            // print_r($reminder->getErrors());
+            // exit();
 
             $record->instruksi_kerja_id = $model->id;
             $record->time = date("Y-m-d");
