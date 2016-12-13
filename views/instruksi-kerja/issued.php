@@ -211,44 +211,196 @@ $this->registerJs($search);
         }
         else
         {
-
+            $gridColumn = [
+                ['class' => 'kartik\grid\SerialColumn'],
+                ['attribute' => 'id', 'visible' => false],
+                [                     
+                    'format' => 'html',
+                    'attribute' => 'case_number',
+                    'vAlign' => 'middle',
+                    //'hAlign' => 'center',
+                    'label' => 'Case Number',
+                    'pageSummary' => 'Total',
+                    //'contentOptions'=>['style'=>'max-width: 50px;'],
+                    'content' => function($model){
+                        $date = date_create($model->date_of_instruction);
+                        return "
+                            <table style='width:100%'>
+                                <tr>
+                                    <td> <strong>$model->case_number</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>DOI ".date_format($date,'d/m/Y')."</td>
+                                </tr>
+                            </table>
+                        ";
+                        }
+                ],
+                [
+                    'attribute' => 'assurers',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'value' => function($model){
+                        if($model->assurers == NULL)
+                            return '';
+                        else
+                            return $model->assurers;
+                    }, 
+                ],
+                [
+                    'attribute' => 'insured',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'value' => function($model){
+                        if($model->insured == NULL)
+                            return '';
+                        else
+                            return $model->insured;
+                    }, 
+                ],
+                [
+                    'attribute' => 'broker',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center', 
+                    'value' => function($model){
+                        if($model->broker == NULL)
+                            return '';
+                        else
+                            return $model->broker;
+                    }, 
+                ],
+                [
+                    'attribute' => 'conveyence',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'value' => function($model){
+                        if($model->conveyence == NULL)
+                            return '';
+                        else
+                            return $model->conveyence;
+                    }, 
+                ],
+                [
+                    'attribute' => 'casualty',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'value' => function($model){
+                        if($model->casualty == NULL)
+                            return '';
+                        else
+                            return $model->casualty;
+                    },
+                ],
+                [
+                    'attribute' => 'adjuster',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'value' => function($model){
+                        if($model->adjuster == NULL)
+                            return '';
+                        else
+                            return $model->adjuster;
+                    }, 
+                ],
+                [
+                    'class' => 'kartik\grid\ActionColumn',
+                    'template' => ' {view} ',
+                    'buttons' => [
+                        'view' => function ($url, $model){
+                            return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
+                        }
+                    ],
+                ],
+            ];
         }  
+    ?>
+    <?php
+         // Header and Footer options for PDF format
+        $ourPdfHeader = [
+            'L' => [
+                'content'   => 'Issued',
+                'font-size' => 8,
+                'color'     => '#333333'
+            ],
+            'C' => [
+                'content'   => 'PT Global Internusa Adjusting',
+                'font-size' => 16,
+                'color'     => '#333333'
+            ],
+            'R' => [
+                'content'   => 'Generated' . ': ' . date("D, d-M-Y g:i a T"),
+                'font-size' => 8,
+                'color'     => '#333333'
+            ]
+        ];
+        $ourPdfFooter = [
+            'L'    => [
+                'content'    => '',
+                'font-size'  => 8,
+                'color'      => '#999999'
+            ],
+            'C' => [
+                'content'   => '<p>5<sup>th</sup> Fl. Gedung Kompas Gramedia, Jl. Raya Jemursari No. 64, Surabaya</p>',
+                'font-size' => 16,
+                'color'     => '#333333'
+            ],
+            'R'    => [
+                'content'     => '[ {PAGENO} ]',
+                'font-size'   => 10,
+                'font-style'  => 'B',
+                'font-family' => 'serif',
+                'color'       => '#333333'
+            ],
+            'line' => TRUE,
+        ];
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
         'columns' => $gridColumn,
         'showPageSummary' => true,
+        'pageSummaryRowOptions' => ['class' => 'kv-page-summary warning', 'style' => 'font-weight:bold'],
         'exportConfig'=> [
-            GridView::CSV=>[
-                'label' => 'CSV',
+             GridView::EXCEL=>[
+                'label' => 'Excel',
                 'icon' => '',
                 'iconOptions' => '',
-                'showHeader' => false,
-                'showPageSummary' => false,
+                'showHeader' => true,
+                'showPageSummary' => true,
                 'showFooter' => false,
                 'showCaption' => false,
-                'filename' => 'yii',
+                'filename' => 'Outstanding',
                 'alertMsg' => 'created',
-                'options' => ['title' => 'Semicolon -  Separated Values'],
-                'mime' => 'application/csv',
+                'options' => ['title' => 'Microsoft Excel 95+'],
+                'mime' => 'application/vnd.ms-excel',
                 'config' => [
-                    'colDelimiter' => ";",
-                    'rowDelimiter' => "\r\n",
+                    //'colDelimiter' => ";",
+                    //'rowDelimiter' => "\r\n",
                 ], 
             ],
             GridView::PDF=>[
                 'label' => 'PDF',
                 'icon' => '',
                 'iconOptions' => '',
-                'showHeader' => false,
+                'showHeader' => true,
                 'showPageSummary' => false,
                 'showFooter' => false,
                 'showCaption' => false,
-                'filename' => 'yii',
+                'filename' => 'Issued',
                 'alertMsg' => 'created',
-                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'options' => ['title' => 'Portable Document Format'],
                 'mime' => 'application/pdf',
+                'config' => [
+                    //'cssInline' => '.kv-page-summary{border-top:4px double #ddd;font-weight: bold;}',
+                    'methods' => [
+                        'SetHeader' => [
+                            ['odd' => $ourPdfHeader, 'even' => $ourPdfHeader]
+                        ],
+                        'SetFooter' => [
+                            ['odd' => $ourPdfFooter, 'even' => $ourPdfFooter]
+                        ],
+                    ],
+                ],
             ],
         ],
         'pjax' => true,

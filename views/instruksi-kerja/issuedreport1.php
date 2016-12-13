@@ -213,19 +213,6 @@ $this->registerJs($search);
             $gridColumn = [
                 ['class' => 'kartik\grid\SerialColumn'],
                 ['attribute' => 'id', 'visible' => false],
-                // [
-                //     'attribute' => 'id_client',
-                //     'label' => 'Client Name',
-                //     'value' => function($model){
-                //         return $model->client->nama;
-                //     },
-                //     'filterType' => GridView::FILTER_SELECT2,
-                //     'filter' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->asArray()->all(), 'id', 'nama'),
-                //     'filterWidgetOptions' => [
-                //         'pluginOptions' => ['allowClear' => true],
-                //     ],
-                //     'filterInputOptions' => ['placeholder' => 'Client', 'id' => 'grid-instruksi-kerja-search-id_client']
-                // ],
                 [                     
                     'format' => 'html',
                     'attribute' => 'case_number',
@@ -248,10 +235,6 @@ $this->registerJs($search);
                         ";
                         }
                 ],
-                // [
-                //     'attribute' => 'date_of_instruction',
-                //     'format' => ['date', 'php:d/m/Y']
-                // ],
                 [
                     'attribute' => 'assurers',
                     'vAlign' => 'middle',
@@ -330,41 +313,93 @@ $this->registerJs($search);
             ];
         }  
     ?>
+    <?php
+         // Header and Footer options for PDF format
+        $ourPdfHeader = [
+            'L' => [
+                'content'   => 'Issued Report',
+                'font-size' => 8,
+                'color'     => '#333333'
+            ],
+            'C' => [
+                'content'   => 'PT Global Internusa Adjusting',
+                'font-size' => 16,
+                'color'     => '#333333'
+            ],
+            'R' => [
+                'content'   => 'Generated' . ': ' . date("D, d-M-Y g:i a T"),
+                'font-size' => 8,
+                'color'     => '#333333'
+            ]
+        ];
+        $ourPdfFooter = [
+            'L'    => [
+                'content'    => '',
+                'font-size'  => 8,
+                'color'      => '#999999'
+            ],
+            'C' => [
+                'content'   => '<p>5<sup>th</sup> Fl. Gedung Kompas Gramedia, Jl. Raya Jemursari No. 64, Surabaya</p>',
+                'font-size' => 16,
+                'color'     => '#333333'
+            ],
+            'R'    => [
+                'content'     => '[ {PAGENO} ]',
+                'font-size'   => 10,
+                'font-style'  => 'B',
+                'font-family' => 'serif',
+                'color'       => '#333333'
+            ],
+            'line' => TRUE,
+        ];
+    ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
         'showPageSummary' => true,
+        'pageSummaryRowOptions' => ['class' => 'kv-page-summary warning', 'style' => 'font-weight:bold'],
         'columns' => $gridColumn,
         'exportConfig'=> [
-        GridView::EXCEL=>[
+            GridView::EXCEL=>[
                 'label' => 'Excel',
                 'icon' => '',
                 'iconOptions' => '',
-                'showHeader' => false,
-                'showPageSummary' => false,
+                'showHeader' => true,
+                'showPageSummary' => true,
                 'showFooter' => false,
                 'showCaption' => false,
-                'filename' => 'yii',
+                'filename' => 'Issued Report',
                 'alertMsg' => 'created',
-                'options' => ['title' => 'Semicolon -  Separated Values'],
-                'mime' => 'application/excel',
+                'options' => ['title' => 'Microsoft Excel 95+'],
+                'mime' => 'application/vnd.ms-excel',
                 'config' => [
-                    'colDelimiter' => ";",
-                    'rowDelimiter' => "\r\n",
+                    //'colDelimiter' => ";",
+                    //'rowDelimiter' => "\r\n",
                 ], 
             ],
             GridView::PDF=>[
                 'label' => 'PDF',
                 'icon' => '',
                 'iconOptions' => '',
-                'showHeader' => false,
+                'showHeader' => true,
                 'showPageSummary' => false,
                 'showFooter' => false,
                 'showCaption' => false,
-                'filename' => 'Issued Report PT. GIA',
+                'filename' => 'Issued Report',
                 'alertMsg' => 'created',
-                'options' => ['title' => 'Semicolon -  Separated Values'],
+                'options' => ['title' => 'Portable Document Format'],
                 'mime' => 'application/pdf',
+                'config' => [
+                    //'cssInline' => '.kv-page-summary{border-top:4px double #ddd;font-weight: bold;}',
+                    'methods' => [
+                        'SetHeader' => [
+                            ['odd' => $ourPdfHeader, 'even' => $ourPdfHeader]
+                        ],
+                        'SetFooter' => [
+                            ['odd' => $ourPdfFooter, 'even' => $ourPdfFooter]
+                        ],
+                    ],
+                ],
             ],
         ],
         'pjax' => true,
