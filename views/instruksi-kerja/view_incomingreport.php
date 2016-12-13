@@ -117,14 +117,7 @@ $this->params['breadcrumbs'][] = $model->case_number;
                                 <td><br></td>
                             </tr>
                             <tr>
-                                <td><strong>Date Of Loss</strong></td>
-                                <td>: <?= $model->date_of_loss?></td>
-                            </tr>
-                            <tr>
-                                <td><br></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Casuality</strong></td>
+                                <td><strong>Casualty</strong></td>
                                 <td>: <?= $model->casualty?></td>
                             </tr>
                             <tr>

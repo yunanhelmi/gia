@@ -190,7 +190,7 @@ $this->registerJs($search);
                     'template' => ' {view} ',
                     'buttons' => [
                         'view' => function ($url, $model){
-                            return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
+                            return Html::a('detail', 'index.php?r=instruksi-kerja/viewoutstandingreport&id='.$model->id);
                         }
                     ],
                 ],
