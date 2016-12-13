@@ -289,11 +289,64 @@ class InstruksiKerjaController extends Controller
     public function actionPdf($id) {
         $model = $this->findModel($id);
         $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->all();
+        // echo '<pre>';
+        // var_dump($record);
+        // echo '</pre>';
+        // exit();
 
         $content = $this->render('_pdf', [
             'model' => $model,
             'record' => $record,
         ]);
+
+        $ourPdfHeader = [
+            'L' => [
+                'content'   => 'PT Global Internusa Adjusting Surabaya',
+                'font-size' => 8,
+                'font-style'=> 'B',
+                'font-family' => 'serif',
+                'color'     => '#333333'
+            ],
+            'C' => [
+                'content'   => '',
+                'font-size' => 8,
+                'font-style'=> 'B',
+                'font-family' => 'serif',
+                'color'     => '#333333'
+            ],
+            'R' => [
+                'content'   => 'Generated' . ': ' . date("D, d-M-Y g:i a"),
+                'font-size' => 8,
+                'font-style'=> 'B',
+                'font-family' => 'serif',
+                'color'     => '#333333'
+            ]
+        ];
+
+        $ourPdfFooter = [
+            'L'    => [
+                'content'   => '',
+                'font-size' => 8,
+                'font-style'=> 'B',
+                'font-family' => 'serif',
+                'color'     => '#333333'
+            ],
+            'C' => [
+                'content'   => '<p>5<sup>th</sup> Fl. Gedung Kompas Gramedia, Jl. Raya Jemursari No. 64, Surabaya</p>',
+                'font-size' => 8,
+                'font-style'=> 'B',
+                'font-family' => 'serif',
+                'color'     => '#333333'
+            ],
+            'R'    => [
+                'content'     => '[{PAGENO}]',
+                'font-size'   => 8,
+                'font-style'  => 'B',
+                'font-family' => 'serif',
+                'color'       => '#333333'
+            ],
+            'line' => TRUE,
+        ];
 
         $pdf = new \kartik\mpdf\Pdf([
             //'mode' => \kartik\mpdf\Pdf::MODE_CORE,
@@ -305,9 +358,13 @@ class InstruksiKerjaController extends Controller
             //'cssInline' => '.kv-heading-1{font-size:18px}',
             'options' => ['title' => \Yii::$app->name],
             'methods' => [
-                'SetHeader' => [\Yii::$app->name],
-                'SetFooter' => ['{PAGENO}'],
-            ]
+                'SetHeader' => [
+                    ['odd' => $ourPdfHeader, 'even' => $ourPdfHeader]
+                ],
+                'SetFooter' => [
+                    ['odd' => $ourPdfFooter, 'even' => $ourPdfFooter]
+                ],
+            ],
         ]);
 
         return $pdf->render();

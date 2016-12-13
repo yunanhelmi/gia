@@ -188,11 +188,14 @@ $this->registerJs($search);
                 ],
                 [
                     'class' => 'kartik\grid\ActionColumn',
-                    'template' => ' {view} ',
+                    'template' => ' {view} {update}',
                     'buttons' => [
                         'view' => function ($url, $model){
                             return Html::a('detail', 'index.php?r=instruksi-kerja/viewoutstanding&id='.$model->id);
-                        }
+                        },
+                        'update' => function ($url, $model){
+                            return Html::a('update', 'index.php?r=instruksi-kerja/updateoutstanding&id='.$model->id);
+                        },
                     ],
                 ],
                 // 'actual_fee',
@@ -304,11 +307,14 @@ $this->registerJs($search);
                 ],
                 [
                     'class' => 'kartik\grid\ActionColumn',
-                    'template' => ' {view} ',
+                    'template' => ' {view} {update}',
                     'buttons' => [
                         'view' => function ($url, $model){
                             return Html::a('detail', 'index.php?r=instruksi-kerja/viewoutstanding&id='.$model->id);
-                        }
+                        },
+                        'update' => function ($url, $model){
+                            return Html::a('update', 'index.php?r=instruksi-kerja/updateoutstanding&id='.$model->id);
+                        },
                     ],
                 ],
             ];
