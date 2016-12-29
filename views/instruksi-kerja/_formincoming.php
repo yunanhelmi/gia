@@ -243,7 +243,7 @@ use kartik\widgets\ActiveForm;
                 <?= $form->field($model, 'time_bar_issue')->radioList(array('Relevant' => 'Relevant', 'Protected' => 'Protected')); ?>
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'comment')->textInput(['maxlength' => true, 'placeholder' => 'Comment']) ?>
+                <?= $form->field($model, 'comment')->textArea(['rows' => '6']) ?>
             </div>
         </div>
     </div>

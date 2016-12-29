@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Reminder;
 
 class SiteController extends Controller
 {
@@ -129,9 +130,24 @@ class SiteController extends Controller
         Yii::$app->mailer->compose()
         ->setFrom('admin@giadj-sby.com')
         ->setTo('alajiseno@gmail.com')
+        ->setCc('yunanhelmimahendra@gmail.com')
         ->setSubject('Email Pemberitahuan')
         ->setTextBody('Bro iki email e wes isok ngirim email. aku ngirim tekan localhost.')
-        ->setHtmlBody('<b>Mantab Jiwaaaaaa</b>')
+        ->setHtmlBody('<b>TESTTING</b>')
         ->send();
+    }
+    
+    public function actionCheck(){
+        $reminder = Reminder::find()->asArray()->all();
+        
+        //var_dump($reminder);
+        for($i=0;$i<sizeof($reminder);$i++){
+            if($reminder[$i]['state'] == '1'){
+                if($reminder[$i]['tgl_survei'] == date("Y-m-d H:i")){
+                    $this->actionSend();
+                }
+            }
+        }
+        //if(date("Y-m-d H:i:s") == )
     }
 }

@@ -229,6 +229,21 @@ class InstruksiKerjaController extends Controller
             ]);
         }
     }
+    
+    public function dateGenerator($input, $id, $tanggal){
+        $reminder = new Reminder();
+        $startTime = date("Y-m-d H:i");
+
+        if($input == "Survey"){
+            $reminder->id_instruksi = $id;
+            $reminder->tgl_survei = date('Y-m-d H:i',strtotime('+3 minutes',strtotime($startTime)));
+            $reminder->save();
+        } //else if($input == 'Attandance Advice (AA)'){
+//            $reminder = Reminder::find()->where(['id_instruksi' => $id]);
+//            $reminder->state = '2';
+//            $reminder->tgl_aa = date('Y-m-d H:i',strtotime('+10 minutes',strtotime($startTime)));
+//        }
+    }
 
     public function actionUpdateoutstanding($id)
     {
@@ -239,15 +254,11 @@ class InstruksiKerjaController extends Controller
             $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->orderBy(['time' => SORT_ASC])->all();
         }
 
-        // var_dump($record);
-        // exit();
-        //$record = Record::find()
+        
 
         if ($model->loadAll(Yii::$app->request->post())) {
-            $POST_VARIABLE=Yii::$app->request->post('InstruksiKerja');
-            //$request = $POST_VARIABLE['description_record']; 
-//             var_dump($request);
-//             exit();
+            
+            $POST_VARIABLE = Yii::$app->request->post('InstruksiKerja');
             if($POST_VARIABLE['description_record'] != null && $POST_VARIABLE['time_record'] != null){
                 $new_record = new Record();
                 $new_record->time = $POST_VARIABLE['time_record'];
@@ -255,6 +266,7 @@ class InstruksiKerjaController extends Controller
                 $new_record->instruksi_kerja_id = $model->id;
                 $new_record->description = $POST_VARIABLE['description_record'];
                 $new_record->keterangan = $POST_VARIABLE['keterangan'];
+                $this->dateGenerator($POST_VARIABLE['description_record'],$id,$POST_VARIABLE['time_record']);
                 $new_record->save();
             }
             $model->save();
