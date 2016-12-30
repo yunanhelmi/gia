@@ -232,17 +232,48 @@ class InstruksiKerjaController extends Controller
     
     public function dateGenerator($input, $id, $tanggal){
         $reminder = new Reminder();
+        $connection = Yii::$app->db;
         $startTime = date("Y-m-d H:i");
 
         if($input == "Survey"){
             $reminder->id_instruksi = $id;
-            $reminder->tgl_survei = date('Y-m-d H:i',strtotime('+3 minutes',strtotime($startTime)));
+            $reminder->tgl_survei = date('Y-m-d H:i',strtotime('+1 minutes',strtotime($startTime)));
             $reminder->save();
-        } //else if($input == 'Attandance Advice (AA)'){
-//            $reminder = Reminder::find()->where(['id_instruksi' => $id]);
-//            $reminder->state = '2';
-//            $reminder->tgl_aa = date('Y-m-d H:i',strtotime('+10 minutes',strtotime($startTime)));
-//        }
+        } else if($input == 'Attandance Advice (AA)'){
+            $date = date('Y-m-d H:i',strtotime('+5 minutes',strtotime($startTime)));
+            $command = $connection->createCommand("
+            UPDATE reminder 
+            SET state = 2, tgl_aa = '".$date."'
+            WHERE id_instruksi = ".$id."
+            ")->execute();
+        } else if($input == 'Preliminary Advice (PA)'){
+            $date = date('Y-m-d H:i',strtotime('+14 minutes',strtotime($startTime)));
+            $command = $connection->createCommand("
+            UPDATE reminder 
+            SET state = 3, tgl_pa = '".$date."'
+            WHERE id_instruksi = ".$id."")->execute();
+        } else if($input == 'Chasing Support Documents (CSD)'){
+            $date = date('Y-m-d H:i',strtotime('+14 minutes',strtotime($startTime)));
+            $command = $connection->createCommand("
+            UPDATE reminder 
+            SET state = 4, tgl_csd = '".$date."'
+            WHERE id_instruksi = ".$id."
+            ")->execute();
+        } else if($input == 'Draft Final Report (DFR)'){
+            $date = date('Y-m-d H:i',strtotime('+10 minutes',strtotime($startTime)));
+            $command = $connection->createCommand("
+            UPDATE reminder 
+            SET state = 5, tgl_dfr = '".$date."'
+            WHERE id_instruksi = ".$id."
+            ")->execute();
+        } else if($input == 'Sending DFR To Insurer'){
+            $date = date('Y-m-d H:i',strtotime('+0 minutes',strtotime($startTime)));
+            $command = $connection->createCommand("
+            UPDATE reminder 
+            SET state = 6, tgl_completed = '".$date."'
+            WHERE id_instruksi = ".$id."
+            ")->execute();
+        }
     }
 
     public function actionUpdateoutstanding($id)
