@@ -267,7 +267,7 @@ class InstruksiKerjaController extends Controller
             WHERE id_instruksi = ".$id."
             ")->execute();
         } else if($input == 'Sending DFR To Insurer'){
-            $date = date('Y-m-d H:i',strtotime('+0 minutes',strtotime($startTime)));
+            $date = date('Y-m-d H:i:s');
             $command = $connection->createCommand("
             UPDATE reminder 
             SET state = 6, tgl_completed = '".$date."'

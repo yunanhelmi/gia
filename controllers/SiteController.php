@@ -138,12 +138,28 @@ class SiteController extends Controller
     }
     
     public function actionCheck(){
-        $reminder = Reminder::find()->asArray()->all();
+        $reminder = Reminder::find()->where("state <> 6")->asArray()->all();
         
         //var_dump($reminder);
         for($i=0;$i<sizeof($reminder);$i++){
             if($reminder[$i]['state'] == '1'){
-                if($reminder[$i]['tgl_survei'] == date("Y-m-d H:i")){
+                if(date("Y-m-d H:i", strtotime($reminder[$i]['tgl_survei']) == date("Y-m-d H:i")){
+                    $this->actionSend();
+                }
+            } else if ($reminder[$i]['state'] == '2'){
+                if(date("Y-m-d H:i", strtotime($reminder[$i]['tgl_aa']) == date("Y-m-d H:i")){
+                    $this->actionSend();
+                }
+            } else if ($reminder[$i]['state'] == '3'){
+                if(date("Y-m-d H:i", strtotime($reminder[$i]['tgl_pa']) == date("Y-m-d H:i")){
+                    $this->actionSend();
+                }
+            } else if ($reminder[$i]['state'] == '4'){
+                if(date("Y-m-d H:i", strtotime($reminder[$i]['tgl_csd']) == date("Y-m-d H:i")){
+                    $this->actionSend();
+                }
+            } else if ($reminder[$i]['state'] == '5'){
+                if(date("Y-m-d H:i", strtotime($reminder[$i]['tgl_dfr']) == date("Y-m-d H:i")){
                     $this->actionSend();
                 }
             }
