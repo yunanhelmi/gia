@@ -139,7 +139,7 @@ class SiteController extends Controller
         
         $record = Record::find()
         ->where("instruksi_kerja_id = ".$id."")
-        ->orderBy(['time' => SORT_ASC])
+        ->orderBy(['time' => SORT_DESC])
         ->asArray()
         ->limit(1)
         ->all();
