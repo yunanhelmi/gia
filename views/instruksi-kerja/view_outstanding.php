@@ -161,13 +161,21 @@ $this->params['breadcrumbs'][] = $model->case_number;
                             <tr>
                                 <td><strong>Status</strong></td>
                                 <td>: <?= $model->status?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
+                      </table>
+                      <table class="table table-bordered table-striped">
+                            
                             <tr>
-                                <td><strong>User</strong></td>
+                                <td><strong>Created By</strong></td>
                                 <td><strong>Time Record</strong></td>
                                 <td><strong>Description</strong></td>
                                 <td><strong>Notes</strong></td>
-                                <td><strong>Time Created</strong></td>
                             </tr>
                             
                             <?php
@@ -176,16 +184,19 @@ $this->params['breadcrumbs'][] = $model->case_number;
                             <tr>
                                 <td><?= $record[$i]['user']?></td>
                                 <td><?= $record[$i]['time']?></td>
-                                <td><?= $record[$i]['description']?></td>
+                                <td>
+                                <?= $record[$i]['description']?>
+                                <br>
+                                <h4><small><i>created time: <?= $record[$i]['created_at']?></i></small></h4>
+                                </td>
                                 <td><?= $record[$i]['keterangan']?></td>
-                                <td><?= $record[$i]['created_at']?></td>
                             </tr>
                             <?php }?>
                         </table>
                     </div>
                 <?php } else { ?>
                     <div class="table-responsive">
-                      <table class="table table-hover">
+                      <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
                                 <td><strong>Status</strong></td>

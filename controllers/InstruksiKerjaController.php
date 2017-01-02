@@ -123,7 +123,7 @@ class InstruksiKerjaController extends Controller
     public function actionViewoutstanding($id)
     {
         $model = $this->findModel($id);
-        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->orderBy(['created_at' => SORT_DESC])->all();
+        $record = Record::find()->where(['instruksi_kerja_id' => $id])->asArray()->orderBy(['created_at' => SORT_ASC])->all();
         return $this->render('view_outstanding', [
             'model' => $this->findModel($id),
             'record' => $record,
@@ -149,7 +149,6 @@ class InstruksiKerjaController extends Controller
     {
         $model = new InstruksiKerja();
         $record = new Record();
-        $reminder = new Reminder();
         if($model->loadAll(Yii::$app->request->post())){
 
             $nama_client = Client::find()->select('nama')->where('id = '.$model->id_client.'')->asArray()->one();
@@ -169,17 +168,6 @@ class InstruksiKerjaController extends Controller
             $model->date_entered = date("Y-m-d");
             $hasil = $model->save();
             // print_r($model->getErrors());
-            // exit();
-
-            $reminder->id_instruksi = $model->id;
-            $reminder->tgl_survei = "2016-11-24";
-            $reminder->tgl_aa = strtotime("+1 days", strtotime($reminder->tgl_survei));
-            $reminder->tgl_pa = strtotime("+7 days", strtotime($reminder->tgl_aa));
-            $reminder->tgl_csd = strtotime("+14 days", strtotime($reminder->tgl_pa));
-            $reminder->tgl_dfr = strtotime("+10 days", strtotime($reminder->tgl_csd));
-            $reminder->tgl_completed = strtotime("+10 days", strtotime($reminder->tgl_dfr));
-            $reminder->saveAll();
-            // print_r($reminder->getErrors());
             // exit();
 
             $record->instruksi_kerja_id = $model->id;
@@ -233,34 +221,34 @@ class InstruksiKerjaController extends Controller
     public function dateGenerator($input, $id, $tanggal){
         $reminder = new Reminder();
         $connection = Yii::$app->db;
-        $startTime = date("Y-m-d H:i");
+        $startTime = $newDate = date("Y-m-d", strtotime($tanggal));
 
         if($input == "Survey"){
             $reminder->id_instruksi = $id;
-            $reminder->tgl_survei = date('Y-m-d H:i',strtotime('+1 minutes',strtotime($startTime)));
+            $reminder->tgl_survei = date('Y-m-d',strtotime('+1 days',strtotime($tanggal)));
             $reminder->save();
         } else if($input == 'Attandance Advice (AA)'){
-            $date = date('Y-m-d H:i',strtotime('+5 minutes',strtotime($startTime)));
+            $date = date('Y-m-d',strtotime('+5 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
             SET state = 2, tgl_aa = '".$date."'
             WHERE id_instruksi = ".$id."
             ")->execute();
         } else if($input == 'Preliminary Advice (PA)'){
-            $date = date('Y-m-d H:i',strtotime('+14 minutes',strtotime($startTime)));
+            $date = date('Y-m-d',strtotime('+14 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
             SET state = 3, tgl_pa = '".$date."'
             WHERE id_instruksi = ".$id."")->execute();
         } else if($input == 'Chasing Support Documents (CSD)'){
-            $date = date('Y-m-d H:i',strtotime('+14 minutes',strtotime($startTime)));
+            $date = date('Y-m-d',strtotime('+14 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
             SET state = 4, tgl_csd = '".$date."'
             WHERE id_instruksi = ".$id."
             ")->execute();
         } else if($input == 'Draft Final Report (DFR)'){
-            $date = date('Y-m-d H:i',strtotime('+10 minutes',strtotime($startTime)));
+            $date = date('Y-m-d',strtotime('+10 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
             SET state = 5, tgl_dfr = '".$date."'
