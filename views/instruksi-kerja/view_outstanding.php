@@ -170,7 +170,6 @@ $this->params['breadcrumbs'][] = $model->case_number;
                             </tr>
                       </table>
                       <table class="table table-bordered table-striped">
-                            
                             <tr>
                                 <td><strong>Created By</strong></td>
                                 <td><strong>Time Record</strong></td>

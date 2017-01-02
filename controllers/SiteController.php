@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Reminder;
+use app\models\Record;
+use app\models\InstruksiKerja;
 
 class SiteController extends Controller
 {
@@ -130,6 +132,23 @@ class SiteController extends Controller
     }
     
     public function actionSend($id){
+        $model = InstruksiKerja::find()
+        ->where("id = ".$id."")
+        ->asArray()
+        ->one();
+        
+        $record = Record::find()
+        ->where("instruksi_kerja_id = ".$id."")
+        ->orderBy(['time' => SORT_ASC])
+        ->asArray()
+        ->limit(1)
+        ->all();
+        
+//        echo "<pre>";
+//        var_dump($record);
+//        echo "</pre>";
+        
+
         Yii::$app->mailer->compose()
         ->setFrom('admin@giadj-sby.com')
         ->setTo('alajiseno@gmail.com')
@@ -142,16 +161,34 @@ class SiteController extends Controller
                 
                 Mohon cek instruksi kerja berikut: 
                 <br>
-                
+                <table>
+                    <tr>
+                        <td>Case Number</td>
+                        <td>:".$model['case_number']."</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>:".$model['status']."</td>
+                    </tr>
+                    <tr>
+                        <td>Last Record</td>
+                        <td>:".$record[0]['description']."
+                        <br>
+                        <small><i>created time: ".$record[0]['created_at']."</i></small>
+                        </td>
+                    </tr>
+                </table>
+                <br>
                 <br>
                 <br>
                 <br>
                 Terima kasih, <br>
-                Email ini tidak perlu dibalas.
-                
-                
-                <p>*email ini dikirim secara otomatis oleh Email Reminder System - PT. Global Internusa Adjusting</p>
-                <a target='_blank' href='http://www.thinkerstudio.info'>Thinker Studio</a>
+                PT. Global Internusa Adjusting
+                <br>
+                <div class='footer'>
+                    <p>*email ini tidak perlu dibalas karena dikirim secara otomatis oleh Email Reminder System - PT. Global Internusa Adjusting</p>
+                    Email Reminder System ini dikembangkan oleh <a target='_blank' href='http://www.thinkerstudio.info'>Thinker Studio</a>
+                </div>
                 ")
         ->send();
     }
