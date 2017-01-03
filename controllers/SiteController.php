@@ -147,12 +147,22 @@ class SiteController extends Controller
 //        echo "<pre>";
 //        var_dump($record);
 //        echo "</pre>";
+        if($model['adjuster'] == 'Omar Koswara'){
+            $email = 'omar.koswara@globalinternusadj.com';
+        } else if($model['adjuster'] == 'Aulia Rahman'){
+            $email = 'aulia.rahman@globalinternusadj.com';
+        } else if($model['adjuster'] == 'Dimas Bagus'){
+            $email = 'dimas.bagus@globalinternusadj.com';
+        } else {
+            $email = 'alajiseno@gmail.com';
+        }
         
 
         Yii::$app->mailer->compose()
         ->setFrom('admin@giadj-sby.com')
-        ->setTo('alajiseno@gmail.com')
-        //->setCc('yunanhelmimahendra@gmail.com')
+        ->setTo($email)
+        ->setBc('dinda.tania@globalinternusadj.com')
+        ->setCc('omar.koswara@globalinternusadj.com')
         ->setSubject('Email Reminder System. PT. Global Internusa Adjusting')
         //->setTextBody('Bro iki email e wes isok ngirim email. aku ngirim tekan localhost.')
         ->setHtmlBody("
