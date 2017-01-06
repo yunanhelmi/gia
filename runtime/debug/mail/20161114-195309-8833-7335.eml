@@ -1,0 +1,23 @@
+Message-ID: <38b6193be1bad4b15a7e286a353dc636@localhost>
+Date: Mon, 14 Nov 2016 19:53:09 +0100
+Subject: Message subject
+From: admin@giadj-sby.com
+To: alajiseno@gmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1479149589_9d521ebbf08dbe9a39346008b87f6b24_=_"
+
+
+--_=_swift_v4_1479149589_9d521ebbf08dbe9a39346008b87f6b24_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Plain text content
+
+--_=_swift_v4_1479149589_9d521ebbf08dbe9a39346008b87f6b24_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<b>HTML content</b>
+
+--_=_swift_v4_1479149589_9d521ebbf08dbe9a39346008b87f6b24_=_--
