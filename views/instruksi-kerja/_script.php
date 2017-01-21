@@ -18,4 +18,10 @@ use yii\helpers\Url;
     function delRow<?= $class ?>(id) {
         $('#add-<?= $relID?> tr[data-key=' + id + ']').remove();
     }
+    
+    function changeRole(){
+        if(document.getElementById('login-role').change()){
+            alert('ehe');
+        }
+    }
 </script>

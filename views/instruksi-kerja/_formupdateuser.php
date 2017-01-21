@@ -19,15 +19,8 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'Username']) ?>
             <?= $form->field($model, 'password')->textInput(['maxlength' => true, 'placeholder' => 'Password']) ?>
             
-            <?= $form->field($model, 'role')->widget(\kartik\widgets\Select2::classname(), [
-                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Login::find()->orderBy('id')->asArray()->distinct()->all(), 'role', 'role'),
-                    'options' => ['placeholder' => 'Choose Status'],
-                    'pluginOptions' => [
-                        'allowClear' => false
-                    ],
-
-                ]); 
-                ?>
+            <?php echo $form->field($model, 'role')->dropDownList(['sekretaris' => 'sekretaris', 'adjuster' => 'adjuster', 'applicant' => 'applicant'],['prompt'=>'Choose Role For User','onchange'=>'changeRole()']);?>
+            <?= $form->field($model, 'client_id')->label(false)->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('created_at')->asArray()->all(), 'nama', 'nama'),['style' => 'display:none', 'id' => 'client']) ?>
         </div>
     </div>
 
@@ -41,5 +34,14 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    
+    <script>
+    function changeRole(){
+        if(document.getElementById('login-role').value == 'applicant'){
+            $('#client').show();
+        } else {
+            $('#client').hide();
+        }
+    }
+    </script>
 </div>

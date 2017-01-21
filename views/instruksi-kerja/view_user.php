@@ -46,7 +46,24 @@ $this->params['breadcrumbs'][] = $this->title;
         ['attribute' => 'id', 'visible' => false],
         'username',
         'password',
-        'role',
+        //'role',
+        [                     
+            'format' => 'html',
+            'attribute' => 'role',
+            'label' => 'Role',
+            'content' => function($model){
+                return "
+                    <table style='width:100%'>
+                        <tr>
+                            <td> <strong>$model->client_id</strong></td>
+                        </tr>
+                        <tr>
+                            <td>$model->client_id</td>
+                        </tr>
+                    </table>
+                ";
+                }
+        ],
     ];
     echo DetailView::widget([
         'model' => $model,

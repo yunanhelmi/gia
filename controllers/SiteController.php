@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * 
+ * Project  : Email Reminder System PT Global Internusa Adjusting
+ * Author   : Thinker Studio
+ * Developer: Yunan Helmi Mahendra & Dwi Al Aji Suseno
+ * Version  : 1.0
+ * Website  : thinkerstudio.info
+ * 
+ */
+ 
 namespace app\controllers;
 
 use Yii;
@@ -144,9 +154,6 @@ class SiteController extends Controller
         ->limit(1)
         ->all();
         
-//        echo "<pre>";
-//        var_dump($record);
-//        echo "</pre>";
         if($model['adjuster'] == 'Omar Koswara'){
             $email = 'omar.koswara@globalinternusadj.com';
         } else if($model['adjuster'] == 'Aulia Rahman'){
@@ -161,10 +168,8 @@ class SiteController extends Controller
         Yii::$app->mailer->compose()
         ->setFrom('admin@giadj-sby.com')
         ->setTo($email)
-        ->setBc('dinda.tania@globalinternusadj.com')
         ->setCc('omar.koswara@globalinternusadj.com')
         ->setSubject('Email Reminder System. PT. Global Internusa Adjusting')
-        //->setTextBody('Bro iki email e wes isok ngirim email. aku ngirim tekan localhost.')
         ->setHtmlBody("
                 Selamat Pagi,
                 <br><br><br>

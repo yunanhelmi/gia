@@ -20,7 +20,8 @@ use kartik\widgets\ActiveForm;
         <div class="col-md-4">
             <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'Username']) ?>
             <?= $form->field($model, 'password')->textInput(['maxlength' => true, 'placeholder' => 'Password']) ?>
-            <?php echo $form->field($model, 'role')->dropDownList(['sekretaris' => 'sekretaris', 'adjuster' => 'adjuster', 'applicant' => 'applicant'],['prompt'=>'Choose Role For User']);?>
+            <?php echo $form->field($model, 'role')->dropDownList(['sekretaris' => 'sekretaris', 'adjuster' => 'adjuster', 'applicant' => 'applicant'],['prompt'=>'Choose Role For User','onchange'=>'changeRole()']);?>
+            <?= $form->field($model, 'client_id')->label(false)->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('created_at')->asArray()->all(), 'nama', 'nama'),['style' => 'display:none', 'id' => 'client']) ?>
         </div>
     </div>
 
@@ -39,7 +40,17 @@ use kartik\widgets\ActiveForm;
         </div>
     </div>
     </div>
-    
+    <script>
+    function changeRole(){
+        if(document.getElementById('login-role').value == 'applicant'){
+            $('#client').show();
+            $('.field-client').show();
+        } else {
+            $('#client').hide();
+            $('.field-client').hide();
+        }
+    }
+    </script>
 
     <?php ActiveForm::end(); ?>
 

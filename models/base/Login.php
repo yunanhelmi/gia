@@ -25,7 +25,7 @@ class Login extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password','email', 'authKey', 'accessToken'], 'string', 'max' => 50],
+            [['username', 'password','email', 'authKey', 'accessToken','client_id'], 'string', 'max' => 50],
             [['role'], 'string', 'max' => 10]
         ];
     }
@@ -45,6 +45,7 @@ class Login extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'client_id' => 'Client Name',
             'username' => 'Username',
             'password' => 'Password',
             'email' => 'Email',

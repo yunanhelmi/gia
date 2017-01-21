@@ -44,7 +44,33 @@ $this->registerJs($search);
         ['attribute' => 'id', 'visible' => false],
        'username',
        'password',
-       'role',
+       [                     
+            'format' => 'html',
+            'attribute' => 'role',
+            'label' => 'Role',
+            'content' => function($model){
+                if($model->role == 'applicant'){
+                    return "
+                        <table style='width:100%'>
+                            <tr>
+                                <td> $model->role</td>
+                            </tr>
+                            <tr>
+                                <td>Client: $model->client_id</td>
+                            </tr>
+                        </table>
+                    ";
+                } else {
+                    return "
+                        <table style='width:100%'>
+                            <tr>
+                                <td> $model->role</td>
+                            </tr>
+                        </table>
+                    ";
+                }
+            }
+        ],
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{update} {delete}',

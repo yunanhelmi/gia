@@ -21,8 +21,8 @@ use kartik\widgets\ActiveForm;
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
     <h4>Header</h4>
+    <?php if(Yii::$app->user->identity->role == 'sekretaris'){ ?>
     <div class="alert alert-info" role="alert">
-        
         <div class="row">
             <div class="col-md-4">
                 <?= $form->field($model, 'id_client')->label('Applicant')->widget(\kartik\widgets\Select2::classname(), [
@@ -43,7 +43,6 @@ use kartik\widgets\ActiveForm;
                     'pluginOptions' => [
                         'allowClear' => true
                     ],
-
                 ]); 
                 ?>
             </div>
@@ -104,14 +103,187 @@ use kartik\widgets\ActiveForm;
         </div>
     </div>
     <div>
-
+    <?php } else if(Yii::$app->user->identity->role == 'admin') {?>
+    <div class="alert alert-info" role="alert">
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'id_client')->label('Applicant')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                    ]
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'assurers')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'nama', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
+                    'pluginOptions' => [
+                        'allowClear' => true
+                    ],
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?php 
+                    echo $form->field($model, 'adjuster')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('adjuster')->asArray()->distinct()->all(), 'adjuster', 'adjuster'),
+                        'options' => ['placeholder' => 'Choose Adjuster'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]); 
+                ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php 
+                    $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
+                    echo $form->field($model, 'type_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => $type_of_instruction,
+                        'options' => ['placeholder' => 'Choose Type Of Instruction'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'insured')->textInput(['maxlength' => true, 'placeholder' => 'Insured']) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Instruction',
+                            'autoclose' => true
+                        ]
+                    ],
+                ]); 
+                ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'case_number')->textInput(['maxlength' => true, 'placeholder' => 'Case Number']) ?>
+                
+            </div>
+            <div class="col-md-4">
+               <?= $form->field($model, 'broker')->textInput(['maxlength' => true, 'placeholder' => 'Broker']) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'date_entered')->textInput()?>
+            </div>
+        </div>
+    </div>
+    <div>
+    <?php } else if(Yii::$app->user->identity->role == 'adjuster'){ ?>
+    <div class="alert alert-info" role="alert">
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'id_client')->label('Applicant')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'id', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'readonly' => true,
+                    ],
+                    'disabled' => true,
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'assurers')->widget(\kartik\widgets\Select2::classname(), [
+                    'data' => \yii\helpers\ArrayHelper::map(\app\models\Client::find()->orderBy('id')->asArray()->all(), 'nama', 'nama'),
+                    'options' => ['placeholder' => 'Choose Client'],
+                    'pluginOptions' => [
+                        'allowClear' => true,
+                        'readonly' => true,
+                    ],
+                    'disabled' => true,
+                ]); 
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?php 
+                    echo $form->field($model, 'adjuster')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('adjuster')->asArray()->distinct()->all(), 'adjuster', 'adjuster'),
+                        'options' => ['placeholder' => 'Choose Adjuster'],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                            'readonly' => true,
+                        ],
+                        'disabled' => true,
+                    ]); 
+                ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?php 
+                    $type_of_instruction = ["Cargo Damage" =>"Cargo Damage", "Hull Survey" => "Hull Survey", "Risks Survey" => "Risks Survey", "Carrier's Liability" => "Carrier's Liability"];
+                    echo $form->field($model, 'type_of_instruction')->widget(\kartik\widgets\Select2::classname(), [
+                        'data' => $type_of_instruction,
+                        'options' => ['placeholder' => 'Choose Type Of Instruction'],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                            'readonly' => true,
+                        ],
+                        'disabled' => true,
+                    ]);
+                ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'insured')->textInput(['readOnly' => true,'maxlength' => true, 'placeholder' => 'Insured']) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
+                    'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+                    'saveFormat' => 'php:Y-m-d',
+                    'ajaxConversion' => true,
+                    'options' => [
+                        'pluginOptions' => [
+                            'placeholder' => 'Choose Date Of Instruction',
+                            'autoclose' => true,
+                            'readonly' => true,
+                        ],
+                        'disabled' => true,
+                    ],
+                ]); 
+                ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <?= $form->field($model, 'case_number')->textInput(['readOnly' => true,'maxlength' => true, 'placeholder' => 'Case Number']) ?>
+                
+            </div>
+            <div class="col-md-4">
+               <?= $form->field($model, 'broker')->textInput(['readonly' => true,'maxlength' => true, 'placeholder' => 'Broker']) ?>
+            </div>
+            <div class="col-md-4">
+                <?= $form->field($model, 'date_entered')->textInput(['readonly' => true])?>
+            </div>
+        </div>
+    </div>
+    <div>
+    <?php }?>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
-    <li role="presentation"><a href="#record" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update & Status</strong></a></li>
-    <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab"><strong>Recovery Aspect</strong></a></li>
-  </ul>
-
+    <?php if(Yii::$app->user->identity->role == 'sekretatris'){ ?>
+        <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
+    <?php } else {?>
+        <li role="presentation" class="active"><a href="#doc" aria-controls="home" role="tab" data-toggle="tab"><strong>Detail Of Claim</strong></a></li>
+        <li role="presentation"><a href="#record" aria-controls="profile" role="tab" data-toggle="tab"><strong>Update & Status</strong></a></li>
+        <li role="presentation"><a href="#status" aria-controls="profile" role="tab" data-toggle="tab"><strong>Recovery Aspect</strong></a></li>
+    <?php }?>
+   </ul>
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="doc">
@@ -295,24 +467,26 @@ use kartik\widgets\ActiveForm;
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table class="table">
+              <table class="table table-bordered table-striped">
                     <tr>
-                        <td><strong>User</strong></td>
+                        <td><strong>Created By</strong></td>
                         <td><strong>Time Record</strong></td>
                         <td><strong>Description</strong></td>
                         <td><strong>Notes</strong></td>
-                        <td><strong>Time Created</strong></td>
                     </tr>
                     
                     <?php
-                    for($i=0;$i<sizeof($record);$i++){
+                    for($i=sizeof($record)-1;$i>=0;$i--){
                     ?>
                     <tr>
                         <td><?= $record[$i]['user']?></td>
                         <td><?= $record[$i]['time']?></td>
-                        <td><?= $record[$i]['description']?></td>
+                        <td>
+                        <?= $record[$i]['description']?>
+                        <br>
+                        <h4><small><i>created time: <?= $record[$i]['created_at']?></i></small></h4>
+                        </td>
                         <td><?= $record[$i]['keterangan']?></td>
-                        <td><?= $record[$i]['created_at']?></td>
                     </tr>
                     <?php }?>
                 </table>

@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * 
+ * Project  : Email Reminder System PT Global Internusa Adjusting
+ * Author   : Thinker Studio
+ * Developer: Yunan Helmi Mahendra & Dwi Al Aji Suseno
+ * Version  : 1.0
+ * Website  : thinkerstudio.info
+ * 
+ */
+
 namespace app\controllers;
 
 use Yii;

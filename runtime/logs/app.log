@@ -31043,3 +31043,857 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1483450081.03
     'REQUEST_TIME' => 1483450081
 ]
+2017-01-20 03:59:08 [::1][-][-][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: yii\swiftmailer\Message::setBc()' in C:\wamp\www\gia\vendor\yiisoft\yii2\base\Object.php:220
+Stack trace:
+#0 C:\wamp\www\gia\controllers\SiteController.php(164): yii\base\Object->__call('setBc', Array)
+#1 C:\wamp\www\gia\controllers\SiteController.php(164): yii\swiftmailer\Message->setBc('dinda.tania@glo...')
+#2 C:\wamp\www\gia\controllers\SiteController.php(214): app\controllers\SiteController->actionSend('495')
+#3 [internal function]: app\controllers\SiteController->actionCheck()
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#6 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('check', Array)
+#7 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/check', Array)
+#8 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#10 {main}
+2017-01-20 03:59:06 [::1][-][-][info][application] $_GET = [
+    'r' => 'site/check'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"C6zLmnGvaW-ookTvxOO607eJVulRLGF9\";}'
+    'PHPSESSID' => 'ns47kl0emrv061ms9fiannlag6'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22C6zLmnGvaW-ookTvxOO607eJVulRLGF9%22%3B%7D; PHPSESSID=ns47kl0emrv061ms9fiannlag6; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '49767'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/check'
+    'REQUEST_URI' => '/gia/web/index.php?r=site/check'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484881146.061
+    'REQUEST_TIME' => 1484881146
+]
+2017-01-20 04:00:11 [::1][-][-][error][Swift_TransportException] exception 'Swift_TransportException' with message 'Connection could not be established with host leo-246.server-iix.com [Unable to find the socket transport "ssl" - did you forget to enable it when you configured PHP? #0]' in C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php:269
+Stack trace:
+#0 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2-swiftmailer\Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMailer.php(260): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 C:\wamp\www\gia\controllers\SiteController.php(203): yii\mail\BaseMessage->send()
+#7 C:\wamp\www\gia\controllers\SiteController.php(214): app\controllers\SiteController->actionSend('495')
+#8 [internal function]: app\controllers\SiteController->actionCheck()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('check', Array)
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/check', Array)
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#15 {main}
+2017-01-20 04:00:10 [::1][-][-][info][application] $_GET = [
+    'r' => 'site/check'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"C6zLmnGvaW-ookTvxOO607eJVulRLGF9\";}'
+    'PHPSESSID' => 'ns47kl0emrv061ms9fiannlag6'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22C6zLmnGvaW-ookTvxOO607eJVulRLGF9%22%3B%7D; PHPSESSID=ns47kl0emrv061ms9fiannlag6; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '49776'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/check'
+    'REQUEST_URI' => '/gia/web/index.php?r=site/check'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484881210.356
+    'REQUEST_TIME' => 1484881210
+]
+2017-01-20 04:05:11 [::1][-][-][error][Swift_TransportException] exception 'Swift_TransportException' with message 'Connection could not be established with host leo-246.server-iix.com [Unable to find the socket transport "ssl" - did you forget to enable it when you configured PHP? #0]' in C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php:269
+Stack trace:
+#0 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2-swiftmailer\Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMailer.php(260): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 C:\wamp\www\gia\controllers\SiteController.php(203): yii\mail\BaseMessage->send()
+#7 C:\wamp\www\gia\controllers\SiteController.php(214): app\controllers\SiteController->actionSend('495')
+#8 [internal function]: app\controllers\SiteController->actionCheck()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('check', Array)
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/check', Array)
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#15 {main}
+2017-01-20 04:05:11 [::1][-][-][info][application] $_GET = [
+    'r' => 'site/check'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"C6zLmnGvaW-ookTvxOO607eJVulRLGF9\";}'
+    'PHPSESSID' => 'ns47kl0emrv061ms9fiannlag6'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22C6zLmnGvaW-ookTvxOO607eJVulRLGF9%22%3B%7D; PHPSESSID=ns47kl0emrv061ms9fiannlag6; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '49825'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/check'
+    'REQUEST_URI' => '/gia/web/index.php?r=site/check'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484881511.225
+    'REQUEST_TIME' => 1484881511
+]
+2017-01-20 04:05:28 [::1][-][-][error][Swift_TransportException] exception 'Swift_TransportException' with message 'Connection could not be established with host leo-246.server-iix.com [Unable to find the socket transport "ssl" - did you forget to enable it when you configured PHP? #0]' in C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php:269
+Stack trace:
+#0 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2-swiftmailer\Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMailer.php(260): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 C:\wamp\www\gia\controllers\SiteController.php(203): yii\mail\BaseMessage->send()
+#7 C:\wamp\www\gia\controllers\SiteController.php(214): app\controllers\SiteController->actionSend('495')
+#8 [internal function]: app\controllers\SiteController->actionCheck()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('check', Array)
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/check', Array)
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#15 {main}
+2017-01-20 04:05:28 [::1][-][-][info][application] $_GET = [
+    'r' => 'site/check'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"C6zLmnGvaW-ookTvxOO607eJVulRLGF9\";}'
+    'PHPSESSID' => 'ns47kl0emrv061ms9fiannlag6'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22C6zLmnGvaW-ookTvxOO607eJVulRLGF9%22%3B%7D; PHPSESSID=ns47kl0emrv061ms9fiannlag6; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '49831'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/check'
+    'REQUEST_URI' => '/gia/web/index.php?r=site/check'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484881528.279
+    'REQUEST_TIME' => 1484881528
+]
+2017-01-20 04:05:39 [::1][-][-][error][Swift_TransportException] exception 'Swift_TransportException' with message 'Connection could not be established with host leo-246.server-iix.com [Unable to find the socket transport "ssl" - did you forget to enable it when you configured PHP? #0]' in C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php:269
+Stack trace:
+#0 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2-swiftmailer\Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMailer.php(260): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 C:\wamp\www\gia\controllers\SiteController.php(202): yii\mail\BaseMessage->send()
+#7 C:\wamp\www\gia\controllers\SiteController.php(213): app\controllers\SiteController->actionSend('495')
+#8 [internal function]: app\controllers\SiteController->actionCheck()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('check', Array)
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/check', Array)
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#15 {main}
+2017-01-20 04:05:39 [::1][-][-][info][application] $_GET = [
+    'r' => 'site/check'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"C6zLmnGvaW-ookTvxOO607eJVulRLGF9\";}'
+    'PHPSESSID' => 'ns47kl0emrv061ms9fiannlag6'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=f44b77ce911bd12853aabbd667b6bbcbbb01e2feb853fb0f069cf1e98589a128a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22C6zLmnGvaW-ookTvxOO607eJVulRLGF9%22%3B%7D; PHPSESSID=ns47kl0emrv061ms9fiannlag6; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '49836'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/check'
+    'REQUEST_URI' => '/gia/web/index.php?r=site/check'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484881539.578
+    'REQUEST_TIME' => 1484881539
+]
+2017-01-20 13:19:27 [::1][-][-][error][Swift_TransportException] exception 'Swift_TransportException' with message 'Connection could not be established with host leo-246.server-iix.com [Unable to find the socket transport "ssl" - did you forget to enable it when you configured PHP? #0]' in C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php:269
+Stack trace:
+#0 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php(62): Swift_Transport_StreamBuffer->_establishSocketConnection()
+#1 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\AbstractSmtpTransport.php(113): Swift_Transport_StreamBuffer->initialize(Array)
+#2 C:\wamp\www\gia\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mailer.php(79): Swift_Transport_AbstractSmtpTransport->start()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2-swiftmailer\Mailer.php(146): Swift_Mailer->send(Object(Swift_Message))
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMailer.php(260): yii\swiftmailer\Mailer->sendMessage(Object(yii\swiftmailer\Message))
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\mail\BaseMessage.php(48): yii\mail\BaseMailer->send(Object(yii\swiftmailer\Message))
+#6 C:\wamp\www\gia\controllers\SiteController.php(202): yii\mail\BaseMessage->send()
+#7 C:\wamp\www\gia\controllers\SiteController.php(213): app\controllers\SiteController->actionSend('495')
+#8 [internal function]: app\controllers\SiteController->actionCheck()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('check', Array)
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/check', Array)
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#15 {main}
+2017-01-20 13:19:20 [::1][-][-][info][application] $_GET = [
+    'r' => 'site/check'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '52295'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/check'
+    'REQUEST_URI' => '/gia/web/index.php?r=site/check'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484914759.058
+    'REQUEST_TIME' => 1484914759
+]
+2017-01-21 12:11:13 [::1][-][csg9880rp1i4sfei7rceavav24][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Setting unknown property: app\models\User::client_id' in C:\wamp\www\gia\vendor\yiisoft\yii2\base\Object.php:161
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\BaseYii.php(521): yii\base\Object->__set('client_id', NULL)
+#1 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(app\models\User), Object(app\models\Login))
+#2 C:\wamp\www\gia\models\User.php(42): yii\base\Object->__construct(Object(app\models\Login))
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2\web\User.php(665): app\models\User::findIdentity(4)
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\web\User.php(188): yii\web\User->renewAuthStatus()
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\web\User.php(340): yii\web\User->getIdentity()
+#6 C:\wamp\www\gia\vendor\yiisoft\yii2\filters\AccessRule.php(148): yii\web\User->getIsGuest()
+#7 C:\wamp\www\gia\vendor\yiisoft\yii2\filters\AccessRule.php(103): yii\filters\AccessRule->matchRole(Object(yii\web\User))
+#8 C:\wamp\www\gia\vendor\yiisoft\yii2\filters\AccessControl.php(118): yii\filters\AccessRule->allows(Object(yii\base\InlineAction), Object(yii\web\User), Object(yii\web\Request))
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\ActionFilter.php(73): yii\filters\AccessControl->beforeAction(Object(yii\base\InlineAction))
+#10 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Component.php(540): call_user_func(Array, Object(yii\base\ActionEvent))
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(269): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Controller.php(108): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#14 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(152): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#15 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('logout', Array)
+#16 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('site/logout', Array)
+#17 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#19 {main}
+2017-01-21 12:11:13 [::1][-][csg9880rp1i4sfei7rceavav24][info][application] $_GET = [
+    'r' => 'site/logout'
+]
+
+$_POST = [
+    '_csrf' => 'SHRIZXVhRWkXMnsyJSYKBDkRDTdDUAYAfBp9EhkHEzotEBsBGQQqXw=='
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_F3WPGOmqeER61Ci4n5wlfVSedSdleo6\";}'
+    'PHPSESSID' => 'csg9880rp1i4sfei7rceavav24'
+    '_identity' => '2733b16c23589d473ca5f85d09abc02e838431ce7fa1e47eee5f894a63b39e69a:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[4,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 4
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '66'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Foutstandingreport'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_F3WPGOmqeER61Ci4n5wlfVSedSdleo6%22%3B%7D; PHPSESSID=csg9880rp1i4sfei7rceavav24; _identity=2733b16c23589d473ca5f85d09abc02e838431ce7fa1e47eee5f894a63b39e69a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B4%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '57072'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=site%2Flogout'
+    'REQUEST_URI' => '/gia/web/index.php?r=site%2Flogout'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484997073.218
+    'REQUEST_TIME' => 1484997073
+]
+2017-01-21 18:21:47 [::1][1][4vji2958tt6e7kepfonc559180][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '=', expecting ']'' in C:\wamp\www\gia\views\instruksi-kerja\_formuser.php:27
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#1 C:\wamp\www\gia\views\instruksi-kerja\user_create.php(23): yii\base\View->render()
+#2 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(326): ::unknown()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile()
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render()
+#6 C:\wamp\www\gia\controllers\InstruksiKerjaController.php(756): yii\base\Controller->render()
+#7 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): app\controllers\InstruksiKerjaController->actionCreateuser()
+#8 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): ::call_user_func_array:{C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php:55}()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams()
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction()
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction()
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest()
+#13 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2017-01-21 18:21:47 [::1][1][4vji2958tt6e7kepfonc559180][info][application] $_GET = [
+    'r' => 'instruksi-kerja/createuser'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_F3WPGOmqeER61Ci4n5wlfVSedSdleo6\";}'
+    'PHPSESSID' => '4vji2958tt6e7kepfonc559180'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Fuser'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_F3WPGOmqeER61Ci4n5wlfVSedSdleo6%22%3B%7D; PHPSESSID=4vji2958tt6e7kepfonc559180; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '57875'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=instruksi-kerja%2Fcreateuser'
+    'REQUEST_URI' => '/gia/web/index.php?r=instruksi-kerja%2Fcreateuser'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1484997707.109
+    'REQUEST_TIME' => 1484997707
+]
+2017-01-21 20:20:02 [::1][1][4vji2958tt6e7kepfonc559180][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'dwa' (T_STRING), expecting ']'' in C:\wamp\www\gia\views\instruksi-kerja\_formuser.php:23
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#1 C:\wamp\www\gia\views\instruksi-kerja\user_create.php(23): yii\base\View->render()
+#2 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(326): ::unknown()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile()
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render()
+#6 C:\wamp\www\gia\controllers\InstruksiKerjaController.php(756): yii\base\Controller->render()
+#7 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): app\controllers\InstruksiKerjaController->actionCreateuser()
+#8 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): ::call_user_func_array:{C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php:55}()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams()
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction()
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction()
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest()
+#13 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2017-01-21 20:20:02 [::1][1][4vji2958tt6e7kepfonc559180][info][application] $_GET = [
+    'r' => 'instruksi-kerja/createuser'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_F3WPGOmqeER61Ci4n5wlfVSedSdleo6\";}'
+    'PHPSESSID' => '4vji2958tt6e7kepfonc559180'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Fuser'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_F3WPGOmqeER61Ci4n5wlfVSedSdleo6%22%3B%7D; PHPSESSID=4vji2958tt6e7kepfonc559180; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '49263'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=instruksi-kerja%2Fcreateuser'
+    'REQUEST_URI' => '/gia/web/index.php?r=instruksi-kerja%2Fcreateuser'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1485004802.129
+    'REQUEST_TIME' => 1485004802
+]
+2017-01-21 20:38:55 [::1][1][4vji2958tt6e7kepfonc559180][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in C:\wamp\www\gia\views\instruksi-kerja\_formuser.php:24
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#1 C:\wamp\www\gia\views\instruksi-kerja\user_create.php(23): yii\base\View->render()
+#2 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(326): ::unknown()
+#3 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile()
+#4 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#5 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render()
+#6 C:\wamp\www\gia\controllers\InstruksiKerjaController.php(756): yii\base\Controller->render()
+#7 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): app\controllers\InstruksiKerjaController->actionCreateuser()
+#8 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): ::call_user_func_array:{C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php:55}()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams()
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction()
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction()
+#12 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest()
+#13 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2017-01-21 20:38:55 [::1][1][4vji2958tt6e7kepfonc559180][info][application] $_GET = [
+    'r' => 'instruksi-kerja/createuser'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_F3WPGOmqeER61Ci4n5wlfVSedSdleo6\";}'
+    'PHPSESSID' => '4vji2958tt6e7kepfonc559180'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Fuser'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_F3WPGOmqeER61Ci4n5wlfVSedSdleo6%22%3B%7D; PHPSESSID=4vji2958tt6e7kepfonc559180; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '50674'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=instruksi-kerja%2Fcreateuser'
+    'REQUEST_URI' => '/gia/web/index.php?r=instruksi-kerja%2Fcreateuser'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1485005935.258
+    'REQUEST_TIME' => 1485005935
+]
+2017-01-21 21:26:15 [::1][1][4vji2958tt6e7kepfonc559180][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: instruksi-kerja/view_user' in C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php:125
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view_user', Array)
+#1 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('instruksi-kerja...', Array)
+#2 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php:104
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2017-01-21 21:26:15 [::1][1][4vji2958tt6e7kepfonc559180][info][application] $_GET = [
+    'r' => 'instruksi-kerja/view_user'
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_F3WPGOmqeER61Ci4n5wlfVSedSdleo6\";}'
+    'PHPSESSID' => '4vji2958tt6e7kepfonc559180'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Fupdateuser&id=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_F3WPGOmqeER61Ci4n5wlfVSedSdleo6%22%3B%7D; PHPSESSID=4vji2958tt6e7kepfonc559180; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '54065'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=instruksi-kerja%2Fview_user&id=1'
+    'REQUEST_URI' => '/gia/web/index.php?r=instruksi-kerja%2Fview_user&id=1'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1485008775.38
+    'REQUEST_TIME' => 1485008775
+]
+2017-01-21 21:26:20 [::1][1][4vji2958tt6e7kepfonc559180][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: instruksi-kerja/view_user' in C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php:125
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction('view_user', Array)
+#1 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction('instruksi-kerja...', Array)
+#2 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php:104
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2017-01-21 21:26:20 [::1][1][4vji2958tt6e7kepfonc559180][info][application] $_GET = [
+    'r' => 'instruksi-kerja/view_user'
+    'id' => '1'
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => 'c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"_F3WPGOmqeER61Ci4n5wlfVSedSdleo6\";}'
+    'PHPSESSID' => '4vji2958tt6e7kepfonc559180'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Fupdateuser&id=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=c4c494297ceb327838d79a424e8b30fe5d15ad8a9746a73f325f8f0dca5d94e9a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_F3WPGOmqeER61Ci4n5wlfVSedSdleo6%22%3B%7D; PHPSESSID=4vji2958tt6e7kepfonc559180; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '54065'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=instruksi-kerja%2Fview_user&id=1'
+    'REQUEST_URI' => '/gia/web/index.php?r=instruksi-kerja%2Fview_user&id=1'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1485008780.628
+    'REQUEST_TIME' => 1485008780
+]

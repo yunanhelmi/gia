@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * 
+ * Project  : Email Reminder System PT Global Internusa Adjusting
+ * Author   : Thinker Studio
+ * Developer: Yunan Helmi Mahendra & Dwi Al Aji Suseno
+ * Version  : 1.0
+ * Website  : thinkerstudio.info
+ * 
+ */
+
 namespace app\controllers;
 
 use Yii;
@@ -763,7 +773,7 @@ class InstruksiKerjaController extends Controller
 
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-                return $this->redirect(['viewuser', 'id' => $model->id]);
+                return $this->redirect(['view_user', 'id' => $model->id]);
         } 
         else {
             return $this->render('user_update', [
