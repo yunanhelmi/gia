@@ -16,6 +16,12 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 ?>
+
+<?php if(Yii::$app->session->hasFlash('success')):?>
+    <div class="alert alert-success" role="alert">
+        <?php echo Yii::$app->session->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
 <div class="instruksi-kerja-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

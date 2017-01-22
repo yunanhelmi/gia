@@ -749,6 +749,7 @@ class InstruksiKerjaController extends Controller
         $model = new Login();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+            Yii::$app->session->setFlash('success','Data was successfully created.');
             return $this->redirect(['user', 'id' => $model->id]);
         } else {
             return $this->render('user_create', [
@@ -773,7 +774,8 @@ class InstruksiKerjaController extends Controller
 
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-                return $this->redirect(['viewuser', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success','Data was successfully updated.');
+                return $this->redirect(['user']);
         } 
         else {
             return $this->render('user_update', [
