@@ -70,6 +70,13 @@ use app\models\InstruksiKerja;
             'date_of_last_correspondent' => $this->date_of_last_correspondent,
             //'status' => 'outstanding',
         ]);
+        
+        if(Yii::$app->user->identity->role == 'applicant'){
+            $query->andFilterWhere([
+                'assurers' => Yii::$app->user->identity->client_id,
+                'status' => 'outstanding',
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'case_number', $this->case_number])
             ->andFilterWhere(['like', 'type_of_instruction', $this->type_of_instruction])

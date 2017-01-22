@@ -58,6 +58,8 @@ use app\models\Login;
         $query->andFilterWhere([
             'id' => $this->id,
         ]);
+        
+        $query->andFilterWhere(['<>', 'role','admin']);
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password])
