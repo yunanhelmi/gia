@@ -188,10 +188,15 @@ $this->registerJs($search);
                 ],
                 [
                     'class' => 'kartik\grid\ActionColumn',
-                    'template' => ' {view} ',
+                    'template' => ' {view} {edit}',
                     'buttons' => [
                         'view' => function ($url, $model){
                             return Html::a('detail', 'index.php?r=instruksi-kerja/viewissued&id='.$model->id);
+                        },
+                        'edit' => function ($url,$model){
+                            if(Yii::$app->user->identity->role == 'admin'){
+                                return Html::a('change status', 'index.php?r=instruksi-kerja/changestatus&id='.$model->id);
+                            }
                         }
                     ],
                 ],

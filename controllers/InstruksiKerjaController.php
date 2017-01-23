@@ -44,7 +44,7 @@ class InstruksiKerjaController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['user', 'findmodeluser', 'viewuser', 'updateuser', 'deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf'],
+                        'actions' => ['user', 'findmodeluser', 'viewuser', 'updateuser', 'deleteuser', 'index','createuser', 'viewincomingreport', 'viewoutstandingreport', 'viewissuedreport', 'printincomingreport','incomingmodalreport','incomingreport', 'printoutstandingreport','outstandingmodalreport','outstandingreport','printissuedreport','issuedmodalreport','issuedreport','incoming','outstanding','issued','viewincoming','viewoutstanding','viewissued','create','delete','updateincoming','updateoutstanding','pdf','changestatus'],
                         'roles' => ['@']
                     ],
                     [
@@ -53,6 +53,16 @@ class InstruksiKerjaController extends Controller
                 ]
             ]
         ];
+    }
+
+    public function actionChangestatus($id){
+        $connection = Yii::$app->db;
+         $command = $connection->createCommand("
+                    UPDATE instruksi_kerja 
+                    SET status = 'outstanding'
+                    WHERE id = ".$id."
+                    ")->execute();
+         return $this->redirect(['issued']);
     }
 
     /**
