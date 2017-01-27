@@ -166,7 +166,9 @@ $this->params['breadcrumbs'][] = $model->case_number;
                                 <td><strong>Time Record</strong></td>
                                 <td><strong>Description</strong></td>
                                 <td><strong>Notes</strong></td>
+                                <?php if(Yii::$app->user->identity->role != 'applicant'){ ?>
                                 <td><strong>Time Created</strong></td>
+                                <?php }?>
                             </tr>
                             
                             <?php
@@ -177,7 +179,9 @@ $this->params['breadcrumbs'][] = $model->case_number;
                                 <td><?= $record[$i]['time']?></td>
                                 <td><?= $record[$i]['description']?></td>
                                 <td><?= $record[$i]['keterangan']?></td>
+                                <?php if(Yii::$app->user->identity->role != 'applicant'){ ?>
                                 <td><?= $record[$i]['created_at']?></td>
+                                <?php }?>
                             </tr>
                             <?php }?>
                         </table>
@@ -195,7 +199,9 @@ $this->params['breadcrumbs'][] = $model->case_number;
                                 <td><strong>Time Record</strong></td>
                                 <td><strong>Description</strong></td>
                                 <td><strong>Notes</strong></td>
+                                <?php if(Yii::$app->user->identity->role != 'applicant'){ ?>
                                 <td><strong>Time Created</strong></td>
+                                <?php }?>
                             </tr>
                         </thead>
                       </table>

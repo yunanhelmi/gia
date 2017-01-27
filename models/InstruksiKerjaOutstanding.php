@@ -68,7 +68,7 @@ use app\models\InstruksiKerja;
             'date_send_of_doc_request' => $this->date_send_of_doc_request,
             'date_of_issued' => $this->date_of_issued,
             'date_of_last_correspondent' => $this->date_of_last_correspondent,
-            //'status' => 'outstanding',
+            'status' => 'outstanding',
         ]);
         
         if(Yii::$app->user->identity->role == 'applicant'){

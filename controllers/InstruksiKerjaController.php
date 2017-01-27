@@ -406,8 +406,8 @@ class InstruksiKerjaController extends Controller
             'orientation' => \kartik\mpdf\Pdf::ORIENT_PORTRAIT,
             'destination' => \kartik\mpdf\Pdf::DEST_BROWSER,
             'content' => $content,
-            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
-            'cssInline' => '.kv-heading-1{font-size:18px}',
+            //'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            //'cssInline' => '.kv-heading-1{font-size:18px}',
             'filename' => $model->case_number.'.'.'pdf',
             'options' => ['title' => $model->case_number],
             'methods' => [

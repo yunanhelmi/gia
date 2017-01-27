@@ -97,7 +97,9 @@ use kartik\grid\GridView;
                       <td><strong>Description</strong></td>
                       <td><strong>Notes</strong></td>
                       <td><strong>User</strong></td>
+                      <?php if(Yii::$app->user->identity->role != 'applicant'){ ?>
                       <td><strong>Time Record</strong></td>
+                      <?php }?>
                   </tr>
                   <?php
                   for($i=0;$i<sizeof($record);$i++){
@@ -107,7 +109,9 @@ use kartik\grid\GridView;
                       <td><?= $record[$i]['description']?></td>
                       <td><?= $record[$i]['keterangan']?></td>
                       <td><?= $record[$i]['user']?></td>
+                      <?php if(Yii::$app->user->identity->role != 'applicant'){ ?>
                       <td><?= $record[$i]['created_at']?></td>
+                      <?php }?>
                   </tr>
                   <?php }?>
                 </tbody>

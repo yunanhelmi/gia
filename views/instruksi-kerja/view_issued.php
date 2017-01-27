@@ -205,7 +205,9 @@ $this->params['breadcrumbs'][] = $model->case_number;
                                 <td><strong>Time Record</strong></td>
                                 <td><strong>Description</strong></td>
                                 <td><strong>Notes</strong></td>
+                                
                                 <td><strong>Time Created</strong></td>
+                                
                             </tr>
                         </thead>
                       </table>
