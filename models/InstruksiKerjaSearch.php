@@ -77,6 +77,7 @@ use app\models\InstruksiKerja;
             ->andFilterWhere(['like', 'broker', $this->broker])
             ->andFilterWhere(['like', 'conveyence', $this->conveyence])
             ->andFilterWhere(['like', 'interest', $this->interest])
+            ->andFilterWhere(['like', 'date_of_issued', $this->date_of_issued])
             ->andFilterWhere(['like', 'casualty', $this->casualty])
             ->andFilterWhere(['like', 'amount_of_loss', $this->amount_of_loss])
             ->andFilterWhere(['like', 'sum_insured', $this->sum_insured])

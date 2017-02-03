@@ -32695,3 +32695,147 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1486089509.654
     'REQUEST_TIME' => 1486089509
 ]
+2017-02-03 04:02:38 [::1][-][-][warning][yii\web\User::getIdentityAndDurationFromCookie] Invalid auth key attempted for user '2': admin999
+    in C:\wamp\www\gia\views\layouts\main.php:45
+    in C:\wamp\www\gia\controllers\SiteController.php:81
+2017-02-03 04:02:34 [::1][-][-][info][application] $_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_identity' => '5b5377005c884863dd6254b1cb6c117d9242b994007f1192af16a89f2bf6e5caa:2:{i:0;s:9:\"_identity\";i:1;s:22:\"[2,\"admin999\",2592000]\";}'
+    '_csrf' => '1de929f492c088542eaa446e179449004bff0ee7dd195462ee86b98ce5819d0ca:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"1iOrHwZrMx1ZfhHVSAgdVCtm2toYReh1\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _identity=5b5377005c884863dd6254b1cb6c117d9242b994007f1192af16a89f2bf6e5caa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A22%3A%22%5B2%2C%22admin999%22%2C2592000%5D%22%3B%7D; _csrf=1de929f492c088542eaa446e179449004bff0ee7dd195462ee86b98ce5819d0ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%221iOrHwZrMx1ZfhHVSAgdVCtm2toYReh1%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '64726'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/gia/web/'
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1486090954.416
+    'REQUEST_TIME' => 1486090954
+]
+2017-02-03 10:20:21 [::1][1][sajvrshr9m18c6nq8iubq5llv2][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in C:\wamp\www\gia\vendor\yiisoft\yii2\helpers\BaseHtml.php:1698
+Stack trace:
+#0 C:\wamp\www\gia\vendor\yiisoft\yii2\helpers\BaseHtml.php(1658): yii\helpers\BaseHtml::dropDownList()
+#1 C:\wamp\www\gia\vendor\yiisoft\yii2\helpers\BaseHtml.php(1495): yii\helpers\BaseHtml::activeListInput()
+#2 C:\wamp\www\gia\vendor\kartik-v\yii2-krajee-base\InputWidget.php(260): yii\helpers\BaseHtml::activeDropDownList()
+#3 C:\wamp\www\gia\vendor\kartik-v\yii2-widget-select2\Select2.php(332): kartik\base\InputWidget->getInput()
+#4 C:\wamp\www\gia\vendor\kartik-v\yii2-widget-select2\Select2.php(221): kartik\select2\Select2->renderInput()
+#5 C:\wamp\www\gia\vendor\kartik-v\yii2-widget-select2\Select2.php(183): kartik\select2\Select2->renderWidget()
+#6 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Widget.php(102): kartik\select2\Select2->run()
+#7 C:\wamp\www\gia\vendor\yiisoft\yii2\widgets\ActiveField.php(700): yii\base\Widget::widget()
+#8 C:\wamp\www\gia\views\instruksi-kerja\searchissued.php(75): yii\widgets\ActiveField->widget()
+#9 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(326): ::unknown()
+#10 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile()
+#11 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#12 C:\wamp\www\gia\views\instruksi-kerja\issued.php(29): yii\base\View->render()
+#13 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(326): ::unknown()
+#14 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(248): yii\base\View->renderPhpFile()
+#15 C:\wamp\www\gia\vendor\yiisoft\yii2\base\View.php(150): yii\base\View->renderFile()
+#16 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(378): yii\base\View->render()
+#17 C:\wamp\www\gia\controllers\InstruksiKerjaController.php(134): yii\base\Controller->render()
+#18 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): app\controllers\InstruksiKerjaController->actionIssued()
+#19 C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php(55): ::call_user_func_array:{C:\wamp\www\gia\vendor\yiisoft\yii2\base\InlineAction.php:55}()
+#20 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams()
+#21 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Module.php(454): yii\base\Controller->runAction()
+#22 C:\wamp\www\gia\vendor\yiisoft\yii2\web\Application.php(92): yii\base\Module->runAction()
+#23 C:\wamp\www\gia\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest()
+#24 C:\wamp\www\gia\web\index.php(12): yii\base\Application->run()
+#25 {main}
+2017-02-03 10:20:20 [::1][1][sajvrshr9m18c6nq8iubq5llv2][info][application] $_GET = [
+    'r' => 'instruksi-kerja/issued'
+    'InstruksiKerjaIssued' => [
+        'id' => ''
+        'case_number' => ''
+        'type_of_instruction' => ''
+        'casualty' => ''
+        'id_client' => ''
+        'insured' => ''
+        'conveyence' => ''
+        'adjuster' => ''
+        'date_of_issued' => ''
+    ]
+]
+
+$_COOKIE = [
+    'session_id' => '8af704c9e846986161e6158d5a1952b675dca083'
+    '_ga' => 'GA1.1.1482718977.1477131021'
+    '_csrf' => '9a1ffd024e3677923ad8ff141cd3d5d65df3174bfa09a3ae042945da65f6cf63a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"r7PeQKmIs1EEMQjLIAogYuxxH9rhdF0A\";}'
+    'PHPSESSID' => 'sajvrshr9m18c6nq8iubq5llv2'
+    '_identity' => '3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa:2:{i:0;s:9:\"_identity\";i:1;s:16:\"[1,null,2592000]\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/gia/web/index.php?r=instruksi-kerja%2Fissued&InstruksiKerjaIssued%5Bid%5D=&InstruksiKerjaIssued%5Bcase_number%5D=&InstruksiKerjaIssued%5Btype_of_instruction%5D=&InstruksiKerjaIssued%5Bcasualty%5D=&InstruksiKerjaIssued%5Bid_client%5D=&InstruksiKerjaIssued%5Binsured%5D=&InstruksiKerjaIssued%5Bconveyence%5D=&InstruksiKerjaIssued%5Badjuster%5D=&InstruksiKerjaIssued%5Bdate_of_issued%5D=2017'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'id-ID,id;q=0.8,en-US;q=0.6,en;q=0.4,ms;q=0.2'
+    'HTTP_COOKIE' => 'session_id=8af704c9e846986161e6158d5a1952b675dca083; _ga=GA1.1.1482718977.1477131021; _csrf=9a1ffd024e3677923ad8ff141cd3d5d65df3174bfa09a3ae042945da65f6cf63a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22r7PeQKmIs1EEMQjLIAogYuxxH9rhdF0A%22%3B%7D; PHPSESSID=sajvrshr9m18c6nq8iubq5llv2; _identity=3dd67c30b4b0cadf38d64e25a6bdfd33e143c5682c2d8f1162daaab0d3edda2fa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B1%2Cnull%2C2592000%5D%22%3B%7D'
+    'PATH' => 'C:\\CUBRID\\bin\\;C:\\oraclexe\\app\\oracle\\product\\11.2.0\\server\\bin;C:\\Program Files (x86)\\Common Files\\Intel\\Shared Files\\cpp\\bin\\Intel64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\oraclexe\\app\\oracle\\product\\10.2.0\\server\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\ComposerSetup\\bin;C:\\xampp-lar\\php;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files (x86)\\Git\\bin;C:\\Program Files (x86)\\Git\\cmd;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\path\\to\\java\\jre\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin\\java.exe;C:\\Program Files\\Eclipse Che\\eclipse-che-4.0.0-RC3\\tools\\jre\\bin;C:\\Program Files (x86)\\Java\\jre1.8.0_73\\bin;C:\\Program Files (x86)\\Java\\jdk1.7.0_05\\bin;C:\\Program Files\\Java\\jdk1.8.0_60\\bin;CLASSPATH=C:\\CUBRID\\jdbc\\cubrid_jdbc.jar;C:\\Program Files (x86)\\Windows Live\\Shared;C:\\Program Files (x86)\\GtkSharp\\2.12\\bin;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\VXIPNP\\WinNT\\Bin;C:\\Program Files (x86)\\leJOS NXJ\\bin;C:\\Program Files\\nodejs\\;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\AL AJI\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\wamp\\bin\\php\\php7.0.14;C:\\xampp\\php;C:\\wamp\\bin\\php\\php5.5.12;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.9 (Win32) OpenSSL/1.0.1g PHP/5.5.12'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp/www/'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/wamp/www/gia/web/index.php'
+    'REMOTE_PORT' => '51690'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=instruksi-kerja%2Fissued&InstruksiKerjaIssued%5Bid%5D=&InstruksiKerjaIssued%5Bcase_number%5D=&InstruksiKerjaIssued%5Btype_of_instruction%5D=&InstruksiKerjaIssued%5Bcasualty%5D=&InstruksiKerjaIssued%5Bid_client%5D=&InstruksiKerjaIssued%5Binsured%5D=&InstruksiKerjaIssued%5Bconveyence%5D=&InstruksiKerjaIssued%5Badjuster%5D=&InstruksiKerjaIssued%5Bdate_of_issued%5D='
+    'REQUEST_URI' => '/gia/web/index.php?r=instruksi-kerja%2Fissued&InstruksiKerjaIssued%5Bid%5D=&InstruksiKerjaIssued%5Bcase_number%5D=&InstruksiKerjaIssued%5Btype_of_instruction%5D=&InstruksiKerjaIssued%5Bcasualty%5D=&InstruksiKerjaIssued%5Bid_client%5D=&InstruksiKerjaIssued%5Binsured%5D=&InstruksiKerjaIssued%5Bconveyence%5D=&InstruksiKerjaIssued%5Badjuster%5D=&InstruksiKerjaIssued%5Bdate_of_issued%5D='
+    'SCRIPT_NAME' => '/gia/web/index.php'
+    'PHP_SELF' => '/gia/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1486092020.764
+    'REQUEST_TIME' => 1486092020
+]

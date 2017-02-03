@@ -114,10 +114,15 @@ class InstruksiKerjaController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_issued) as year')->where("status = 'issued'")->distinct()->asArray()->orderBy('year')->all();
         $arr = array();
+        
         for($i=0;$i<sizeof($tahun);$i++){
-            $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
-           
+            if($tahun[$i]['year'] != null){
+                $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
+            }
         }
+
+        // var_dump($arr);
+        // exit();
         $adjuster = InstruksiKerjaIssued::find()->select('adjuster')->where("status = 'issued'")->distinct()->asArray()->orderBy('adjuster')->all();
         $arr1 = array();
         for($i=0;$i<sizeof($adjuster);$i++){

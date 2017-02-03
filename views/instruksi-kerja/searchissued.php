@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+// print_r($tahun);
+//             exit();
 /* @var $this yii\web\View */
 /* @var $model app\models\InstruksiKerjaSearch */
 /* @var $form yii\widgets\ActiveForm */
@@ -51,7 +53,7 @@ use yii\widgets\ActiveForm;
                     'allowClear' => true
                 ],
             ]); ?>
-            <?= 
+            <?php 
             // $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
             //     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
             //     'saveFormat' => 'php:Y-m-d',
@@ -63,7 +65,8 @@ use yii\widgets\ActiveForm;
             //         ]
             //     ],
             //     ]); 
-            $form->field($model, 'date_of_issued')->label("Year of Issued")->widget(\kartik\widgets\Select2::classname(), [
+            //$th = '2017';
+            echo $form->field($model, 'date_of_issued')->label("Year of Issued")->widget(\kartik\widgets\Select2::classname(), [
                 'data' => $tahun,
                 'options' => ['placeholder' => 'Choose Year'],
                 'pluginOptions' => [

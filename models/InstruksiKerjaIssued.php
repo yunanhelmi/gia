@@ -66,7 +66,7 @@ use app\models\InstruksiKerja;
             'date_send_of_pa' => $this->date_send_of_pa,
             'date_send_of_dfr' => $this->date_send_of_dfr,
             'date_send_of_doc_request' => $this->date_send_of_doc_request,
-            'date_of_issued' => $this->date_of_issued,
+            //'date_of_issued' => $this->date_of_issued,
             'date_of_last_correspondent' => $this->date_of_last_correspondent,
             'status' => 'issued',
         ]);
@@ -77,6 +77,7 @@ use app\models\InstruksiKerja;
             // start: bagian ini untuk filter date_of_instruction
             ->andFilterWhere(['like', 'date_of_instruction', $this->date_of_instruction])
             // end: 
+            ->andFilterWhere(['like', 'date_of_issued', $this->date_of_issued])
             ->andFilterWhere(['like', 'insured', $this->insured])
             ->andFilterWhere(['like', 'broker', $this->broker])
             ->andFilterWhere(['like', 'conveyence', $this->conveyence])
