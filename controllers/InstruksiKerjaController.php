@@ -112,6 +112,12 @@ class InstruksiKerjaController extends Controller
     {
         $searchModel = new InstruksiKerjaIssued();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_issued) as year')->where("status = 'issued'")->distinct()->asArray()->orderBy('year')->all();
+        $arr = array();
+        for($i=0;$i<sizeof($tahun);$i++){
+            $arr[$tahun[$i]['year']] = $tahun[$i]['year'];
+           
+        }
         $adjuster = InstruksiKerjaIssued::find()->select('adjuster')->where("status = 'issued'")->distinct()->asArray()->orderBy('adjuster')->all();
         $arr1 = array();
         for($i=0;$i<sizeof($adjuster);$i++){
@@ -121,6 +127,7 @@ class InstruksiKerjaController extends Controller
         return $this->render('issued', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'tahun' => $arr,
             'adjuster' => $arr1,
         ]);
     }
@@ -307,6 +314,10 @@ class InstruksiKerjaController extends Controller
                 $new_record->keterangan = $POST_VARIABLE['keterangan'];
                 $this->dateGenerator($POST_VARIABLE['description_record'],$id,$POST_VARIABLE['time_record']);
                 $new_record->save();
+                if($POST_VARIABLE['description_record'] == "Issued")
+                {
+                    $model->date_of_issued = $POST_VARIABLE['time_record'];
+                }
             }
             $model->save();
             return $this->redirect(['viewoutstanding', 'id' => $model->id]);

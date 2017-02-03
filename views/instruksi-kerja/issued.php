@@ -26,7 +26,7 @@ $this->registerJs($search);
         <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
     <div class="search-form" style="display:none">
-        <?=  $this->render('searchissued', ['model' => $searchModel, 'adjuster' => $adjuster]); ?>
+        <?=  $this->render('searchissued', ['model' => $searchModel, 'tahun' => $tahun, 'adjuster' => $adjuster]); ?>
     </div>
     <?php 
         if(Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'adjuster')
@@ -185,6 +185,12 @@ $this->registerJs($search);
                         else
                             return $model->adjuster;
                     }, 
+                ],
+                [
+                    'attribute' => 'date_of_issued',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'format' => 'date',
                 ],
                 [
                     'class' => 'kartik\grid\ActionColumn',

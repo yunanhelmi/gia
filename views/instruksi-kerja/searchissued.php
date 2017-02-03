@@ -51,17 +51,27 @@ use yii\widgets\ActiveForm;
                     'allowClear' => true
                 ],
             ]); ?>
-            <?= $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
-                'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-                'saveFormat' => 'php:Y-m-d',
-                'ajaxConversion' => true,
-                'options' => [
-                    'pluginOptions' => [
-                        'placeholder' => 'Choose Date Of Instruction',
-                        'autoclose' => true
-                    ]
+            <?= 
+            // $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
+            //     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+            //     'saveFormat' => 'php:Y-m-d',
+            //     'ajaxConversion' => true,
+            //     'options' => [
+            //         'pluginOptions' => [
+            //             'placeholder' => 'Choose Date Of Instruction',
+            //             'autoclose' => true
+            //         ]
+            //     ],
+            //     ]); 
+            $form->field($model, 'date_of_issued')->label("Year of Issued")->widget(\kartik\widgets\Select2::classname(), [
+                'data' => $tahun,
+                'options' => ['placeholder' => 'Choose Year'],
+                'pluginOptions' => [
+                    'allowClear' => true
                 ],
-            ]); ?>
+            ]);
+            ?>
+            
         </div>
     </div>
 

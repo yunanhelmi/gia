@@ -449,6 +449,7 @@ use kartik\widgets\ActiveForm;
                                 "Sending DFR To Insurer" => "Sending DFR To Insurer",
                                 "Meeting" => "Meeting",
                                 "Telephone" => "Telephone",
+                                "Issued" => "Issued",
                                 "Other Activity" => "Other Activity"
                                 ];
                             echo $form->field($model, 'description_record')->widget(\kartik\widgets\Select2::classname(), [
