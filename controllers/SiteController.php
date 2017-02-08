@@ -22,6 +22,8 @@ use app\models\Reminder;
 use app\models\Record;
 use app\models\InstruksiKerja;
 
+date_default_timezone_set("Asia/Jakarta");
+
 class SiteController extends Controller
 {
     
@@ -237,7 +239,7 @@ class SiteController extends Controller
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
-                     SET tgl_pa = '".date('Y-m-d',strtotime('+1 days',strtotime($reminder[$i]['tgl_pa'])))."'
+                     SET tgl_pa = '".date('Y-m-d',strtotime('+14 days',strtotime($reminder[$i]['tgl_pa'])))."'
                      WHERE id_instruksi = ".$reminder[$i]['id_instruksi']."
                      ")->execute();
                 }
@@ -246,7 +248,7 @@ class SiteController extends Controller
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
-                     SET tgl_csd = '".date('Y-m-d',strtotime('+1 days',strtotime($reminder[$i]['tgl_csd'])))."'
+                     SET tgl_csd = '".date('Y-m-d',strtotime('+14 days',strtotime($reminder[$i]['tgl_csd'])))."'
                      WHERE id_instruksi = ".$reminder[$i]['id_instruksi']."
                      ")->execute();
                 }
@@ -255,7 +257,7 @@ class SiteController extends Controller
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
-                     SET tgl_dfr = '".date('Y-m-d',strtotime('+1 days',strtotime($reminder[$i]['tgl_dfr'])))."'
+                     SET tgl_dfr = '".date('Y-m-d',strtotime('+10 days',strtotime($reminder[$i]['tgl_dfr'])))."'
                      WHERE id_instruksi = ".$reminder[$i]['id_instruksi']."
                     ")->execute();
                 }

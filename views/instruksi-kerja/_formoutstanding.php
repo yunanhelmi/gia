@@ -7,6 +7,8 @@ use kartik\widgets\ActiveForm;
 /* @var $model app\models\InstruksiKerja */
 /* @var $form yii\widgets\ActiveForm */
 
+date_default_timezone_set("Asia/Bangkok");
+
 ?>
 
 <div class="instruksi-kerja-form">

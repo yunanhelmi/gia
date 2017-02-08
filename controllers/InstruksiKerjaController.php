@@ -29,7 +29,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use app\filters\AccessRule;
 
-date_default_timezone_set("Asia/Bangkok");
+date_default_timezone_set("Asia/Jakarta");
 /**
  * InstruksiKerjaController implements the CRUD actions for InstruksiKerja model.
  */
@@ -260,37 +260,37 @@ class InstruksiKerjaController extends Controller
             $reminder->tgl_survei = date('Y-m-d',strtotime('+1 days',strtotime($tanggal)));
             $reminder->save();
         } else if($input == 'Attandance Advice (AA)'){
-            $date = date('Y-m-d',strtotime('+5 days',strtotime($tanggal)));
+            $date_1 = date('Y-m-d',strtotime('+5 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
-            SET state = 2, tgl_aa = '".$date."'
+            SET state = 2, tgl_aa = '".$date_1."'
             WHERE id_instruksi = ".$id."
             ")->execute();
         } else if($input == 'Preliminary Advice (PA)'){
-            $date = date('Y-m-d',strtotime('+14 days',strtotime($tanggal)));
+            $date_2 = date('Y-m-d',strtotime('+14 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
-            SET state = 3, tgl_pa = '".$date."'
+            SET state = 3, tgl_pa = '".$date_2."'
             WHERE id_instruksi = ".$id."")->execute();
         } else if($input == 'Chasing Support Documents (CSD)'){
-            $date = date('Y-m-d',strtotime('+14 days',strtotime($tanggal)));
+            $date_3 = date('Y-m-d',strtotime('+14 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
-            SET state = 4, tgl_csd = '".$date."'
+            SET state = 4, tgl_csd = '".$date_3."'
             WHERE id_instruksi = ".$id."
             ")->execute();
         } else if($input == 'Draft Final Report (DFR)'){
-            $date = date('Y-m-d',strtotime('+10 days',strtotime($tanggal)));
+            $date_4 = date('Y-m-d',strtotime('+10 days',strtotime($tanggal)));
             $command = $connection->createCommand("
             UPDATE reminder 
-            SET state = 5, tgl_dfr = '".$date."'
+            SET state = 5, tgl_dfr = '".$date_4."'
             WHERE id_instruksi = ".$id."
             ")->execute();
         } else if($input == 'Sending DFR To Insurer'){
-            $date = date('Y-m-d H:i:s');
+            $date_5 = date('Y-m-d H:i:s');
             $command = $connection->createCommand("
             UPDATE reminder 
-            SET state = 6, tgl_completed = '".$date."'
+            SET state = 6, tgl_completed = '".$date_5."'
             WHERE id_instruksi = ".$id."
             ")->execute();
         }
