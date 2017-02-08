@@ -78,6 +78,7 @@ use app\models\InstruksiKerja;
             ->andFilterWhere(['like', 'date_of_instruction', $this->date_of_instruction])
             // end: 
             ->andFilterWhere(['like', 'date_of_issued', $this->date_of_issued])
+            ->andFilterWhere(['like', 'date_of_issued', $this->month_option])
             ->andFilterWhere(['like', 'insured', $this->insured])
             ->andFilterWhere(['like', 'broker', $this->broker])
             ->andFilterWhere(['like', 'conveyence', $this->conveyence])

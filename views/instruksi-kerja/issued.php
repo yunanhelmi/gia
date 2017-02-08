@@ -29,6 +29,8 @@ $this->registerJs($search);
         <?=  $this->render('searchissued', ['model' => $searchModel, 'tahun' => $tahun, 'adjuster' => $adjuster]); ?>
     </div>
     <?php 
+        // var_dump($tahun);
+        // exit();
         if(Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'adjuster')
         { 
             $gridColumn = [

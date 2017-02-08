@@ -54,6 +54,28 @@ use yii\widgets\ActiveForm;
                 ],
             ]); ?>
             <?php 
+                $month = array(
+                    "Jan" => "-01-",
+                    "Feb" => "-02-",
+                    "Mar" => "-03-",
+                    "Apr" => "-04-",
+                    "May" => "-05-",
+                    "Jun" => "-06-",
+                    "Jul" => "-07-",
+                    "Aug" => "-08-",
+                    "Sep" => "-09-",
+                    "Oct" => "-10-",
+                    "Nov" => "-11-",
+                    "Des" => "-12-");
+                echo $form->field($model, 'month_option')->label("Choose Month")->widget(\kartik\widgets\Select2::classname(), [
+                'data' => $month,
+                'options' => ['placeholder' => 'Choose Month'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]);
+            ?>
+            <?php 
             // $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [
             //     'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
             //     'saveFormat' => 'php:Y-m-d',
@@ -66,7 +88,7 @@ use yii\widgets\ActiveForm;
             //     ],
             //     ]); 
             //$th = '2017';
-            echo $form->field($model, 'date_of_issued')->label("Year of Issued")->widget(\kartik\widgets\Select2::classname(), [
+            echo $form->field($model, 'date_of_issued')->label("Choose Year")->widget(\kartik\widgets\Select2::classname(), [
                 'data' => $tahun,
                 'options' => ['placeholder' => 'Choose Year'],
                 'pluginOptions' => [
