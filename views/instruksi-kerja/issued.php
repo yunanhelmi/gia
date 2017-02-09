@@ -316,6 +316,12 @@ $this->registerJs($search);
                     }, 
                 ],
                 [
+                    'attribute' => 'date_of_issued',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'format' => 'date',
+                ],
+                [
                     'class' => 'kartik\grid\ActionColumn',
                     'template' => ' {view} ',
                     'buttons' => [
