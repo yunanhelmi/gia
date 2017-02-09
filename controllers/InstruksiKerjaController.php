@@ -110,7 +110,9 @@ class InstruksiKerjaController extends Controller
 
     public function actionIssued()
     {
+
         $searchModel = new InstruksiKerjaIssued();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_issued) as year')->where("status = 'issued'")->distinct()->asArray()->orderBy('year')->all();
         $arr = array();

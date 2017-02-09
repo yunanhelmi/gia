@@ -66,8 +66,8 @@ class InstruksiKerja extends \yii\db\ActiveRecord
         return [
             [['id_client', 'amount_of_loss', 'amount_of_loss_usd', 'sum_insured', 'sum_insured_usd', 'fee_code', 'fee_code_rp', 'actual_fee', 'actual_fee_usd', 'expenses', 'expenses_usd'], 'integer'],
             [['date_of_instruction', 'date_of_loss', 'time_bar_due', 'date_entered', 'date_send_of_pa', 'date_send_of_dfr', 'date_send_of_doc_request', 'date_of_issued', 'date_of_last_correspondent'], 'safe'],
-            [['not_relevant', 'protected', 'status', 'month_option'], 'string'],
-            [['keterangan','description_record','time_record','case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
+            [['not_relevant', 'protected', 'status'], 'string'],
+            [['keterangan','description_record','month_option','time_record','case_number', 'type_of_instruction', 'assurers', 'insured', 'broker', 'conveyence', 'interest', 'casualty', 'time_bar_issue', 'comment', 'adjuster', 'remark', 'created_at', 'updated_at'], 'string', 'max' => 255],
             [['type_of_instruction','id_client','case_number','assurers','conveyence'],'required']
         ];
     }

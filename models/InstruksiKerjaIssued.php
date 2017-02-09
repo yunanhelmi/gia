@@ -74,11 +74,9 @@ use app\models\InstruksiKerja;
         $query->andFilterWhere(['like', 'case_number', $this->case_number])
             ->andFilterWhere(['like', 'type_of_instruction', $this->type_of_instruction])
             ->andFilterWhere(['like', 'assurers', $this->assurers])
-            // start: bagian ini untuk filter date_of_instruction
             ->andFilterWhere(['like', 'date_of_instruction', $this->date_of_instruction])
-            // end: 
-            ->andFilterWhere(['like', 'date_of_issued', $this->date_of_issued])
             ->andFilterWhere(['like', 'date_of_issued', $this->month_option])
+            ->andFilterWhere(['like', 'date_of_issued', $this->date_of_issued])
             ->andFilterWhere(['like', 'insured', $this->insured])
             ->andFilterWhere(['like', 'broker', $this->broker])
             ->andFilterWhere(['like', 'conveyence', $this->conveyence])
