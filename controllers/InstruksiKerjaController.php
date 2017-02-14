@@ -662,7 +662,7 @@ class InstruksiKerjaController extends Controller
     public function actionIssuedreport(){
         $searchModel = new InstruksiKerjaIssued();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_instruction) as year')->where("status = 'issued'")->distinct()->asArray()->orderBy('year')->all();
+        $tahun = InstruksiKerjaIssued::find()->select('extract(YEAR from date_of_issued) as year')->where("status = 'issued'")->distinct()->asArray()->orderBy('year')->all();
         // kodingan ini menyimpan kembali array yang benar
         // array berisi key dan nilai yg sama
         $arr = array();
