@@ -55,26 +55,26 @@ use yii\widgets\ActiveForm;
             ]); ?>
             <?php 
                 $month = [
-                    "-01-" => "Jan",
-                    "-02-" => "Feb",
-                    "-03-" => "Mar",
-                    "-04-" => "Apr",
-                    "-05-" => "May",
-                    "-06-" => "Jun",
-                    "-07-" => "Jul",
-                    "-08-" => "Aug",
-                    "-09-" => "Sep",
-                    "-10-" => "Oct",
-                    "-11-" => "Nov",
-                    "-12-" => "Des"
+                    '-01-' => 'Jan',
+                    '-02-' => 'Feb',
+                    '-03-' => 'Mar',
+                    '-04-' => 'Apr',
+                    '-05-' => 'May',
+                    '-06-' => 'Jun',
+                    '-07-' => 'Jul',
+                    '-08-' => 'Aug',
+                    '-09-' => 'Sep',
+                    '-10-' => 'Oct',
+                    '-11-' => 'Nov',
+                    '-12-' => 'Des'
                     ];
-                // echo $form->field($model, 'month_option')->label("Choose Month")->widget(\kartik\widgets\Select2::classname(), [
-                //     'data' => $month,
-                //     'options' => ['placeholder' => 'Choose Month'],
-                //     'pluginOptions' => [
-                //         'allowClear' => true
-                //     ],
-                // ]);
+                 echo $form->field($model, 'month_option')->label("Choose Month")->widget(\kartik\widgets\Select2::classname(), [
+                     'data' => $month,
+                     'options' => ['placeholder' => 'Choose Month'],
+                     'pluginOptions' => [
+                         'allowClear' => true
+                     ],
+                 ]);
             ?>
             <?php 
             // $form->field($model, 'date_of_instruction')->widget(\kartik\datecontrol\DateControl::classname(), [

@@ -413,14 +413,23 @@ date_default_timezone_set("Asia/Bangkok");
             <div class="col-md-4">
             </div>
             <div class="col-md-4">
-                <?= $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
-                    'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
-                    'options' => ['placeholder' => 'Choose Status'],
-                    'pluginOptions' => [
-                        'allowClear' => false
-                    ],
+                <?php
+                // $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
+                //     'data' => \yii\helpers\ArrayHelper::map(\app\models\InstruksiKerja::find()->orderBy('id')->asArray()->distinct()->all(), 'status', 'status'),
+                //     'options' => ['placeholder' => 'Choose Status'],
+                //     'pluginOptions' => [
+                //         'allowClear' => false
+                //     ],
 
-                ]); 
+                // ]);
+                $stat = ['outstanding' => 'outstanding', 'issued' => 'issued'];
+                echo $form->field($model, 'status')->widget(\kartik\widgets\Select2::classname(), [
+                     'data' => $stat,
+                     'options' => ['placeholder' => 'Choose Status'],
+                     'pluginOptions' => [
+                         'allowClear' => false
+                     ],
+                ]);
                 ?>
             </div>
         </div>
