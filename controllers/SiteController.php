@@ -159,6 +159,7 @@ class SiteController extends Controller
         // echo "<pre>";
         // var_dump($record);
         // echo "</pre>";
+        // exit();
      
         
         if($model['adjuster'] == 'Omar Koswara'){
@@ -176,7 +177,7 @@ class SiteController extends Controller
         
 
         Yii::$app->mailer->compose()
-        ->setFrom('admin@giadj-sby.com')
+        ->setFrom(['admin@giadj-sby.com' => 'Administrator PT GIA'])
         ->setTo($email)
         ->setCc('omar.koswara@globalinternusadj.com')
         ->setCc('thinker.stu@gmail.com')
@@ -222,15 +223,14 @@ class SiteController extends Controller
     public function actionCheck(){
         $connection = Yii::$app->db;
         $reminder = Reminder::find()->where("state <> 6")->asArray()->all();
-        $today = date("Y-m-d");
         
         // echo "<pre>";
-        // var_dump(date("Y-m-d", strtotime($reminder[0]['tgl_survei'])) == date("Y-m-d"));
+        // var_dump(date("Y-m-d", strtotime($reminder[0]['tgl_aa'])) === date("Y-m-d"));
         // echo "</pre>";
         // exit();
         for($i=0;$i<sizeof($reminder);$i++){
             if($reminder[$i]['state'] == '1'){
-                if(date("Y-m-d", strtotime($reminder[0]['tgl_survei'])) == date("Y-m-d")){
+                if(date("Y-m-d", strtotime($reminder[$i]['tgl_survei'])) == date("Y-m-d")){
                     $this->actionSend($reminder[$i]['id_instruksi']);
                     $command = $connection->createCommand("
                     UPDATE reminder 
@@ -239,7 +239,7 @@ class SiteController extends Controller
                     ")->execute();
                 }
             } else if ($reminder[$i]['state'] == '2'){
-                if(date("Y-m-d", strtotime($reminder[0]['tgl_aa'])) == date("Y-m-d")){
+                if(date("Y-m-d", strtotime($reminder[$i]['tgl_aa'])) == date("Y-m-d")) {
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
@@ -248,7 +248,7 @@ class SiteController extends Controller
                      ")->execute();
                 }
             } else if ($reminder[$i]['state'] == '3'){
-                if(date("Y-m-d", strtotime($reminder[0]['tgl_pa'])) == date("Y-m-d")){
+                if(date("Y-m-d", strtotime($reminder[$i]['tgl_pa'])) == date("Y-m-d")){
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
@@ -257,7 +257,7 @@ class SiteController extends Controller
                      ")->execute();
                 }
             } else if ($reminder[$i]['state'] == '4'){
-                if(date("Y-m-d", strtotime($reminder[0]['tgl_csd'])) == date("Y-m-d")){
+                if(date("Y-m-d", strtotime($reminder[$i]['tgl_csd'])) == date("Y-m-d")){
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
@@ -266,7 +266,7 @@ class SiteController extends Controller
                      ")->execute();
                 }
             } else if ($reminder[$i]['state'] == '5'){
-                if(date("Y-m-d", strtotime($reminder[0]['tgl_dfr'])) == date("Y-m-d")){
+                if(date("Y-m-d", strtotime($reminder[$i]['tgl_dfr'])) == date("Y-m-d")){
                     $this->actionSend($reminder[$i]['id_instruksi']);
                      $command = $connection->createCommand("
                      UPDATE reminder 
